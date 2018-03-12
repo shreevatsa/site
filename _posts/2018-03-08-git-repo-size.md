@@ -1,6 +1,7 @@
 ---
 layout: post
 title: "Git repository size"
+tags: [hello, world, "what now", "what's this"]
 date: 2018-03-08
 ---
 
@@ -9,6 +10,8 @@ date: 2018-03-08
 Why does my Git repository take up so much space?
 
 If you look inside your `.git` directory, the bulk of the space is probably taken by the `.objects` directory.[^LFS] What is inside it? Here is a script that may help you discover which files, aggregated over their entire history, contribute the most to the size of your repository.
+
+[^LFS]: Maybe not if you're using Git Large File Storage (LFS), but then the space used inside the `.git/lfs` is easier to explain: each file 
 
 (Skip straight to the [script](#program), or see [example usage](#example-usage).)
 
@@ -180,7 +183,9 @@ We can associate objects with their names by using `git rev-list --objects --all
 0431aa5d99bcb2e63f13377235f33f3eee4fc842 mine/notes.md
 ```
 
-shows that the object `0431aa5d99bcb2e63f13377235f33f3eee4fc842` (of type “blob”) has filename `mine/notes.md`. 
+shows that the object `0431aa5d99bcb2e63f13377235f33f3eee4fc842` (of type “blob”) has filename `mine/notes.md`.
+
+[^onlyblobs]: Trees, commits, and tags take up nonzero space too, but they're usually tiny.
 
 ### Code for names of objects
 
@@ -439,5 +444,3 @@ Cumulat       Size Filename
 
 
 
-[^LFS]: Maybe not if you're using Git Large File Storage (LFS), but then the space used inside the `.git/lfs` is easier to explain: each file 
-[^onlyblobs]: Trees, commits, and tags take up nonzero space too, but they're usually tiny.
