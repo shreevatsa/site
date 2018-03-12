@@ -9,7 +9,9 @@ Why does my Git repository take up so much space?
 
 A while ago, I became curious about a particularly large Git repository I was working with. From my first encounter with that repo, I was surprised and frustrated to find how long many operations took (e.g. the initial `git clone`), some because of the size. I suspected that the large size was because of (1) some binary files being checked in to the repo (which seems like something that one should never do, but happens), and (2) the accumulated history of certain files that were frequently checked-in, e.g. a large one that was auto-generated and committed every few hours, with lots of changes. So I started trying to look into it.
 
-If you look inside your `.git` directory, the bulk of the space is probably taken by the `.objects` directory.[^LFS] What is inside it? Here is a script that may help you discover which files, aggregated over their entire history, contribute the most to the size of your repository.
+If you look inside your `.git` directory, the bulk of the space is probably taken by the `.objects` directory.[^LFS] What is inside it?
+
+Here is a script that may help you discover which files, aggregated over their entire history, contribute the most to the size of your repository. I'm also trying out, if not exactly “literate programming”, then at least “Explaining code for publication”, so that I'll be able to understand this script again.
 
 [^LFS]: Maybe not if you're using Git Large File Storage (LFS), but then the space used inside the `.git/lfs` is easier to explain: everything there simply is some (version of some) file stored using LFS. You can use `file` to see the type of the file, then open with corresponding application.
 

@@ -14,13 +14,13 @@
 # You can create any custom variable you would like, and they will be accessible
 # in the templates via {{ site.myvariable }}.
 title: Title of this blog
-email: shreevatsa.public@gmail.com
+# email: shreevatsa.public@gmail.com
 description: >- # this means to ignore newlines until "baseurl:"
   This is the description of this site.
 baseurl: "" # the subpath of your site, e.g. /blog
 url: "" # the base hostname & protocol for your site, e.g. http://example.com
-twitter_username: svat
-github_username:  shreevatsa
+# twitter_username: svat
+# github_username:  shreevatsa
 
 # Build settings
 markdown: kramdown
@@ -39,3 +39,7 @@ plugins:
 #   - vendor/cache/
 #   - vendor/gems/
 #   - vendor/ruby/
+
+permalink: ":slug:output_ext"   # The default has date etc., see https://jekyllrb.com/docs/permalinks/
+minima:
+    date_format: "%Y %b %e" # Minima date format; refer to http://shopify.github.io/liquid/filters/date/ to customize this
