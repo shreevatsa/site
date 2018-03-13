@@ -1,11 +1,10 @@
 ---
 layout: post
-title: "Getting started with Jekyll for GitHub Pages"
+title: Getting started with Jekyll for GitHub Pages
 tags: [blog]
+excerpt: My attempts trying to read and understand documentation, to set up this blog.
 date: 2018-03-12
 ---
-
-# Getting started with Jekyll for GitHub Pages
 
 By the end of this post, I'll hopefully have set up a blog on GitHub Pages, using Jekyll.
 

@@ -2,6 +2,7 @@
 layout: post
 title: "Why is my Git repo so large?"
 tags: [git, done]
+excerpt: A script for seeing what exactly takes up space inside a Git repository itself.
 date: 2018-03-08
 ---
 
