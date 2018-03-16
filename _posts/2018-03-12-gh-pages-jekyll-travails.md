@@ -118,3 +118,22 @@ Now that we know (roughly) what Jekyll does, what the theme does, etc., here's a
 
 10. To customize stuff, the recommended way (in the Jekyll / Minima documentation) is to copy the theme's files into the repo, and edit them. For example, copy the file `$(bundle show minima)/_layouts/home.html` to edit the “home” layout.
 
+
+## Some improvements
+
+Here are a few I made:
+
+* Change permalink format to not include the annoying date: put the following in `_config.yml`:
+
+  ```yaml
+  permalink: ":slug:output_ext"
+  ```
+
+
+
+* Change the date format to look like "2018 Mar 8": put the following in `_config.yml ` (see [here](https://github.com/jekyll/minima/issues/69) and [here](http://shopify.github.io/liquid/filters/date/)):
+
+  ```yaml
+  minima:
+      date_format: "%Y %b %e"
+  ```

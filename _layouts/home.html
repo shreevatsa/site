@@ -23,9 +23,6 @@ showonlydone: true
         </h2>
         <p>{{post.excerpt}}</p>
         <span class="post-meta">{{ post.date | date: date_format }}</span>
-        {% for tag in post.tags %}
-          <a href="{{ 'tag/' }}{{ tag }}">{{ tag }}</a>
-         {% endfor %}
       </li>
     {% endfor %}
   </ul>

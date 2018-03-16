@@ -16,7 +16,13 @@ Here is a script that may help you discover which files, aggregated over their e
 
 [^LFS]: Maybe not if you're using Git Large File Storage (LFS), but then the space used inside the `.git/lfs` is easier to explain: everything there simply is some (version of some) file stored using LFS. You can use `file` to see the type of the file, then open with corresponding application.
 
-(Skip straight to the [script](#program), or see [example usage](#example-usage).)
+(Skip straight to the [outline of the main program](#program), or see [example usage](#example-usage).)
+
+## Table of contents
+{:.no_toc}
+
+* You should not be seeing this.
+{:toc}
 
 ## Background: objects and packfiles
 
@@ -200,7 +206,7 @@ def index_blob_names(lines):
     ret = {}
     for line in lines:
         parts = line.split(' ', 1)
-        # Some blobs are unreachable, so line has just a sha1.
+        # Many objects aren't blobs (trees, commits), so line has just a sha1.
         if len(parts) > 1:
             assert len(parts) == 2, parts
             # if len(parts[1].split()) > 1:
@@ -253,6 +259,8 @@ if __name__ == '__main__':
     print_sizes(normalized, total_size)
 ```
 
+### Code for normalization and output
+
 Here, the normalization is a small feature added for aggregating files further.
 
 ```python
@@ -296,7 +304,7 @@ def aggregate_sizes_by_filename(objects):
     return (total_size, aggregated_size['unnormalized'], aggregated_size['normalized'])
 ```
 
-And `print_sizes` just prints the output somewhat prettily:
+And `print_sizes` just prints the output somewhat prettily (see example below):
 
 ```python
 def print_sizes(sizes, total_size, limit=20):
@@ -313,7 +321,7 @@ def print_sizes(sizes, total_size, limit=20):
 
 ### Example usage
 
-The whole file is available here. Here is are a couple of examples of using `pack_stats.py`, with slight changes to the `normalize_filename` function, taking two of the “most starred” repositories on GitHub:
+The whole file is available [here](https://gist.github.com/shreevatsa/ed7c6661ebfa43d8427639f672804c6b). Here are a couple of examples of using `pack_stats.py`, with slight changes to the `normalize_filename` function, taking two of the “most starred” repositories on GitHub:
 
 ```
 % git clone https://github.com/facebook/react.git
@@ -444,6 +452,8 @@ Cumulat       Size Filename
  18.57%     781395 src/cmd/compile/internal/gc/walk.go
 
 ```
+
+## Footnotes
 
 
 
