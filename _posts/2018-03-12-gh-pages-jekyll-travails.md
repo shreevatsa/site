@@ -139,3 +139,5 @@ Here are a few I made:
   ```
 
 * Something needed to just get it to work: need to set `baseurl` in `config.yml` (see e.g. [point 4 here](https://ilovesymposia.com/2015/01/04/some-things-i-learned-while-building-a-site-on-github-pages/))
+
+----
