@@ -22,12 +22,17 @@ showonlydone: true
           <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
         </h2>
         <p>{{post.excerpt}}</p>
-        <span class="post-meta">{{ post.date | date: date_format }}</span>
+        <span class="post-meta">
+          {{ post.date | date: date_format }}
+          &bull;
+          {{post.content | number_of_words}} words (≈{{ post.content | number_of_words | divided_by: 250 | plus: 2}} minutes)</span>
       </li>
     {% endfor %}
   </ul>
 
+  {% unless layout.showonlydone %}
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
+  {% endif %}
 
 </div>
 

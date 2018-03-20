@@ -2,7 +2,7 @@
 layout: post
 title: “Self-taught programmer”
 excerpt:
-date: 2018-03-19
+date: 2018-03-19 09:00
 ---
 
 I've seen many people describe as self-taught programmers. While it is admirable that many people taught themselves programming, I don't like the term and wouldn't use it myself, for two reasons:

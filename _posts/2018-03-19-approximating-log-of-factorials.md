@@ -2,7 +2,7 @@
 layout: post
 title: Approximating $\lg (n!)$
 excerpt: How can we compute the logarithm of the factorial?
-date: 2018-03-19
+date: 2018-03-19 10:00
 ---
 
 Came up at [this question on math.SE](https://math.stackexchange.com/questions/2696344/is-there-a-way-to-find-the-log-of-very-large-numbers/2696487#2696487), and highlights my ignorance of floating-point issues. 
@@ -86,6 +86,6 @@ Questions:
 
 I have no idea how to answer questions like this. I need to learn. Maybe it's time to finally read that “What every … about floating point” by Goldberg, and think in terms of “ulp”s and all that.
 
-For a function like this, if it comes up frequently, we'd probably want to implement a function that returns the closest floating-point number, and give it a name. (Then any further error would be smaller.) This I guess is one reason why math libraries implement things like `hypotl`. It [appears](https://math.stackexchange.com/a/2697902/205) that many libraries already do this in this case, by implementing a `lngamma` or similar function (see [Log Gamma function](http://mathworld.wolfram.com/LogGammaFunction.html) in Wolfram Mathematica).
+For a function like this, if it comes up frequently, we'd probably want to implement a function that returns the closest floating-point number, and give it a name. (Then any further error would be smaller.) This I guess is one reason why math libraries implement things like `hypotl`. It [appears](https://math.stackexchange.com/a/2697902/205) that many libraries already do this in this case, by implementing a `lngamma` or similar function (see [Log Gamma function](http://mathworld.wolfram.com/LogGammaFunction.html) on MathWorld).
 
 ----

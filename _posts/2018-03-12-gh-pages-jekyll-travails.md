@@ -140,4 +140,14 @@ Here are a few I made:
 
 * Something needed to just get it to work: need to set `baseurl` in `config.yml` (see e.g. [point 4 here](https://ilovesymposia.com/2015/01/04/some-things-i-learned-while-building-a-site-on-github-pages/))
 
+* MathJax: added JavaScript to `default.html`
+
+* “n-minute read”: use something like `{{ post.content | number_of_words | divided_by: 250 | plus: 2}}` to get a number.
+
+* Yet to figure out: Images? Links to other posts?
+
+
+
+* Other good blogs I've seen recently, that I can use as examples: [danluu](http://danluu.com/), [wesleyac](http://blog.wesleyac.com/) ([code](https://github.com/WesleyAC/blog)), [hillelwayne](https://www.hillelwayne.com/), [mzucker](https://mzucker.github.io/) ([code](https://github.com/mzucker/mzucker.github.io)), [haixing-hu](http://haixing-hu.github.io/),
+
 ----
