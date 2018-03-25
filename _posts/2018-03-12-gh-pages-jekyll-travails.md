@@ -116,7 +116,7 @@ Now that we know (roughly) what Jekyll does, what the theme does, etc., here's a
 
 9. Commit all these files.
 
-10. To customize stuff, the recommended way (in the Jekyll / Minima documentation) is to copy the theme's files into the repo, and edit them. For example, copy the file `$(bundle show minima)/_layouts/home.html` to edit the “home” layout.
+10. To customize stuff, the recommended way (in the Jekyll / Minima documentation) is to copy the theme's files into the repo, and edit them. For example, copy the file `$(bundle show minima)/_layouts/home.html` to edit the “home” layout.
 
 
 ## Some improvements
@@ -129,8 +129,6 @@ Here are a few I made:
   permalink: ":slug:output_ext"
   ```
 
-
-
 * Change the date format to look like "2018 Mar 8": put the following in `_config.yml ` (see [here](https://github.com/jekyll/minima/issues/69) and [here](http://shopify.github.io/liquid/filters/date/)):
 
   ```yaml
@@ -142,7 +140,7 @@ Here are a few I made:
 
 * MathJax: added JavaScript to `default.html`
 
-* “n-minute read”: use something like `{{ post.content | number_of_words | divided_by: 250 | plus: 2}}` to get a number.
+* “n-minute read”: use something like {%raw%}`{{ post.content | number_of_words | divided_by: 250 | plus: 2}}`{%endraw%} to get a number.
 
 * Yet to figure out: Images? Links to other posts?
 
