@@ -1,9 +1,18 @@
 ---
 layout: post
-title:  "Highly Composite Numbers"
-date:   2017-11-07 19:02:24 -0800
-categories: jekyll
+title:  "Computing Highly Composite Numbers"
+date:   2017-11-07 16:14:22 -0800
+categories: mathematics programming done
+tags: unfinished
 ---
+
+<script type="text/javascript" async
+  src="https://cdnjs.cloudflare.com/ajax/libs/mathjax/2.7.2/MathJax.js?config=TeX-MML-AM_CHTML">
+</script>
+
+Categories: {{ page.categories | join: ', ' }}
+
+Tags: {{ page.tags | join: ', ' }}
 
 Context: Motivated by [this question](https://mathoverflow.net/questions/284577/computational-complexity-of-finding-the-smallest-number-with-n-factors).
 
