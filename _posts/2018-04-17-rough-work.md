@@ -1,3 +1,10 @@
+---
+layout: post
+title: Rough work
+excerpt:  Possible way of attacking a conjecture from https://manasataramgini.wordpress.com/2018/04/15
+date: 2018-04-17
+---
+
 # Rough work
 
 Context: See https://manasataramgini.wordpress.com/2018/04/15/a-sequence-related-to-prime-counting/ — a very intriguing conjecture!
