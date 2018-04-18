@@ -1,152 +1,140 @@
 ---
 layout: post
-title: Primes in quadratic sequences
+title: Primes in quadratic sequences (Part 1)
 excerpt: Are there more primes of the form $n^2 + 21n + 1$ than of the form $n^2 + n + 1$?
 date: 2018-03-26
 ---
 
-Here's the question we're going to try to answer: if we consider the values taken by a quadratic function $f(n) = an^2 + bn + c$ for $n = 1, 2, 3, \dots$, how frequently is $f(n)$ a prime?
+Here's the question we're going to try to answer. Consider a quadratic polynomial $f(n) = an^2 + bn + c$ with integer coefficients $a, b, c$. If we consider the values taken by $f(n)$ for $n = 1, 2, 3, \dots$, how frequently is $f(n)$ a prime? That is, if we consider the values of $f(n)$ for $1 \le n \le N$, and count the number $P(N)$ of prime numbers among these values, what are the asymptotics of $P(N)$ as $N \to \infty$?
 
-Specifically, my motivation for this question originally comes from [Raziman's Google+ post](https://plus.google.com/+RazimanTV/posts/ZG1DHvi7pRu) (ultimately from [a Quora question](https://www.quora.com/The-sequence-n-2-21n-1-n-1-2-3-cdots-seems-to-produce-more-than-twice-as-many-primes-as-the-sequence-n-2-n-1-n-1-2-3-cdots-How-can-I-make-this-precise-and-prove-it-or-is-it-even-true)):
+## Trivial cases
+
+Some trivial cases are easy to dispose of:
+
+* If $\gcd(a, b, c) = g > 1$ then $g$ always divides $f(n)$, so there can be at most one prime (namely $g$, if $g$ is a prime) in the sequence.
+* Even without $\gcd(a, b, c) > 1$, it can happen that $f(n)$ is always even. When exactly does this happen? Modulo $2$, the value of $an^2 + bn + c \equiv an + bn + c = (a+b)n + c$ and this happens precisely when $(a + b)$ and $c$ are both even. So even in this case, $f(n)$ can take at most one prime value (namely $2$).
+
+These are the only trivial cases, where all values of $f(n)$ are divisible by the same prime. For, suppose a prime $p$ always divides $an^2 + bn + c$.  (We've already considered the case of $p = 2$, so let's assume $p$ is an odd prime.) Then, from the fact that $p$ divides both $f(n)$ and $f(n+1)$ we can conclude that it divides $f(n + 1) - f(n) = a(2n + 1) + b$. Similarly, $p$ divides $f(n) - f(n-1) = a(2n - 1) + b$. So $p$ also divides *their* difference, which is $2a$.  So (as $p$ is an odd prime) $p$ divides $a$, and what we have (modulo $p$) is just a linear polynomial $f(n) \equiv bn + c \pmod p$. Further, if $p$ always divides this $f(n)$, then repeating the argument, we get $p$ divides $b$ and thence $c$, so we're in the $\gcd(a, b, c) > 1$ case that we considered earlier.
+
+## Claim
+
+So, to recap: we assume that $\gcd(a, b, c) = 1$ and that $a + b$ and $c$ are not both even. (If we don't want to treat negative integers as prime, let's further assume that $a > 0$, so that $f(n)$ is, at least eventually, always positive.) Under these assumptions, standard number theory conjectures state that:
+
+* $P(N) \sim C \frac{N}{\log N}$, where the constant $C$ depends on $(a, b, c)$.
+
+We'll see below how to calculate $C$.
+
+## Heuristic argument and the constant C
+
+We will not prove this formally. (No one has proved it yet; that's why it's called a conjecture.) In fact, it is beyond the reach of present-day mathematics to prove even that $P(N) \to \infty$, and even for a specific polynomial like $f(n) = n^2 + 1$.
+
+Fortunately, a heuristic argument that gives those asymptotics (including the precise value of the constant) is rather easy to understand.
+
+The prime number theorem states that the number of primes less than $N$ is $\sim \frac{N}{\log N}$ or (equivalently) $\sim \int_{2}^{N} \frac{dt}{\log t}$. This leads to the “Cramer heuristic”, that every number $m$ is prime with probability $\frac{1}{\log m}$. (See [notes by Terence Tao](https://terrytao.wordpress.com/tag/cramers-random-model/): the more formal statement is that the asymptotics of the primes resemble that of a random set where each number $m$ is chosen with probability $\frac{1}{\log m}$.)
+
+Applying that heuristic here, if we consider the values of $f(n)$ for $1 \le n \le N$, then each $f(n) = an^2 + bn + c$ is prime with probability $\frac{1}{\log(an^2 + bn + c)}$, so the expected number of primes for $1 \le n \le N$ is $\sum_{n = 1}^{N} \frac{1}{\log(an^2 + bn + c)} \sim \sum_{n=1}^{N} \frac{1}{2\log n} \sim \frac{N}{2\log N}$.
+
+This gives the right rate of growth, but to get the correct constant factor, we need to make some corrections to account for the fact that our situation of considering $f(1), f(2), \dots f(N)$ is not exactly like the situation of considering $1, 2, \dots, N$. Why?
+
+* [$p=2$] In the situation of $1, 2, \dots, N$, half the numbers are even, and therefore (except possibly the single number $2$ itself) ruled out from being prime. But in the situation of $f(1), f(2), \dots, f(N)$, where $f(n) = an^2 + bn + c \equiv (a+b)n + c \pmod 2$, it may either happen that
+  * $a+b$ is odd: then $f(n) \equiv n + c \pmod 2$ is odd half the time, the same as before (no corrections to make), or
+  * $a + b$ is even: then $f(n) \equiv c \pmod 2$ is always odd (as we assumed $f(n)$ is not always even), so none of the numbers are ruled out from being even. So, considering divisibility by $2$ in isolation, we should have about twice the number of primes in this case.
+* [$p=3$] In the situation of $1, 2, \dots, N$, a third of the numbers are divisible by $3$, and ruled out from being prime (apart from of course $3$ itself). But in the situation of $f(1), f(2), \dots, f(N)$, we'll have $f(n) = an^2 + bn + c \equiv 0 \pmod 3$ only if $n$ is a solution modulo $3$ to $an^2 + bn + c \equiv 0$. There may be $0$, $1$, or $2$ such solutions (mod $3$). If $k_3$ is the number of solutions to $an^2 + bn + c\equiv 0 \pmod 3$, then instead of ruling out a fraction $\frac13$ of numbers, we're instead ruling out a fraction $\frac{k_3}{3}$ of numbers. Thus, we have to correct our expression for the number of primes by a factor of $\frac{1 - k_3/3}{1 - 1/3}$.
+* [General $p$] In general, if there are $k_p$ solutions modulo $p$ to $an^2 + bn + c \equiv 0$, then we multiply by a correction factor of $\frac{1-k_p/p}{1 - 1/p}$.
+
+Putting all this together suggests that the constant $C$ should be:
+
+$$C = \displaystyle \frac12 \prod_{p} \frac{1 - k_p/p}{1 - 1/p} = \frac12 \prod_{p} \frac{p-k_p}{p -1}$$
+
+And in fact, that's what the standard number-theory conjectures say.
+
+## Examples
+
+Let's write a program for computing $C$, for a given $a$, $b$, and $c$:
+
+```python
+def slow_kp(p, f):
+    """Number of solutions to f(n) == 0 (mod p)."""
+    return len(n for n in range(p) if f(n) % p == 0)
+
+def is_prime(p):
+    for d in range(2, p):
+        if p % d == 0: return False
+        if d * d > p: break
+    return True
+
+def C(a, b, c):
+    f =	lambda n: a * n	** 2 + b * n + c
+    p =	1
+    ans	= 0.5
+    while True:
+		p += 1
+        if not is_prime(p): continue
+        kp = slow_kp(p,	f)
+        num = p	- kp
+		den = p	- 1
+		ans *= num
+		ans /= den
+		print('For p=%s, kp=%s so factor: (%s/%s) Now: %s' % (p, kp, num, den, ans))
+
+if __name__ == '__main__':
+    from builtins import input
+    line = input('Enter a, b, c: ')
+    a, b, c = [int(n) for n in line.strip().split()]
+    print(C(a, b, c))
+```
+
+with an associated shell script:
+
+```sh
+function c() {  echo "$@" | gtimeout 5s python3 restart.py ; }
+```
+
+With this, we can get a few examples (invoke like `c 1 1 1` on the commandline):
+
+* For $f(n) = n^2 + n + 1$, the constant is:
+  $$ C = \frac12 \frac{2}{2} \frac{5}{4} \frac{5}{6} \frac{11}{10} \frac{11}{12} \frac{17}{16} \frac{17}{18} \frac{23}{22} \frac{29}{28} \cdots \approx 1.1$$
+
+  ```
+  For p=14639, kp=0 so factor: (14639/14638) Now: 1.1200882532554748
+  For p=14653, kp=2 so factor: (14651/14652) Now: 1.120011807155744
+  ```
+
+  For $f(n) = n^2 + 21n + 1$, the constant is:
+
+  $$C = \frac12 \frac{3}{2} \frac{5}{4} \frac{7}{6} \frac{11}{10} \frac{13}{12} \frac{17}{16} \frac{18}{18} \frac{22}{22} \frac{29}{28} \frac{31}{30} \frac{35}{36} \frac{41}{40} \frac{43}{42} \frac{45}{46} \frac{51}{52} \cdots \approx 2.8$$
+
+  ```
+  For p=14431, kp=2 so factor: (14429/14430) Now: 2.7957964457890743
+  For p=14437, kp=2 so factor: (14435/14436) Now: 2.795602777429017
+  ```
+
+* For $f(n) = n^2 + n + 41$, the constant is $C \approx 3.3$:
+
+  ```
+  For p=14083, kp=2 so factor: (14081/14082) Now: 3.3226171521137924
+  For p=14087, kp=2 so factor: (14085/14086) Now: 3.3223812712993586
+  ```
+
+  More exact value (per Cohen) is $\approx 3.319773177471421665323556857649887966468554585653\dots$.
+
+* For $f(n) = n^2 + n + 75$, the constant is $C \approx 0.3$:
+
+  ```
+  For p=14087, kp=2 so factor: (14085/14086) Now: 0.3101518564741563
+  For p=14107, kp=0 so factor: (14107/14106) Now: 0.310173843703454
+  ```
+
+  More exact value (per Cohen) is $\approx 0.310976679925987170004356287429628414529121902600\dots$.
+
+## Context, references, etc.
+
+Originally, my motivation for this question came from [Raziman's Google+ post](https://plus.google.com/+RazimanTV/posts/ZG1DHvi7pRu) (which linked to his answer to [a Quora question](https://www.quora.com/The-sequence-n-2-21n-1-n-1-2-3-cdots-seems-to-produce-more-than-twice-as-many-primes-as-the-sequence-n-2-n-1-n-1-2-3-cdots-How-can-I-make-this-precise-and-prove-it-or-is-it-even-true)):
 
 > The sequence $n^2+21n+1$, for $n=1,2,3,\dots$, seems to produce more than twice as many primes as the sequence $n^2+n+1$, for $n=1,2,3,\dots$. How can I make this precise and prove it (or is it even true)?
 
-#### Formal problem
+The value of $\gcd(a, b, c)$ is known as the [content of the polynomial](https://en.wikipedia.org/wiki/Primitive_part_and_content).
 
-For simplicity, let's assume that, as in the two quadratic polynomials above, the coefficients $(a, b, c)$ are such that $f(n)$ is always a positive integer, and that the polynomial is not something like $n^2 + n + 2$ which is always even (or in general always divisible by $p$ for some prime $p$).
+It is beyond current mathematics to even prove that there are infinitely many primes of the form $n^2 + 1$: this is [Landau's Problem 4](https://en.wikipedia.org/w/index.php?title=Landau%27s_problems&oldid=825792061), presumably open for a long time but stated by Landau in 1912. For more general polynomials $f$ (including the quadratic polynomials considered here) the claim that $P(N) \to \infty$ is known as the [Bunyakovsky conjecture](https://en.wikipedia.org/w/index.php?title=Bunyakovsky_conjecture&oldid=830234069) and has been open since 1857.
 
-#### Formal proof is hard
-
-A fully formal proof of the statement itself will be hard: we cannot even prove that there are infinitely primes of the form $n^2+1$ yet, let alone estimate their number!
-
-#### Ok let's try
-
-Consider the polynomial $f(n) = n^2 + 21n + 1$ (I'll treat this one first, as $n^2 + n + 1$ is simpler). For how many values of $n \le N$ is $f(n)$ prime?
-
-Recall the [prime number theorem](https://en.wikipedia.org/wiki/Prime_number_theorem): the number of primes less than $N$ is about $N / \log N$, or (a better approximation) about $\int\limits_2^{N} (1/\log t)\, dt$, or for that matter $\sum\limits_{m=2}^{N} 1/\log m$. Based on the prime number theorem, one heuristic model of the prime numbers is that every number $m$ is “prime” with probability $1 / {\log m}$.
-
-This heuristic would say that $f(n) = n^2 + 21n + 1$ is prime with probability $\displaystyle \frac{1}{\log(n^2 + 21n + 1)} \sim \frac{1}{2 \log n}$, so for $n \le N$, the expected number of primes is $~ \sum_{n=2}^{N} 1/(2 \log n) \sim N/(2 \log N)$. This of course 
-
-
-
-
-
-> _I don’t know whether the constraints for higher primes can eventually switch the balance back in favour of n^2+n+1, but seems unlikely and I can’t prove it either way._
-
-More precisely, we can say exactly how many such constraints there will be for (which) large primes.
-
-Consider f(n) = n^2 + 21n + 1. For a given prime p, if it has any such constraint, i.e. if there is any solution to f(n) = 0 mod p, then (basically by “completing the square”) we have 0 = 4f(n) = (2n + 1)^2 - 437, i.e. the number of solutions to f(n) = 0 mod p is the number of solutions to x^2 = 437 mod p. And using quadratic reciprocity etc., we can prove that the number of solutions to x^2 = 437 mod p is:
-
-* 1 if p = 19 or p = 23
-* 2 if p mod 437 lies in a certain set of 198=9×11×2 numbers mod 437 (p should either be a residue mod both 19 and 23, which gives 99 values, or nonresidue mod both, which gives another 99)
-* 0 otherwise (if p lies in the set of other 198 possible remainders for primes mod 437)
-
-(This means that for half the primes p ≠ 19, 23, we have 2/p possible values of n “knocked out” by such constraints, while for the other primes p we have no values knocked out.)
-
-Similarly, for g(n) = n^2 + n + 1, the number of solutions to g(n) = 0 mod p is:
-
-* 1 if p = 3
-* 2 if p = 1 mod 3
-* 0 otherwise
-
-(This means that for half the primes p ≠ 3 we have 2/p possible values of n “knocked out” by such constraints, while for the other primes p we have no values knocked out.)
-
-And using this, we can estimate the number of primes in either polynomial. The final answer (heuristically / based on conjectures) turns out to be:
-
-* The number of primes of the form n^2 + n + 1, for n <= N, is about 1.25 N/log N
-* The number of primes of the form n^2 + 21n + 1, for n <= N, is about 2.79 N / log N
-* So the ratio is about 2.23
-
-For more, see:
-
-* https://en.wikipedia.org/w/index.php?title=Ulam_spiral&oldid=821475153#Hardy_and_Littlewood's_Conjecture_F
-* https://en.wikipedia.org/w/index.php?title=Bunyakovsky_conjecture&oldid=830234069
-* https://en.wikipedia.org/w/index.php?title=Bateman%E2%80%93Horn_conjecture&oldid=828694748
-
-
-
-
-
-
-
-
-
-----
-
-Earlier version of this post:
-
-I'm sure number-theorists have studied questions like this: e.g. there's an entire book titled _Primes of the form $x^2 + ny^2$_, so presumably “primes of the form $n^2+21n+1$” is easier and well-studied. But this is what I know to say about this.
-
-Note the fact that (here $\nmid$ stands for “does not divide”)
-
-$$[m\text{ is prime}] = [2 \nmid m]\, [3 \nmid m] \, [5 \nmid m] \cdots \label{eq:sepprimes} \tag{*}$$
-
-for all primes less than $m$ (or, enough to say: all primes not greater than $\sqrt{m}$).
-
-## Divisibility by $p$
-
-Consider the equation $f(n) \equiv 0 \pmod p$, where  $f(n)$ is either $n^2 + n + 1$ or $n^2 + 21n + 1$. This is an equation modulo $p$, and let $\epsilon(p)$ be the number of solutions modulo $p$. The equation has at most $2$ solutions modulo $p$ (or in other words, among the first $p$ numbers $0, 1, 2, \dots, p - 1$).
-
-The statement $[p \nmid m]$ is equivalent to $[n^2 + n + 1 \not\equiv 0 \pmod p]$ or in words, that $n$ is not a solution modulo $p$ to the equation $x^2 + x + 1 \equiv 0 \mod p$.
-
-So among the first $kp$ numbers of the form $f(n)$, the number of numbers divisible by $p$ is $k\epsilon(p)$. In other words, a fraction $\epsilon(p)/p$ of numbers of the form $f(n)$ are divisible by $p$.
-
-Now if we consider the equation $\eqref{eq:sepprimes}$, then, for numbers “near” $m$, then roughly:
-
-* a fraction $\epsilon(2)/2$ of the numbers are divisible by $2$,
-* a fraction $\epsilon(3)/3$ of the numbers are divisible by $3$,
-* a fraction $\epsilon(5)/5$ of the numbers are divisible by $5$,
-
-etc.
-
-So the fraction of numbers “near” $m$ that are not divisible by any of the primes $2, 3, 5, \dots, P$, where $P = p_{\pi(\sqrt{m})}$, is:
-
-$$(1 - \frac{\epsilon(2)}{2}) (1 - \frac{\epsilon(3)}{3}) (1 - \frac{\epsilon(5)}{5}) \cdots (1 - \frac{\epsilon(P)}{P})$$
-
-— this is roughly the “probability” that $m$ is prime.
-
-## Number of solutions: $n^2 + n + 1$
-
-If $n^2 + n + 1 \equiv 0 \pmod p$, then, assuming $p \neq 2$, we have $$4n^2 + 4n + 4 = (2n + 1)^2 + 3 \equiv 0 \pmod p,$$ or in other words $(2n + 1)^2 \equiv -3 \pmod p$. For any solution to $x^2 \equiv -3 \pmod p$, we can solve $2n + 1 \equiv x$ to get $n = 2^{-1}(x - 1)$ (and these solutions are distinct). So the number of solutions to $n^2 + n + 1 \equiv 0 \pmod p$ is the number of solutions to $x^2 \equiv -3 \pmod p$. 
-
-If $p = 3$, then this means $x = 0$. For other $p$, we have (see [here](https://en.wikipedia.org/w/index.php?title=Legendre_symbol&oldid=805985930#Properties_of_the_Legendre_symbol)):
-
-$$\left(\frac{-3}{p}\right) = \left(\frac{-1}{p}\right)\left(\frac{3}{p}\right) = (-1)^{[p \not\equiv 1 \pmod 6]} $$
-
-In other words, the number of solutions to $n^2 + n + 1 \equiv 0 \pmod p$ is:
-
-* $0$, if $p = 2$,
-* $1$, if $p = 3$,
-* $2$, if $p \equiv 1 \pmod 3$,
-* $0$ otherwise, i.e. if $p \equiv 2 \pmod 3$
-
-So the fraction of numbers of the form $n^2 + n + 1$ not divisible by any of the primes $2, 3, 5, 7, 11, 13, \dots$ is 
-
-$$\def\({\big(} \def\){\big)} \(1\)_2 \(\frac23\)_3 \(1\)_5 \(\frac57\)_7 \(1\)_{11} \(\frac{11}{13}\)_{13}$$
-
-## Number of solutions: $n^2 + 21n + 1$
-
-For the other polynomial, if $n^2 + 21n + 1 \equiv 0$, then again assuming $p \neq 2$, we have $0 \equiv 4n^2 + (4\cdot21)n + 4 = (2n + 21)^2 - 437$, and for any solution to $x^2 \equiv 437$ we can solve for $n$.
-
-As $437 = 19 \times 23$, we have (for $p \neq 19, 23$), 
-
-$$\left(\frac{437}{p}\right) = \left(\frac{19}{p}\right)\left(\frac{23}{p}\right) = (-1)^{(p-1)/2}\left(\frac{p}{19}\right)(-1)^{(p-1)/2}\left(\frac{p}{23}\right)$$
-
-that is, $437$ is a quadratic residue mod $p$ if and only if either $p$ is a quadratic residue modulo both $19$ and $23$, or modulo neither. This means that either
-
-* $p$ is one of $9$ certain values mod $19$, and one of $11$ certain values mod $23$, so one of $99$ certain values mod $437$, or
-* $p$ is one of $9$ certain values mod $19$, and one of $11$ certain values mod $23$, so one of $99$ certain values mod $437$.
-
-That is, $p$ is one of $99 + 99 = 198$ values mod $437$.
-
-When $p = 19$, we have $2n + 21\equiv 0$ or $n \equiv -1$.
-
-When $p = 23$, we have $2n + 21 \equiv 0$ or $n \equiv 1$.
-
-## Putting them together
-
-Now we have a concrete way to count the number of values of $n$ modulo $p$ that are “knocked out” from $f(n)$ being prime, for each prime $p$ and for both functions $f$.
-
-
-
-----
+The second part (along with the determination of the constant $C$) is [Hardy–Littlewood Conjecture F](https://en.wikipedia.org/w/index.php?title=Ulam_spiral&oldid=821475153#Hardy_and_Littlewood's_Conjecture_F) and has been open since 1923, and is a special case of the [Bateman–Horn conjecture](https://en.wikipedia.org/w/index.php?title=Bateman%E2%80%93Horn_conjecture&oldid=828694748) (1962).
