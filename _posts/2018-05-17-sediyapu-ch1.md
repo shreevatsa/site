@@ -80,7 +80,7 @@ function updateCites() {
 
 Chapter 1: The meaning of "laya" (in *various* sources).<cite>53 0.1 0.25</cite>
 
-The term "laya" is used in many senses.<cite>90 0.24 0.575</cite>
+The term "laya" is used in many senses.<cite>53 0.24 0.575</cite>
 
 <script>
 updateCites();
