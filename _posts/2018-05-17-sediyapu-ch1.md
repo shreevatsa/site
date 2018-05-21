@@ -64,14 +64,22 @@ function annotatedPageRegion(pageNum, startHeightFraction, stopHeightFraction, t
 }
 
 function updateCites() {
+    /*
+    const pToCites = new Map();
     for (var cite of document.getElementsByTagName('cite')) {
-        console.log('Going over cite: ' + cite);
+        const p = cite.parentNode;
+        citesForP = pToCites.get(p) || [];
+        citesForP.push(cite);
+        pToCites.set(p, citesForP);
+    }
+    */
+
+    for (var cite of document.getElementsByTagName('cite')) {
         const p = cite.parentNode;
         const found = cite.textContent.match(/(.*) (.*) (.*)/);
         const pageNum = found[1];
         const startHeightFraction = found[2];
         const stopHeightFraction = found[3];
-        console.log('Pagenum is #' + pageNum + '# and startHeightFraction is #' + startHeightFraction + '# and stopHeightFraction is #' + stopHeightFraction + '#');
         cite.style.display = 'none';
         p.parentNode.replaceChild(annotatedPageRegion(pageNum, startHeightFraction, stopHeightFraction, p), p);
     }
