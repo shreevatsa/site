@@ -60,11 +60,13 @@ $$\displaystyle f(31) = \left(1 - \frac{1}{2}\right) \dots \left(1 - \frac{1}{22
 
 and in general, when $m$ is a prime number,
 
-$$\displaystyle f(m) = \frac{1}{m-1}\prod_{2 < p < m}\left(1 - \frac1p\right)$$
+$$\displaystyle f(m) = \frac{1}{m-1}\prod_{2 < p < m}\left(1 - \frac{1}{p-1}\right)$$
 
 where the product is taken over prime numbers $p$.
 
 (In case one is wondering: when $f(m)$ is expressed as a fraction, the denominator is not always a power of $2$ as it was in the above early examples; for example $f(47) = \frac{788307}{192937984}$ where the denominator is divisible by $23$.)
+
+Asymptotically, [Mertens proved in 1874](https://terrytao.wordpress.com/2013/12/11/mertens-theorems/#mertens-3) that $\displaystyle  \prod_{p \leq x} (1-\frac{1}{p}) = \frac{e^{-\gamma}+o(1)}{\log x}$, so $f$ grows something like $$\displaystyle f(m) \approx? \frac{e^{-\gamma}}{m \ln m}.$$
 
 ----
 
