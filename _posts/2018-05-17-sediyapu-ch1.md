@@ -12,6 +12,32 @@ It is not my place or intention to translate this work. (In a work like this, th
 
 Below are the pages from <a href="https://archive.org/details/ChandassamputaSediyapu"><i>Chandas-sampuṭa</i> by Sediyapu Krishna Bhatta</a>.
 
+<style>
+.outer-image-and-notes-container {
+  display: flex;
+  border: 2px solid black;
+  align-items: center;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.inner-images {
+  flex: 80;
+  width: 80%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid grey;
+  margin-right: 2px;
+}
+.inner-image {
+  display: block;
+}
+.inner-notes {
+  flex: 20;
+  display: inline;
+}
+</style>
+
 <div id="mainBookPages"></div>
 
 <script>
@@ -28,17 +54,12 @@ function streamURL(pageNum) {
 
 function annotatedPageRegion(pageNum, startHeightFraction, stopHeightFraction, textNode) {
     let outerDiv = document.createElement('div');
-    outerDiv.style.border = '2px solid black';
-    outerDiv.style.display = 'flex';
-    outerDiv.style.alignItems = 'center';
+    outerDiv.classList.add('outer-image-and-notes-container');
 
     let imgDiv = document.createElement('div');
-    imgDiv.style.width = '600px';
     const ht = (stopHeightFraction - startHeightFraction) * (499 / 352) * 600;
     imgDiv.style.height = ht + 'px';
-    imgDiv.style.display = 'flex';
-    imgDiv.style.alignItems = 'center'; // center vertically
-    imgDiv.style.justifyContent = 'center'; // center horizontally
+    imgDiv.classList.add('inner-images');
 
     let imgPlaceholder = document.createElement('span');
     imgPlaceholder.textContent = ('Click here to load image (page ' + pageNum +
@@ -49,8 +70,7 @@ function annotatedPageRegion(pageNum, startHeightFraction, stopHeightFraction, t
         let aNode = document.createElement('a');
         aNode.href = streamURL(pageNum);
         let img = document.createElement('img');
-        img.style.width = '600px';
-        img.style.display = 'block';
+        img.classList.add('inner-image');
         img.src = pageURL(pageNum, startHeightFraction, stopHeightFraction);
         aNode.appendChild(img);
         imgDiv.replaceChild(aNode, imgPlaceholder);
@@ -58,8 +78,7 @@ function annotatedPageRegion(pageNum, startHeightFraction, stopHeightFraction, t
 
     outerDiv.appendChild(imgDiv);
     let textDiv = document.createElement('div');
-    textDiv.style.display = 'inline';
-    textDiv.style.width = (740 - 600) + 'px';
+    textDiv.classList.add('inner-notes');
     textDiv.appendChild(textNode.cloneNode(true));
     outerDiv.appendChild(textDiv);
     document.getElementById('mainBookPages').appendChild(outerDiv);
@@ -102,7 +121,7 @@ And here end the pages.
 
 --------
 
-Aside: On the "technology" used in this page—I'm basically new to CSS etc.—see <https://jsfiddle.net/op9srymy/> and the following about archive.org:
+Aside: On the "technology" used in this page—I'm basically new to CSS etc.—see <https://jsfiddle.net/12zhpedw/> and the following about archive.org:
 
 - OK to hotlink: <https://archive.org/post/261115/hotlinking-allowed>
 - Even documented: <https://archive.readme.io/docs/retrieving-book-pages>
