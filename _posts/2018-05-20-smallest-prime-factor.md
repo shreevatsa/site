@@ -70,7 +70,9 @@ where the product is taken over prime numbers $p$.
 
 This same formula for $f(m)$ holds if the sequence $q_n = 2p_n - 1$ is replaced by the sequence $q_n = 2p_n + 1$ or $q_n = 2^kp_n + 1$ or $q_n = 2^kp_n - 1$ for any integer $k$.
 
-And a similar formula holds (and computation can be carried out) for the frequency of least prime divisors of the sequence $q_n = ap_n + b$ for any integers $a$ and $b$ such that they are not both odd and $\gcd(a, b) = 1$ (otherwise the question becomes trivial): the only difference is that one must exclude factors in the product for primes $p$ that divide either $a$ or $b$.
+And a similar formula holds (and computation can be carried out) for the frequency of least prime divisors of the sequence $q_n = ap_n + b$ for any integers $a$ and $b$:
+* if either $\gcd(a, b) > 1$ or they are both odd, the question becomes trivial: all $q_n$ (at least after the first one) are divisible by a common prime,
+* else, the calculation is as above, and the only difference is that one must exclude factors in the product for primes $p$ that divide either $a$ or $b$.
 
 ----
 
