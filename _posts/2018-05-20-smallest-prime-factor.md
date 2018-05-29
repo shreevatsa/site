@@ -66,14 +66,30 @@ where the product is taken over prime numbers $p$.
 
 (In case one is wondering: when $f(m)$ is expressed as a fraction, the denominator is not always a power of $2$ as it was in the above early examples; for example $f(47) = \frac{788307}{192937984}$ where the denominator is divisible by $23$.)
 
-----
+------
 
 This same formula for $f(m)$ holds if the sequence $q_n = 2p_n - 1$ is replaced by the sequence $q_n = 2p_n + 1$ or $q_n = 2^kp_n + 1$ or $q_n = 2^kp_n - 1$ for any integer $k$.
 
 And a similar formula holds (and computation can be carried out) for the frequency of least prime divisors of the sequence $q_n = ap_n + b$ for any integers $a$ and $b$:
-* if either $\gcd(a, b) > 1$ or they are both odd, the question becomes trivial: all $q_n$ (at least after the first one) are divisible by a common prime,
-* else, the calculation is as above, and the only difference is that one must exclude factors in the product for primes $p$ that divide either $a$ or $b$.
+
+- if either $\gcd(a, b) > 1$ or they are both odd, the question becomes trivial: all $q_n$ (at least after the first one) are divisible by a common prime,
+- else, the calculation is as above, and the only difference is that one must exclude factors in the product for primes $p$ that divide either $a$ or $b$.
 
 ----
 
-A note on the asymptotics of $f(m)$: [Mertens proved in 1874](https://terrytao.wordpress.com/2013/12/11/mertens-theorems/#mertens-3) that $\displaystyle  \prod_{p \leq x} (1-\frac{1}{p}) = \frac{e^{-\gamma}+o(1)}{\log x}$. Here we have $\prod_{2 < p < m}\left(1 - \frac{1}{p-1}\right)$ which we can expect will have a similar rate of growth: namely, $\frac{c}{\log m}$ for some $c$, so that $f(m) \sim \frac{c}{(m-1)\log m}$. And numerical evidence too seems to support this (with $c \approx 0.74$). I've asked [a question](https://math.stackexchange.com/questions/2789800/the-asymptotics-of-the-products-over-primes-prod-limits-2p-le-n-left1-f) about it on math.SE.
+A note on the asymptotics of $f(m)$: [Mertens proved in 1874](https://terrytao.wordpress.com/2013/12/11/mertens-theorems/#mertens-3) that $\displaystyle  \prod_{p \leq x} (1-\frac{1}{p}) = \frac{e^{-\gamma}+o(1)}{\log x}$. Here we have $\prod_{2 < p < m}\left(1 - \frac{1}{p-1}\right)$ which we can expect will have a similar rate of growth: namely, $\frac{c}{\log m}$ for some $c$, so that $f(m) \sim \frac{c}{(m-1)\log m}$. And (thanks to [asking about it](https://math.stackexchange.com/questions/2789800/the-asymptotics-of-the-products-over-primes-prod-limits-2p-le-n-left1-f) on math.SE), it turns out that it is indeed the case: we have
+
+$$
+f(m) \sim \frac{2C_2e^{-\gamma}}{m\log m} = \frac{0.74130822439192108...}{m\log m}
+$$
+
+where $\gamma \approx 0.57721566490153286…$ is [the Euler-Mascheroni constant](https://en.wikipedia.org/wiki/Euler%E2%80%93Mascheroni_constant), and $C_2 \approx 0.66016181584686957…$ is the [twin prime constant](http://primes.utm.edu/glossary/xpage/TwinPrimeConstant.html). For example, for $m = 91781$, we have
+
+$$
+\begin{align}
+f(m) &\approx 0.00000070667704\dots \\
+\frac{0.741308224}{m\log m} &\approx 0.00000070681817\dots
+\end{align}
+$$
+
+(Convergence is slow: near $m=100000$ we still barely get three significant digits of accuracy. But we have proof.)
