@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Reading "Poems from the Sanskrit"
-excerpt: Some excerpt's from the beautiful book by John Brough
+excerpt: Some excerpts from the beautiful book by John Brough
 date: 2018-05-22
 tags: done
 ---
