@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Corruption in British India
+tags: [draft]
 excerpt: Just saving a set of tabs, for later reading
 date: 2018-03-23
 ---

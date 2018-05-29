@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Reading the TeX program
+tags: [draft, tex]
 excerpt: Lessons learned, thoughts, advice
 date: 2018-03-23
 ---

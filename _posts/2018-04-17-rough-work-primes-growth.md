@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Rough work
+tags: [draft, math]
 excerpt:  Possible way of attacking a conjecture from https://manasataramgini.wordpress.com/2018/04/15
 date: 2018-04-17
 ---

@@ -3,6 +3,8 @@ layout: post
 title: Archive.org book page image slider selector
 excerpt: Show part of an archive.org page image
 date: 2018-05-27
+tags: [done, blog, software]
+
 ---
 
 I'd like to choose a book available on the Internet Archive (archive.org), choose a page number, and show part of the page (from one vertical offset to another). To help with choose the offsets, the thing below might help.

@@ -3,7 +3,8 @@ layout: post
 title: Reading "Poems from the Sanskrit"
 excerpt: Some excerpts from the beautiful book by John Brough
 date: 2018-05-22
-tags: done
+tags: [done, better, sanskrit]
+
 ---
 
 <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>

@@ -3,7 +3,7 @@ layout: post
 title:  "Computing Highly Composite Numbers"
 date:   2017-11-07 16:14:22 -0800
 categories: mathematics programming done
-tags: unfinished
+tags: [draft]
 ---
 
 <script type="text/javascript" async

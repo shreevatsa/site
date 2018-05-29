@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Links for McDonalds
+tags: [draft]
 excerpt:
 date: 2018-03-20
 ---

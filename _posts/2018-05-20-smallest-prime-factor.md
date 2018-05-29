@@ -3,7 +3,8 @@ layout: post
 title: The distribution of least prime divisors
 excerpt: How frequently is 3 the smallest prime factor of $2p_n-1$? Etc.
 date: 2018-05-20
-tags: done
+tags: [done, math, better]
+
 ---
 
 Inspired by / based on: <https://manasataramgini.wordpress.com/2018/05/20/a-note-on-the-least-prime-divisor-sequences-of-2p-plus-or-minus-1/>

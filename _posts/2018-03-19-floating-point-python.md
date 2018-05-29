@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Seeing floating-point numbers in Python
+tags: [draft, math, software]
 excerpt: How to see a “raw” floating-point number, etc.
 date: 2018-03-19 14:00
 ---

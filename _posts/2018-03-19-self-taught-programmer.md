@@ -1,6 +1,7 @@
 ---
 layout: post
 title: “Self-taught programmer”
+tags: [done, programming]
 excerpt:
 date: 2018-03-19 09:00
 ---

@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Sediyapu Chandogati Chapter 1
+tags: [done, sanskrit]
 excerpt: A “map” of Chapter 1 of this work.
 date: 2018-05-17
 

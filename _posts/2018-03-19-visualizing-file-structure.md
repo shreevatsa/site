@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Visualizing the structure of binary files
+tags: [draft]
 excerpt:
 date: 2018-03-20 01:04
 ---

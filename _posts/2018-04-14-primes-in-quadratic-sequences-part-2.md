@@ -1,6 +1,7 @@
 ---
 layout: post
 title: Primes in quadratic sequences (Part 2)
+tags: [draft, math]
 excerpt: Computing the proportion of prime values of a quadratic polynomial
 date: 2018-04-14
 ---

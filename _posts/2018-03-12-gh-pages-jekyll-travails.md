@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Getting started with Jekyll for GitHub Pages
-tags: [blog]
+tags: [draft, blog]
 excerpt: My attempts trying to read and understand documentation, to set up this blog.
 date: 2018-03-12
 ---

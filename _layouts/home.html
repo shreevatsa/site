@@ -1,19 +1,19 @@
 ---
 layout: default
-showonlydone: true
 ---
 
 <div class="home">
 
-  <h1 class="page-heading">{% if layout.showonlydone %}Posts{% else %}All posts, including low-quality ones and unfinished drafts{% endif %}</h1>
+  <h1 class="page-heading">{% if layout.showonly %}Posts tagged {{layout.showonly}}{% else %}All posts (<a href="{{ "/better" | relative_url }}">click here for a better subset</a>){% endif %}</h1>
   
   {{ content }}
 
   <ul class="post-list">
-    {% if layout.showonlydone %}
-        {% assign postsToShow = site.tags["done"] %}
+    {% if layout.showonly %}
+        {% assign postsToShow = site.tags[layout.showonly] %}
     {% else %}
-        {% assign postsToShow = site.posts %}
+        {% comment %} For all posts (not specific to a tag), can use "site.posts" {% endcomment %}
+        {% assign postsToShow = site.tags["done"] %}
     {% endif %}
     {% for post in postsToShow %}
       <li>
@@ -30,9 +30,9 @@ showonlydone: true
     {% endfor %}
   </ul>
 
-  {% unless layout.showonlydone %}
+  {% comment %}
   <p class="rss-subscribe">subscribe <a href="{{ "/feed.xml" | relative_url }}">via RSS</a></p>
-  {% endunless %}
+  {% endcomment %}
 
 </div>
 
