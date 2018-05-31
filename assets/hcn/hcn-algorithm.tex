@@ -1,0 +1,257 @@
+% Let's convert this to AMS-LaTeX, shall we?
+
+\documentclass[12pt]{article}
+\usepackage{latexsym, amsfonts}
+
+\setlength{\textheight}{8.75in}
+\setlength{\columnsep}{2.0pc}
+\setlength{\textwidth}{6.8in}
+\setlength{\topmargin}{0.25in}
+\setlength{\headheight}{0.0in}
+\setlength{\headsep}{0.0in}
+\setlength{\oddsidemargin}{-.19in}
+\setlength{\parindent}{1pc}
+
+\def\NN{\mathbb{N}}
+\newtheorem{lemma}{Proposition}
+\newenvironment{proof}{\textsc{Proof:}}{$\Box$ \medskip}
+\newenvironment{alg}[1]{\medskip \noindent \textbf{#1} \begin{list}%
+{\textbf{Step \arabic{algctr}:}}%
+{\usecounter{algctr} %\rightmargin=\leftmargin 
+\parsep=0pt \itemsep=0pt \topsep=0pt}}{\end{list} \medskip}
+\newcounter{algctr}
+
+\title{An Algorithm for Computing Highly Composite Numbers}
+\author{Kiran S. Kedlaya}
+\date{\today}
+\begin{document}
+
+%\begin{abstract}
+%After Ramanujan, we define the {\it highly composite\/} numbers to be 
+%those with more divisors than any smaller numbers. We give a fast 
+%algorithm for computing these numbers.
+%\end{abstract}
+
+\maketitle
+
+\section{Introduction}
+A \emph{highly composite number} is a positive integer with more 
+divisors than any smaller positive integer. In other words, if 
+$\tau(n)$ denotes the number of divisors of $n$, then $n$ is highly 
+composite if $\tau(m) < \tau(n)$ for all $m < n$. The highly composite 
+numbers (HCNs) were introduced by Ramanujan \cite{ram}, who used them 
+to study the asymptotic growth of the $\tau$-function. Subsequent 
+investigators of these numbers include Erd\H{o}s \cite{erd} and 
+Nicolas \cite{nic}.
+
+In order to guess asymptotic properties of the highly composite 
+numbers, it helps to be able to compute them efficiently. Robin 
+\cite{rob} gave an algorithm for computing HCNs based on the notion of 
+``b\'en\'efice'' (benefit). The purpose of this note is to describe 
+another such algorithm, which has the advantages of being fairly 
+simple as well as reasonably efficient.
+
+\section{The Algorithm}
+
+The key to the method is the notion of a {\it highly composite
+$k$-product\/} (abbreviated HCP$_k$), defined to be a number with $k$
+distinct prime factors having more divisors than any smaller number
+with $k$ distinct prime factors. The following observations are
+immediate consequences of the definition:
+\begin{itemize}
+\item
+Every HCP$_k$ is of the form $p_1^{a_1}\dots p_k^{a_k}$, where
+$p_i$ is the $i$-th prime and $a_1 \geq a_2 \geq \dots \geq a_k > 0$.
+\item
+If $p_1^{a_1}\dots p_k^{a_k}$ is an HCP$_k$, then 
+$p_1^{a_1}\dots p_{k-1}^{a_{k-1}}$ is an HCP$_{k-1}$.
+\item
+Every HCN
+with exactly $k$ prime factors is an HCP$_k$.
+\end{itemize}
+
+Thus given a sufficiently long list of HCP$_{k-1}$'s, one can 
+construct a list of HCP$_{k}$'s as follows. Given an HCP$_{k}$ $n$, 
+for successive values of $j$, find the smallest HCP$_{k-1}$ $m$ such 
+that $(j+1) \tau(m) > \tau(n)$. The next HCP$_{k}$ is then the 
+minimum of $m p_{k}^{j}$ over all $j$. (Clearly once we encounter a 
+value of $j$ for which $m = f(k-1,1)$, we need not consider larger 
+$j$.)
+
+This translates into a simple algorithm as follows. Let $f(k,n)$ 
+denote the $n$-th HCP$_{k}$ and $d(k,n) = \tau(f(k,n))$. The above 
+discussion reduces the computation of $f$ to the computation of 
+functions $g(k,n)$ and $h(k, n)$ for $n \geq 1$ and $k \geq 2$ such that
+\[
+f(k, n) = p_{k}^{g(k,n)} f(k-1, h(k,n)), \quad
+d(k, n) = (g(k,n) + 1) d(k-1, h(k,n)).
+\]
+We can ignore $k=1$ since clearly $f(1,n) = 2^{n}$.
+
+\begin{alg}{Algorithm 1: Computing HCP$_k$'s}
+\item
+If $n = 1$, let $g(k, n) = h(k, n) = 1$ and STOP. 
+Otherwise, let $r = 2 f(k, n-1)$ and $j = 1$.
+\item
+Find the smallest integer $s$ for which either
+$(j+1)d(k-1, s) > d(k, n - 1)$ or $p_k^j f(k-1, s) > r$.
+If the latter fails to hold,
+let $r = p_k^j f(k-1, s)$, $e_k = j$, and $m = s$.
+\item
+If $s > 1$, add 1 to $j$ and return to Step~2. Otherwise,
+let $g(k, n) = e_k$, $h(k, n) = m$ and STOP.
+\end{alg}
+
+The HCNs can be found in a table of HCPs 
+by a process parallel to Algorithm~1. Namely, let $H(n)$ denote the 
+$n$-th HCN. To find $H(n)$, for each $k$, 
+find the smallest HCP$_{k}$ $m$ with more divisors than $H(n-1)$; the 
+smallest of these is $H(n)$. (As in Algorithm 1, once a value of $k$ 
+is found such that $m = f(k,1)$, we need not consider larger $k$.)
+
+\begin{alg}{Algorithm 2: Computing HCN's}
+\item
+If $n = 1$, let $H(n) = 1$ and STOP.
+Otherwise, let $r = 2 H(n-1)$ and $k=1$.
+\item
+Find the smallest integer $s$ for which either 
+$d(k,s) > \tau(H(n-1))$ or $f(k,s) \geq r$. If the latter fails to 
+hold, let $r = f(k, s)$.
+\item
+If $s > 1$, add 1 to $k$ and return to Step~2. Otherwise,
+let $H(n) = r$ and STOP.
+\end{alg}
+
+\section{Implementation}
+
+While the algorithms are simple enough to describe, making them run 
+efficiently is a bit trickier. In this section, we describe some 
+modifications we have made to improve performance.
+
+For successive values of $k$, we use Algorithm~1 to generate a list 
+of the values of $d(k,n)$, $f(k,n)$, $g(k,n)$, $h(k,n)$; we then use 
+Algorithm~2 to locate HCNs in these lists. The maximum length of a 
+list, the number of lists, and the number of HCNs are specified at 
+runtime, though a list is truncated before the maximum length if an 
+uncomputed value from a previous list is needed.
+
+In Step~2 of either algorithm, we are asked to find the smallest $s$ 
+with a given property; we can profit from the fact that with each pass 
+through the algorithm, this $s$ is getting larger. To be precise, in 
+Algorithm~1, for fixed $k$ and $j$, the value of $s$ is never 
+decreasing, while in Algorithm~2, for fixed $k$ the value of $s$ is 
+never decreasing. Hence by keeping track of the last values used and 
+searching from that point instead of from 1, we save a great deal of 
+time.
+
+A second modification, which is easy to implement but slightly 
+complicated conceptually, involves decreasing the search space at 
+Step~1. We describe this first for Algorithm~2, where the necessary 
+modification is fairly simple.
+\begin{lemma}
+If $n$ is an HCN with $k$ distinct prime factors, then $n \leq 
+p_{k+1}^{2k}$.
+\end{lemma}
+\begin{proof}
+Factor $n$ as $p_{i}^{e_{1}} \dots p_{k}^{e_{k}}$
+and suppose $n > p_{k+1}^{2k}$. Then for some $i$, $p_{i}^{e_{i}} > 
+p_{k+1}^{2}$. Let $m = \lceil \log p_{k+1}/\log p_{i}
+\rceil$; then $e_i > 2 \log_{p_i} p_{k+1} \geq 2m - 1$. But this means 
+that $n p_{k+1} / p_i^m$ is an integer less than $n$ with $\tau(n) 2(e_i 
+- m + 1) / (e_i + 1) \geq \tau(n)$ divisors, so $n$ is not an HCN.
+\end{proof}
+
+Therefore in Step~1, we may set $k$ to be the 
+smallest integer such that $n \leq p_{k+1}^{2k}$ rather than 1,
+eliminating deep searches in lists that 
+will not yield any more HCNs.
+
+The corresponding modification to Algorithm~1 requires
+a lower bound on the exponent of $p_{k}$ for a large HCP$_{k}$. Such 
+a bound can be derived by modifying the above argument, but we get a much 
+better estimate by a different approach.
+\begin{lemma}
+For any $n, k \in \NN$, there exists $t \leq n$ with at most $k$ 
+prime factors such that
+\[
+\tau(t) \geq \left( \frac{\log n}{k} \right)^{k} \prod_{i=1}^{k} 
+\frac{1}{\log p_{k}}.
+\]
+\end{lemma}
+\begin{proof}
+Let $\lambda_{i} = \log n/(k \log p_{i})$ and put $e_{i} = \lfloor 
+\lambda_{i} \rfloor$ and $t = \prod p_{i}^{e_{i}}$. Then
+\[
+\tau(t) = \prod (e_{i} + 1) \geq \prod \lambda_{i} =
+\left( \frac{\log n}{k} \right)^{k} \prod_{i=1}^{k}\frac{1}{\log p_{k}}.
+\]
+\end{proof}
+\begin{lemma}
+Suppose
+\[
+\frac{(\log n)^{k}}
+{(\log n + \log p_{1} + \dots + \log p_{k-1})^{k-1}}
+> ke(\ell + 1) \log p_{k}.
+\]
+If $m = p_{1}^{e_{1}} \dots p_{k}^{e_{k}}$ is an HCP$_{k}$ greater than 
+$n$, then $e_{k} \geq \ell$.
+\end{lemma}
+\begin{proof}
+As the right side is increasing in $\ell$, it suffices by induction to
+prove that $e_k \neq \ell$. The left side 
+is increasing in $\log n$ (factor off $\log n$ and the rest is 
+obviously increasing), so the 
+assumed inequality still holds with $m$ in place of $n$. If $e_k =
+\ell$, we have by the AM-GM inequality,
+\[
+\left( \frac{\log m - \ell \log p_{k} + \log p_{1} + \dots + \log p_{k-1}}{k-1}
+\right) 
+^{k-1} \geq \prod_{i=1}^{k-1} [e_{i} + 1]\log p_{i} = 
+\frac{\tau(m)}{\ell+1} \prod_{i=1}^{k-1} \log p_{i}.
+\]
+On the other hand, by the previous lemma, there exists $t \leq m$ such 
+that
+\begin{eqnarray*}
+\tau(t) &\geq& \left( \frac{\log m}{k} \right)^{k} \prod_{i=1}^{k} 
+\frac{1}{\log p_{k}} \\
+&>& \frac{(\log m + \log p_{1} + \dots +
+\log p_{k-1})^{k-1}}{k^{k}} 
+k e (\ell +1) \log p_{k} \prod_{i=1}^{k} 
+\frac{1}{\log p_{k}} \\
+&\geq& \left( \frac{\log m - \ell \log p_{k}+ \log p_{1} + \dots +
+\log p_{k-1}}{k-1} \right)^{k-1}
+e (\ell+1) \left( \frac{k-1}{k} \right)^{k-1} \prod_{i=1}^{k-1} 
+\frac{1}{\log p_{k}} \\
+&\geq& \tau(m),
+\end{eqnarray*}
+using the fact that $e > [k/(k-1)]^{k-1}$ for all $k$. Hence $m$ 
+cannot be an HCP$_{k}$.
+\end{proof}
+
+With these modifications, we have recreated Robin's table of 5000 
+highly composite numbers in several minutes on a Sun workstation. 
+Ramanujan's table of 102 HCNs appears almost instantly (note that his 
+table is missing the HCN $293318625600$ between the 85th and 86th 
+terms). These tables and the C code of the implementation described 
+above can be obtained from the author's WWW site INSERT-URL.
+
+\begin{thebibliography}{9}
+\bibitem{erd}
+P. Erd\H{o}s, On highly composite numbers, \textit{J. London Math. 
+Soc.} \textbf{19} (1944) 130-133.
+
+\bibitem{nic}
+J.-L. Nicolas, Nombres hautement compos\'es, \textit{Acta Arith.} 
+\textbf{49} (1988) 395-412.
+
+\bibitem{ram}
+S. Ramanujan, Highly composite numbers, \textit{Proc. Lond. Math. Soc.} 
+(2) \textbf{14} (1915) 347-409.
+
+\bibitem{rob}
+G. Robin, M\'ethods d'optimisation pour un probl\`eme de th\'eorie des 
+nombres, \textit{R.A.I.R.O. Informatique th\'eoretique} \textbf{17} 
+(1983) 239-247.
+\end{thebibliography}
+
+\end{document}

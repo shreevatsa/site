@@ -18,8 +18,13 @@ layout: default
     {% for post in postsToShow %}
       <li>
         {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
+        {% if post.tags contains "continue" and layout.showContinue %}
+           {% assign prefix = "(...) " %}
+        {% else %}
+          {% assign prefix = "" %}
+        {% endif %}
         <h2>
-          <a class="post-link" href="{{ post.url | relative_url }}">{{ post.title | escape }}</a>
+          <a class="post-link" href="{{ post.url | relative_url }}">{{prefix}}{{ post.title | escape }}</a>
         </h2>
         <p>{{post.excerpt}}</p>
         <span class="post-meta">

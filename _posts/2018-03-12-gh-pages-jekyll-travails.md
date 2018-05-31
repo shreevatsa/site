@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Getting started with Jekyll for GitHub Pages
-tags: [draft, blog]
+tags: [done, blog, continue]
 excerpt: My attempts trying to read and understand documentation, to set up this blog.
 date: 2018-03-12
 ---
@@ -142,10 +142,21 @@ Here are a few I made:
 
 * “n-minute read”: use something like {%raw%}`{{ post.content | number_of_words | divided_by: 250 | plus: 2}}`{%endraw%} to get a number.
 
-* Yet to figure out: Images? Links to other posts?
+* Having the actual categories and tags (from the metadata in "YAML frontmatter") show up on the page: something like
+  {%raw%}
+  ```
+  Categories: {{ page.categories | join: ', ' }}
 
+  Tags: {{ page.tags | join: ', ' }}
+  ```
+  {%endraw%}
 
+## Yet to figure out:
 
-* Other good blogs I've seen recently, that I can use as examples: [danluu](http://danluu.com/), [wesleyac](http://blog.wesleyac.com/) ([code](https://github.com/WesleyAC/blog)), [hillelwayne](https://www.hillelwayne.com/), [mzucker](https://mzucker.github.io/) ([code](https://github.com/mzucker/mzucker.github.io)), [haixing-hu](http://haixing-hu.github.io/),
+* Images? Links to other posts?
+
+----
+
+Some other blogs I've seen recently, interesting for either their content or look/theme/features, that maybe I can use as examples (not all are hosted on GitHub Pages though): [danluu](http://danluu.com/), [wesleyac](http://blog.wesleyac.com/) ([code](https://github.com/WesleyAC/blog)), [hillelwayne](https://www.hillelwayne.com/), [mzucker](https://mzucker.github.io/) ([code](https://github.com/mzucker/mzucker.github.io)), [haixing-hu](http://haixing-hu.github.io/),
 
 ----
