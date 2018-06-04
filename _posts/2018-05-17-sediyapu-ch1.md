@@ -15,33 +15,31 @@ Below are the pages from Chapter 1 of <a href="https://archive.org/details/Chand
 
 <style>
 .outer-image-and-notes-container {
-  display: flex;
+  display: grid;
+  grid-template-columns: 70% 30%;
+  column-gap: 2px;
   border: 2px solid black;
-  align-items: center;
   margin-top: 2em;
   margin-bottom: 2em;
 }
+.inner-notes {
+  grid-column: 2;
+  grid-row: 1;
+}
 .inner-images {
-  flex: 80;
-  width: 80%;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  border: 1px solid grey;
-  margin-right: 2px;
+  grid-column: 1;
+  grid-row: 1;
 }
 .inner-image {
   display: block;
-}
-.inner-notes {
-  flex: 20;
-  display: inline;
+  border: 1px solid grey;
 }
 </style>
 
 <div id="mainBookPages"></div>
 
 <script>
+// Returns a direct URL to an image region on archive.org
 function pageURL(pageNum, startHeightFraction, stopHeightFraction) {
     startHeightFraction = startHeightFraction || 0.0;
     stopHeightFraction = stopHeightFraction || 1.0;
@@ -49,62 +47,73 @@ function pageURL(pageNum, startHeightFraction, stopHeightFraction) {
         + '_y' + startHeightFraction + '_h' + (stopHeightFraction - startHeightFraction) + '_s2.jpg');
 }
 
+// Returns a URL for viewing page `pageNum` in the archive.org stream viewer
 function streamURL(pageNum) {
     return 'https://archive.org/stream/ChandassamputaSediyapu#page/n' + (Number(pageNum) + 9) + '/mode/1up';
 }
 
-function annotatedPageRegion(pageNum, startHeightFraction, stopHeightFraction, textNode) {
-    let outerDiv = document.createElement('div');
-    outerDiv.classList.add('outer-image-and-notes-container');
-
-    let imgDiv = document.createElement('div');
+function makeImagePlaceholder(pageNum, startHeightFraction, stopHeightFraction) {
     const ht = (stopHeightFraction - startHeightFraction) * (499 / 352) * 600;
-    imgDiv.style.height = ht + 'px';
-    imgDiv.classList.add('inner-images');
-
-    let imgPlaceholder = document.createElement('span');
+    let imgPlaceholder = document.createElement('div');
+    imgPlaceholder.classList.add('inner-image');
     imgPlaceholder.textContent = ('Click to load image (page ' + pageNum +
                   ' from ' + startHeightFraction +
                   ' to ' + stopHeightFraction + ')');
-    imgDiv.appendChild(imgPlaceholder);
-    imgDiv.addEventListener('click', () => {
+    imgPlaceholder.style.height = ht + 'px';
+    imgPlaceholder.addEventListener('click', () => {
+        let imgDiv = imgPlaceholder.parentNode;
+        imgDiv.style.height = window.getComputedStyle(imgDiv).getPropertyValue('height');
         let aNode = document.createElement('a');
         aNode.href = streamURL(pageNum);
         let img = document.createElement('img');
         img.classList.add('inner-image');
         img.src = pageURL(pageNum, startHeightFraction, stopHeightFraction);
+        img.style.height = ht + 'px';
         aNode.appendChild(img);
-        imgDiv.replaceChild(aNode, imgPlaceholder);
+        imgPlaceholder.parentNode.replaceChild(aNode, imgPlaceholder);
     });
+    return imgPlaceholder;
+}
 
+// Creates a new div that looks like this:
+// <div class="outer-image-and-notes-container">
+//   <div class="inner-notes">
+//      ... [textNode]
+//   </div>
+//   <div class="inner-images">
+//     <img class="inner-image">[...]</div>
+//   </div>
+// </div>
+function annotatedPageRegion(pageNum, startHeightFraction, stopHeightFraction, textNode) {
+    let outerDiv = document.createElement('div');
+    outerDiv.classList.add('outer-image-and-notes-container');
+
+    let imgDiv = document.createElement('div');
+    imgDiv.classList.add('inner-images');
+    const imgPlaceholder = makeImagePlaceholder(pageNum, startHeightFraction, stopHeightFraction);
+    imgDiv.appendChild(imgPlaceholder);
     outerDiv.appendChild(imgDiv);
     let textDiv = document.createElement('div');
     textDiv.classList.add('inner-notes');
     textDiv.appendChild(textNode.cloneNode(true));
     outerDiv.appendChild(textDiv);
-    document.getElementById('mainBookPages').appendChild(outerDiv);
+    // document.getElementById('mainBookPages').appendChild(outerDiv);
     return outerDiv;
 }
 
 function updateCites() {
-    /*
-    const pToCites = new Map();
     for (var cite of document.getElementsByTagName('cite')) {
-        const p = cite.parentNode;
-        citesForP = pToCites.get(p) || [];
-        citesForP.push(cite);
-        pToCites.set(p, citesForP);
-    }
-    */
-
-    for (var cite of document.getElementsByTagName('cite')) {
-        const p = cite.parentNode;
-        const found = cite.textContent.match(/(.*) (.*) (.*)/);
-        const pageNum = found[1];
-        const startHeightFraction = found[2];
-        const stopHeightFraction = found[3];
+        const [, pageNum, startHeightFraction, stopHeightFraction] = cite.textContent.match(/(.*) (.*) (.*)/);
         cite.style.display = 'none';
-        p.parentNode.replaceChild(annotatedPageRegion(pageNum, startHeightFraction, stopHeightFraction, p), p);
+        // If we have a <p>...<cite>...</cite></p>, then we need to turn the p into a div, etc: replace cite's parentNode with annotatedPageRegion...
+        // After that, if the <p>...</p> is already inside something of class inner-notes, then we just have to append an image
+        const p = cite.parentNode;
+        if (p.parentNode.classList.contains('inner-notes')) {
+            const images = p.parentNode.parentNode.getElementsByClassName('inner-images')[0];
+            images.appendChild(makeImagePlaceholder(pageNum, startHeightFraction, stopHeightFraction));
+        } else {
+            p.parentNode.replaceChild(annotatedPageRegion(pageNum, startHeightFraction, stopHeightFraction, p), p);
+        }
     }
 }
 </script>
@@ -137,9 +146,7 @@ layānvita (samanvita-layaḥ) (tālabaddha) = something that uniformly fits som
 
 tāla = originally, clapping of hands (ಕೈತಟ್ಟುವಿಕೆ)<cite>56 0.377 0.833</cite>
 
-Footnote 8: More on tāla = ಕೈತಟ್ಟುವಿಕೆ<cite>56 0.836 0.905</cite>
-
-Footnote 8 continued<cite>57 0.591 0.838</cite>
+Footnote 8: More on tāla = ಕೈತಟ್ಟುವಿಕೆ<cite>56 0.836 0.905</cite><cite>57 0.591 0.838</cite>
 
 tāla = the act of measuring out time (such as by clapping); layānvita / samanvitalaya = being able to be measured by (i.e. fitting) uniformly-spaced claps<cite>57 0.113 0.386</cite>
 
@@ -153,17 +160,13 @@ laya = equality of mātra-s (duration of utterance) of different parts of a vers
 
 Footnotes 10 and 11<cite>58 0.484 0.647</cite>
 
-Footnote 12<cite>58 0.645 0.909</cite>
-
-Footnote 12 continued<cite>59 0.481 0.790</cite>
+Footnote 12<cite>58 0.645 0.909</cite><cite>59 0.481 0.790</cite>
 
 No contradiction with Amara<cite>59 0.108 0.355</cite>
 
 The mātrākāla here is not an absolute unit of time like "1 second"; it's a relative (and arbitrary) unit and up to the speaker.<cite>59 0.354 0.480</cite>
 
-Footnote 13: elaboration.<cite>59 0.785 0.915</cite>
-
-Footnote 13 continued<cite>60 0.609 0.834</cite>
+Footnote 13: elaboration.<cite>59 0.785 0.915</cite><cite>60 0.609 0.834</cite>
 
 Same in music: can lengthen/shorten the equal units<cite>60 0.109 0.598</cite>
 
@@ -177,9 +180,7 @@ Footnote 15: A different "druta" and "vilambita" exist in chandas and will be di
 
 With words (chando-bandha) can say fast or slow; only relative time matters. Music is different.<cite>62 0.115 0.641</cite>
 
-(Continued, see below.)<cite>62 0.638 0.878</cite>
-
-"laya" was earlier used for equality; now used for the times themselves?<cite>63 0.107 0.331</cite>
+"laya" was earlier used for equality; now used for the times themselves?<cite>62 0.638 0.878</cite><cite>63 0.107 0.331</cite>
 
 Footnote 16: generic and particular.<cite>63 0.735 0.896</cite>
 
