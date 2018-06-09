@@ -1,4 +1,4 @@
 ---
 layout: home-base
-showonly: better
+showonly:
 ---
