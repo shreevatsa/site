@@ -7,7 +7,9 @@ date: 2018-05-17
 
 ---
 
-Inspired/encouraged by Shatavadhani Ganesh (and more recently by Sridatta A), I’ve finally started reading Sediyapu Krishna Bhat’s work. They are right that this is a kind of work on prosody rather different from the usual texts like Vṛtta-ratnākara and others. Although I'm only on the second chapter so far, I find it quite methodical and clarifying. More on the book as a whole (and some of its interesting points) later. Anyway, I echo the statement that this work ought to be available to more people, hopefully translated into English or Sanskrit or Hindi or whatever.
+Inspired/encouraged by Shatavadhani Ganesh (and more recently by Sridatta A), I’ve finally started reading Sediyapu Krishna Bhat’s *Chandogati*. I'm happy I did so; this is an exceptional work.
+
+This is a kind of work on prosody rather different from the usual texts like Vṛtta-ratnākara and others. Although I'm only on the ~~second~~ fifth chapter so far, I find it quite methodical and clarifying. More on the book as a whole (and some of its interesting points) later. Anyway, I echo the statement that this work ought to be available to more people, hopefully translated into English or Sanskrit or Hindi or whatever.
 
 It is not my place or intention to translate this work. (In a work like this, the author is very careful and precise with his language, including resorting to vague words exactly when appropriate, and translation could easily add to the confusion and distort the intention.) But at least I can make a “map” of the work, for myself to read this work again and quickly jump to relevant sections, and maybe it can be useful to other interested Kannada readers too. The start of such a thing is below.
 
@@ -229,3 +231,5 @@ And here end the pages.
 --------
 
 To summarize, what this chapter has done is define the term "laya". If I had to say it in my own words, my summary would be something like the following. *Laya* is equality of extent — *laya* is when different "units" (in the context of prosody, different "chunks" of a verse) have the same duration (as measured by various means: *tāla*). (By extension, "laya" is also the subjective experience one has of this equality; it is also the "end" or "pause" after such equal units; it is also the actual extent (duration) of those equal units; and by further extension as in music it's also the "speed" — but the fundamental meaning remains: something has "laya" when different parts of it are equal in extent.)
+
+For someone in the world of Kannada scholarship, it may be a big deal to throw away all the loose ways in which “gati” is being used, and replace those with this one meaning. But for someone like me who's just reading this book to learn something, what we've already gained so far is a particular meaning, made exceptionally clear and precise (for which it would be a shame not to have a word). And we will see in later chapters that this meaning of *laya* is hammered in even deeper. The book is structured like a mathematics textbook (or long proof): every chapter builds on the previous ones, and if you open Chapter $n$ without having read Chapters $1$ to $n-1$, you're likely to find yourself not understanding much.

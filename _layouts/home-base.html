@@ -23,6 +23,9 @@ layout: default
         {% else %}
           {% assign prefix = "" %}
         {% endif %}
+        {% if layout.showonly != "better" and post.tags contains "better" %}
+           {% capture prefix %}★ {{prefix }}{% endcapture %}
+        {% endif %}
         <h2>
           <a class="post-link" href="{{ post.url | relative_url }}">{{prefix}}{{ post.title | escape }}</a>
         </h2>
@@ -31,6 +34,8 @@ layout: default
           {{ post.date | date: date_format }}
           &bull;
           {{post.content | number_of_words}} words (≈{{ post.content | number_of_words | divided_by: 250 | plus: 2}} minutes)</span>
+          &bull;
+          {% assign printed = false %}{% for tag in post.tags %}{% if tag != "done" and tag != "draft" and tag != "better"%}{% if printed %}, {% endif %}{{tag}}{% assign printed = true %}{% endif %}{% endfor %}
       </li>
     {% endfor %}
   </ul>

@@ -3,7 +3,7 @@ layout: post
 title:  "Computing Highly Composite Numbers"
 date:   2017-11-07 16:14:22 -0800
 categories: mathematics programming done
-tags: [done, math, continue]
+tags: [done, maths, continue]
 ---
 
 Context: Motivated by [this question](https://mathoverflow.net/questions/284577/computational-complexity-of-finding-the-smallest-number-with-n-factors).

@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Primes in quadratic sequences (Part 1)
-tags: [draft, math]
+tags: [draft, maths]
 excerpt: Are there more primes of the form $n^2 + 21n + 1$ than of the form $n^2 + n + 1$?
 date: 2018-03-26
 ---

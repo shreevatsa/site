@@ -1,7 +1,7 @@
 ---
 layout: post
 title: Approximating $\lg (n!)$
-tags: [draft, math]
+tags: [draft, maths]
 excerpt: How can we compute the logarithm of the factorial?
 date: 2018-03-19 10:00
 ---
