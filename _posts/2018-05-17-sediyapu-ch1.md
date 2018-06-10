@@ -15,110 +15,11 @@ It is not my place or intention to translate this work. (In a work like this, th
 
 Below are the pages from Chapter 1 of <a href="https://archive.org/details/ChandassamputaSediyapu"><i>Chandas-sampuṭa</i> by Sediyapu Krishna Bhatta</a>.
 
-<style>
-.outer-image-and-notes-container {
-  display: grid;
-  grid-template-columns: 70% 30%;
-  column-gap: 2px;
-  border: 2px solid black;
-  margin-top: 2em;
-  margin-bottom: 2em;
-}
-.inner-notes {
-  grid-column: 2;
-  grid-row: 1;
-}
-.inner-images {
-  grid-column: 1;
-  grid-row: 1;
-}
-.inner-image {
-  display: block;
-  border: 1px solid grey;
-}
-</style>
+<style>@import url("{{"/assets/sxs/sxs.css" | relative_url}}");</style>
 
 <div id="mainBookPages"></div>
 
-<script>
-// Returns a direct URL to an image region on archive.org
-function pageURL(pageNum, startHeightFraction, stopHeightFraction) {
-    startHeightFraction = startHeightFraction || 0.0;
-    stopHeightFraction = stopHeightFraction || 1.0;
-    return ('https://archive.org/download/ChandassamputaSediyapu/page/n' + (Number(pageNum) + 9)
-        + '_y' + startHeightFraction + '_h' + (stopHeightFraction - startHeightFraction) + '_s2.jpg');
-}
-
-// Returns a URL for viewing page `pageNum` in the archive.org stream viewer
-function streamURL(pageNum) {
-    return 'https://archive.org/stream/ChandassamputaSediyapu#page/n' + (Number(pageNum) + 9) + '/mode/1up';
-}
-
-function makeImagePlaceholder(pageNum, startHeightFraction, stopHeightFraction) {
-    const ht = (stopHeightFraction - startHeightFraction) * (499 / 352) * 600;
-    let imgPlaceholder = document.createElement('div');
-    imgPlaceholder.classList.add('inner-image');
-    imgPlaceholder.textContent = ('Click to load image (page ' + pageNum +
-                  ' from ' + startHeightFraction +
-                  ' to ' + stopHeightFraction + ')');
-    imgPlaceholder.style.height = ht + 'px';
-    imgPlaceholder.addEventListener('click', () => {
-        let imgDiv = imgPlaceholder.parentNode;
-        imgDiv.style.height = window.getComputedStyle(imgDiv).getPropertyValue('height');
-        let aNode = document.createElement('a');
-        aNode.href = streamURL(pageNum);
-        let img = document.createElement('img');
-        img.classList.add('inner-image');
-        img.src = pageURL(pageNum, startHeightFraction, stopHeightFraction);
-        img.style.height = ht + 'px';
-        aNode.appendChild(img);
-        imgPlaceholder.parentNode.replaceChild(aNode, imgPlaceholder);
-    });
-    return imgPlaceholder;
-}
-
-// Creates a new div that looks like this:
-// <div class="outer-image-and-notes-container">
-//   <div class="inner-notes">
-//      ... [textNode]
-//   </div>
-//   <div class="inner-images">
-//     <img class="inner-image">[...]</div>
-//   </div>
-// </div>
-function annotatedPageRegion(pageNum, startHeightFraction, stopHeightFraction, textNode) {
-    let outerDiv = document.createElement('div');
-    outerDiv.classList.add('outer-image-and-notes-container');
-
-    let imgDiv = document.createElement('div');
-    imgDiv.classList.add('inner-images');
-    const imgPlaceholder = makeImagePlaceholder(pageNum, startHeightFraction, stopHeightFraction);
-    imgDiv.appendChild(imgPlaceholder);
-    outerDiv.appendChild(imgDiv);
-    let textDiv = document.createElement('div');
-    textDiv.classList.add('inner-notes');
-    textDiv.appendChild(textNode.cloneNode(true));
-    outerDiv.appendChild(textDiv);
-    // document.getElementById('mainBookPages').appendChild(outerDiv);
-    return outerDiv;
-}
-
-function updateCites() {
-    for (var cite of document.getElementsByTagName('cite')) {
-        const [, pageNum, startHeightFraction, stopHeightFraction] = cite.textContent.match(/(.*) (.*) (.*)/);
-        cite.style.display = 'none';
-        // If we have a <p>...<cite>...</cite></p>, then we need to turn the p into a div, etc: replace cite's parentNode with annotatedPageRegion...
-        // After that, if the <p>...</p> is already inside something of class inner-notes, then we just have to append an image
-        const p = cite.parentNode;
-        if (p.parentNode.classList.contains('inner-notes')) {
-            const images = p.parentNode.parentNode.getElementsByClassName('inner-images')[0];
-            images.appendChild(makeImagePlaceholder(pageNum, startHeightFraction, stopHeightFraction));
-        } else {
-            p.parentNode.replaceChild(annotatedPageRegion(pageNum, startHeightFraction, stopHeightFraction, p), p);
-        }
-    }
-}
-</script>
+<script src="{{"/assets/sxs/sxs.js" | relative_url}}"></script>
 
 Chapter 1: The meaning of "laya" (in *various* sources).<cite>53 0.1 0.25</cite>
 
@@ -222,9 +123,7 @@ None of these "speed" meanings apply to chandas.<cite>69 0.114 0.280</cite>
 
 Summary / reiteration<cite>69 0.263 0.471</cite>
 
-<script>
-updateCites();
-</script>
+<script>updateCites();</script>
 
 And here end the pages.
 
@@ -233,3 +132,5 @@ And here end the pages.
 To summarize, what this chapter has done is define the term "laya". If I had to say it in my own words, my summary would be something like the following. *Laya* is equality of extent — *laya* is when different "units" (in the context of prosody, different "chunks" of a verse) have the same duration (as measured by various means: *tāla*). (By extension, "laya" is also the subjective experience one has of this equality; it is also the "end" or "pause" after such equal units; it is also the actual extent (duration) of those equal units; and by further extension as in music it's also the "speed" — but the fundamental meaning remains: something has "laya" when different parts of it are equal in extent.)
 
 For someone in the world of Kannada scholarship, it may be a big deal to throw away all the loose ways in which “gati” is being used, and replace those with this one meaning. But for someone like me who's just reading this book to learn something, what we've already gained so far is a particular meaning, made exceptionally clear and precise (for which it would be a shame not to have a word). And we will see in later chapters that this meaning of *laya* is hammered in even deeper. The book is structured like a mathematics textbook (or long proof): every chapter builds on the previous ones, and if you open Chapter $n$ without having read Chapters $1$ to $n-1$, you're likely to find yourself not understanding much.
+
+(A technical note about this page: I don't know enough about CSS to prevent the images from being distorted in aspect ratio when the available width decreases. Let me know if you can help.)

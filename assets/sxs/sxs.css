@@ -1,0 +1,21 @@
+/* Two columns: images, and notes (text). */
+.outer-image-and-notes-container {
+  display: grid;
+  grid-template-columns: 70% 30%;
+  column-gap: 2px;
+  border: 2px solid black;
+  margin-top: 2em;
+  margin-bottom: 2em;
+}
+.inner-notes {
+  grid-column: 2;
+  grid-row: 1;
+}
+.inner-images {
+  grid-column: 1;
+  grid-row: 1;
+}
+.inner-image {
+  display: block;
+  border: 1px solid grey;
+}
