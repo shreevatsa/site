@@ -76,12 +76,16 @@ document.getElementById('pageNumber').addEventListener('input', updateInput);
 function updateResult() {
 	let top = document.getElementById('left-value').textContent;
 	let bottom = document.getElementById('right-value').textContent;
+	if (Number(top) > Number(bottom)) {
+	    [top, bottom] = [bottom, top];
+    }
+	// console.assert(top <= bottom);
 	let ret = `inset(${top}% 0% ${(100.0 - bottom).toFixed(2)}% 0%)`;
+	// console.log('Top and bottom are ' + top + ' and ' + bottom + ' so setting clipPath to ' + ret);
 	document.getElementById('pageImage').style.clipPath = ret;
 	document.getElementById('pageNum').textContent = document.getElementById('pageNumber').value;
 	document.getElementById('topFraction').textContent = (top / 100.0).toFixed(3);
 	document.getElementById('botFraction').textContent = (bottom / 100.0).toFixed(3);
-	document.getElementById('image-wrapper').style.backgroundColor = 'red';
 }
 document.getElementById('slider-left').addEventListener('input', (e) => {
 	document.getElementById('left-value').textContent = (100.0 - e.target.value).toFixed(2);
