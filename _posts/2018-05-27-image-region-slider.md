@@ -57,6 +57,7 @@ Page number:
 <p><tt>&lt;cite&gt;<span id="pageNum"></span> <span id="topFraction"></span> <span id="botFraction"></span>&lt;/cite&gt;</tt></p>
 </div>
 </div>
+<textarea id="scratchspace" rows="3" style="width:100%"></textarea>
 
 <script>
 function updateInput() {
@@ -95,8 +96,20 @@ document.getElementById('slider-right').addEventListener('input', (e) => {
 	document.getElementById('right-value').textContent = (100.0 - e.target.value).toFixed(2);
 	updateResult();
 });
-</script>
 
+function stripTrailingBlankLines() {
+  let s = document.getElementById('scratchspace').value;
+  let last = s.length - 1;
+  while (last >= 0 && s[last] == '\n') {
+	--last;
+  }
+  s = s.substr(0, last + 1);
+  document.getElementById('scratchspace').value = s;
+}
+
+document.getElementById('scratchspace').addEventListener('keyup', stripTrailingBlankLines);
+document.getElementById('scratchspace').addEventListener('change', stripTrailingBlankLines);
+</script>
 
 
 

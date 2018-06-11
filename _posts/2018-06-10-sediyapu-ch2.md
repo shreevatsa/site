@@ -77,7 +77,7 @@ Start of Footnote 20: Vṛtta and jāti. [This footnote spans 5 pages, and I hav
 
 [Footnote 21 continued] Those forms (pada etc) are not both pāṭhya and geya like chandas, only geya.<cite>79 0.482 0.711</cite>
 
-[Footnote 21 continued] Tāla not mentioned doesn't mean it doesn't apply; in fact the opposite is true. Not many have noticed this.<cite>79 0.686 0.907</cite>
+[Footnote 21 continued] Tāla not mentioned doesn't mean it doesn't apply; in fact the opposite is true. **All mātrā-bandhas, and most vṛttas, are tāla-baddha / have laya.** Not many have noticed this.<cite>79 0.686 0.907</cite>
 
 [Back to main text] So why mention "laya" at all? Note it is only mentioned in works written in metres, when having to write a few words beyond the definition — not part of the definition itself.<cite>80 0.386 0.890</cite><cite>81 0.118 0.371</cite>
 

@@ -17,6 +17,7 @@ function strFrac(num) {
 }
 
 function makeImagePlaceholder(pageNum, startHeightFraction, stopHeightFraction) {
+    // Don't remember where these magic numbers came from. Will have to rethink.
     const ht = (stopHeightFraction - startHeightFraction) * (499 / 352) * 600;
     let imgPlaceholder = document.createElement('div');
     imgPlaceholder.classList.add('inner-image');
@@ -32,7 +33,7 @@ function makeImagePlaceholder(pageNum, startHeightFraction, stopHeightFraction) 
         let img = document.createElement('img');
         img.classList.add('inner-image');
         img.src = pageURL(pageNum, startHeightFraction, stopHeightFraction);
-        img.style.height = ht + 'px';
+        img.style.height = ht + 'px'; // This is needed for preventing jitter, but leads to distortion?
         aNode.appendChild(img);
         imgPlaceholder.parentNode.replaceChild(aNode, imgPlaceholder);
     });
