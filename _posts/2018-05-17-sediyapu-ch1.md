@@ -7,6 +7,16 @@ date: 2018-05-17
 
 ---
 
+Index of posts so far:
+* [Chapter 1]({{ site.baseurl }}{% post_url 2018-05-17-sediyapu-ch1 %}) (this page)
+* [Chapter 2]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch2 %})
+* [Chapter 3]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch3 %})
+* [Chapter 4]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch4 %})
+
+
+---
+
+
 Inspired/encouraged by Shatavadhani Ganesh (and more recently by Sridatta A), I’ve finally started reading Sediyapu Krishna Bhat’s *Chandogati*. I'm happy I did so; this is an exceptional work.
 
 This is a kind of work on prosody rather different from the usual texts like Vṛtta-ratnākara and others. Although I'm only on the ~~second~~ fifth chapter so far, I find it quite methodical and clarifying. More on the book as a whole (and some of its interesting points) later. Anyway, I echo the statement that this work ought to be available to more people, hopefully translated into English or Sanskrit or Hindi or whatever.
@@ -133,4 +143,4 @@ To summarize, what this chapter has done is define the term "laya". If I had to 
 
 For someone in the world of Kannada scholarship, it may be a big deal to throw away all the loose ways in which “gati” is being used, and replace those with this one meaning. But for someone like me who's just reading this book to learn something, what we've already gained so far is a particular meaning, made exceptionally clear and precise (for which it would be a shame not to have a word). And we will see in later chapters that this meaning of *laya* is hammered in even deeper. The book is structured like a mathematics textbook (or long proof): every chapter builds on the previous ones, and if you open Chapter $n$ without having read Chapters $1$ to $n-1$, you're likely to find yourself not understanding much.
 
-(A technical note about this page: I don't know enough about CSS to prevent the images from being distorted in aspect ratio when the available width decreases. Let me know if you can help.)
+(A technical note about these page: the CSS is a big wonky, e.g. the images get distorted in aspect ratio when the available width decreases. I don't know of a way to avoid it and still prevent jitter while the image is being loaded. Let me know if you can help.)
