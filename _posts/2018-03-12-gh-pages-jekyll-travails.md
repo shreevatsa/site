@@ -118,6 +118,44 @@ Now that we know (roughly) what Jekyll does, what the theme does, etc., here's a
 
 10. To customize stuff, the recommended way (in the Jekyll / Minima documentation) is to copy the theme's files into the repo, and edit them. For example, copy the file `$(bundle show minima)/_layouts/home.html` to edit the “home” layout.
 
+## More understanding of Jekyll
+
+(After a few days / months...) Here's yet another attempt to understand the scope of Jekyll. In a new empty directory (like `/tmp/test`), run the command that we've been using so far:
+
+    bundle exec jekyll serve
+
+You will get:
+
+    Could not locate Gemfile or .bundle/ directory
+
+So create a `Gemfile` file, with the contents being what we've seen so far:
+
+    source "https://rubygems.org"
+    gem "github-pages", group: :jekyll_plugins
+
+And run `bundle exec jekyll serve` again. Observed behaviour: A file `Gemfile.lock` and a directory `_site` are created, and a web server comes up at http://127.0.0.1:4000/ serving the contents of `_site` directory (`assets/css/` and `assets/javascript/`, probably coming from the `github-pages` gem).
+
+Next, add some files to the current directory -- `.pdf`, `.png`, or whatever, even `.html` (anything except `.md` files).  Also, some directories. Now, when you run `bundle exec jekyll serve`, note that all these are copied into the `_site` directory. So what `bundle exec jekyll serve` does is like `python2 -m SimpleHTTPServer` or `python3 -m http.server`: serves the current directory as a http server, with the added wrinkle of copying everytihng over to a separate `_site` directory.
+
+Finally, add a `.md` file and try again. Then you get:
+
+    fatal: not a git repository (or any of the parent directories): .git
+       GitHub Metadata: Error processing value 'title':
+      Liquid Exception: No repo name found. Specify using PAGES_REPO_NWO environment variables, 'repository' in your configuration, or set up an 'origin' git remote pointing to your github.com repository. in /_layouts/default.html
+                 ERROR: YOUR SITE COULD NOT BE BUILT:
+                        ------------------------------------
+                        No repo name found. Specify using PAGES_REPO_NWO environment variables, 'repository' in your configuration, or set up an 'origin' git remote pointing to your github.com repository.
+
+This shows another (main) job of jekyll: to generate `.html` files for going into `_site`, from `.md` files. And with `github-pages` in the `Gemfile`, it seems to talk to GitHub. If we carry out these same steps from a clone of a repository hosted on GitHub (in an empty directory within the repo, create a `Gemfile` as above, and add some files including a`.md` file), we get the `_site` generated successfully with `.html` file corresponding to the `.md` file, and even a copy of the `.md` file itself. There's a warning though:
+
+       GitHub Metadata: No GitHub API authentication could be found. Some fields may be missing or have incorrect data.
+
+For this, [the internet](https://github.com/github/pages-gem/issues/399) suggests one should create a `_config.yml` and add:
+
+    github: [metadata]
+
+to it. (E.g. run `echo "github: [metadata]" >> _config.yml` in the directory.) But this didn't work for me; I had to follow [this](https://github.com/github/pages-gem/issues/399#issuecomment-361091215): generate a token at https://github.com/settings/tokens and `export JEKYLL_GITHUB_TOKEN=...`.
+
 
 ## Some improvements
 
