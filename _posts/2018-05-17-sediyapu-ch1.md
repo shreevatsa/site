@@ -21,6 +21,14 @@ Inspired/encouraged by Shatavadhani Ganesh (and more recently by Sridatta A), I�
 
 This is a kind of work on prosody rather different from the usual texts like Vṛtta-ratnākara and others. Although I'm only on the ~~second~~ fifth chapter so far, I find it quite methodical and clarifying. More on the book as a whole (and some of its interesting points) later. Anyway, I echo the statement that this work ought to be available to more people, hopefully translated into English or Sanskrit or Hindi or whatever.
 
+The work comes for high praise in Ganesh's lecture:
+
+* Just as, after Newton, the next big work was done by Einstein (some 200 years later), thus after Anandavardhana, the next big thing was done by Sediyapu (some 1000 years later).  
+  Anandavardhana did seminal, path-breaking research in Indian aesthetics of literature. Something similarly insightful was next done by Sediyapu.  
+  -- Ganesh, at ~25:00 in archive.org lecture.
+
+(See also the nice "nelasampige" poem by Sediyapu (saying his work will become valued after he's gone) -- around 41:00 in the lecture.)
+
 It is not my place or intention to translate this work. (In a work like this, the author is very careful and precise with his language, including resorting to vague words exactly when appropriate, and translation could easily add to the confusion and distort the intention.) But at least I can make a “map” of the work, for myself to read this work again and quickly jump to relevant sections, and maybe it can be useful to other interested Kannada readers too. The start of such a thing is below.
 
 Below are the pages from Chapter 1 of <a href="https://archive.org/details/ChandassamputaSediyapu"><i>Chandas-sampuṭa</i> by Sediyapu Krishna Bhatta</a>.
