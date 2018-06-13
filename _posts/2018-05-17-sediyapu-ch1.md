@@ -25,7 +25,7 @@ The work comes for high praise in Ganesh's lecture:
 
 * Just as, after Newton, the next big work was done by Einstein (some 200 years later), thus after Anandavardhana, the next big thing was done by Sediyapu (some 1000 years later).  
   Anandavardhana did seminal, path-breaking research in Indian aesthetics of literature. Something similarly insightful was next done by Sediyapu.  
-  -- Ganesh, at ~25:00 in archive.org lecture.
+  -- Ganesh, at ~25:00 in [lecture on Sediyapu Krishna Bhat](https://archive.org/details/shatAvadhAnI-gaNesha-bhAShaNagaLu/rasadhvani-bhAShaNAni+---+Sediyapu+Krishna+Bhatta+Memorial+Lecture+DrRG.mp3).
 
 (See also the nice "nelasampige" poem by Sediyapu (saying his work will become valued after he's gone) -- around 41:00 in the lecture.)
 
