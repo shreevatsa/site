@@ -12,7 +12,7 @@ Index of posts so far:
 * [Chapter 2]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch2 %})
 * [Chapter 3]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch3 %})
 * [Chapter 4]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch4 %})
-
+* [Chapter 5]({{ site.baseurl }}{% post_url 2018-06-12-sediyapu-ch5 %})
 
 ---
 

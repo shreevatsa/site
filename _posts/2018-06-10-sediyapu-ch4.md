@@ -69,3 +69,13 @@ Then is gadya (prose) also chando-badda? Well, no.<cite>102 0.099 0.397</cite>
 [Clarification of everything] chandas = LG pattern. When pattern is apparent (uniformity, etc), is padya. Constrained, unconstrained.<cite>102 0.394 0.904</cite>
 
 ---
+
+I think we've ended up with two meanings of "chandas":
+
+- Chandas meaning the pattern of Ls and Gs in something: its scansion. With this meaning, it indeed applies to everything, as every arrangement (sequence) of letters has some corresponding arrangement (sequence) of Ls and Gs.
+
+- Chandas meaning *padya*, something whose Ls and Gs are constrained to satisfy some property. This was the original meaning, and remembering this meaning also helps us avoid wasting time on pointless (unconstrained) sequences.
+
+Both make sense, and we will encounter both these meanings again.
+
+----
