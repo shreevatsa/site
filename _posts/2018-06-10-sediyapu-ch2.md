@@ -35,7 +35,11 @@ What can we infer from these examples?<cite>71 0.652 0.840</cite>
 
 The first two are akṣara-vṛtta, and happen to have "samate" even in parts (chunks) of a pāda<cite>71 0.837 0.895</cite><cite>72 0.109 0.403</cite>
 
-The last chunk. Interesting. (And debatable IMO: is this really always exactly true? But it doesn't affect his point.)<cite>72 0.398 0.520</cite>
+The last chunk is shorter than the others; the pause at the end of the pāda will make it equal in duration to the others.<cite>72 0.398 0.520</cite>
+
+Interesting: and is this really always exactly true? (Anyway it doesn't affect his point.) Sridatta [adds](https://twitter.com/sridatta_a/status/1007088830057308162):
+
+> you will understand in the later chapters and in the kannaḍa chandassu part there is discussion on ಅಪೂರ್ಣ ತಾಲಖಂಡಗಳು (i.e. ಊನಗಣಗಳು) , ಚತುರಸ್ರತೆ, ತಾಳಖಂಡ/ಆವರ್ತಗಳು ನಾಲ್ಕರ ಗುಣಿತ/multiple ಆಗಿರುತ್ತದೆ and all.
 
 In these two examples, the different chunks shared both the "time to say the chunk" (number of mātrās) and the actual LG pattern. Which one is meant by "laya"?<cite>72 0.519 0.680</cite>
 
