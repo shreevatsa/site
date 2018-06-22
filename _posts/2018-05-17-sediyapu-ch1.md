@@ -8,11 +8,15 @@ date: 2018-05-17
 ---
 
 Index of posts so far:
-* [Chapter 1]({{ site.baseurl }}{% post_url 2018-05-17-sediyapu-ch1 %}) (this page)
-* [Chapter 2]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch2 %})
-* [Chapter 3]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch3 %})
-* [Chapter 4]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch4 %})
-* [Chapter 5]({{ site.baseurl }}{% post_url 2018-06-12-sediyapu-ch5 %})
+* [Chapter 1]({{ site.baseurl }}{% post_url 2018-05-17-sediyapu-ch1 %}) (17 pages) (this page)
+* [Chapter 2]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch2 %}) (12 pages)
+* [Chapter 3]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch3 %}) (10 pages)
+* [Chapter 4]({{ site.baseurl }}{% post_url 2018-06-10-sediyapu-ch4 %}) (11 pages)
+* [Chapter 5]({{ site.baseurl }}{% post_url 2018-06-12-sediyapu-ch5 %}) (25 pages)
+* Chapter 6 (39 pages) (still reading)
+* Chapter 7 (10 pages) (I've not read yet)
+* Chapter 8 (46 pages) (I've not read yet)
+* Chapter 9 (58 pages) (I've not read yet)
 
 ---
 
