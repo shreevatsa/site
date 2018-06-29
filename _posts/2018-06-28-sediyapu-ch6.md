@@ -26,6 +26,13 @@ This the longest chapter so far, though Chapter 8 and Chapter 9 we'll see are ev
 
 And there are also a few things that are subjective, as we will see.
 
+## Table of contents
+{:.no_toc}
+
+* You should not be seeing this.
+{:toc}
+
+
 Chapter 6: On different kinds of chandogati (Āvarta-gatis)<cite>128 0.092 0.198</cite>
 
 Let's start with a footnote, as it spans 4 pages. :-)
@@ -154,6 +161,37 @@ Repeating the end of Fn 54: 3+5 = 5+3 chunks are formed by overriding 4+4, with 
 (...contd) Even when achieved with yati rather than G, this is what is going on. [An innocuous-looking claim tucked away in brackets, but actually quite subtle and may not be easy to understand how 1+1— i.e. word break starting at 4, becomes saṃdhāna.]<cite>148 0.107 0.191</cite>
 
 Beautiful: just as blended 4+4 is distinctive, so is blended 3+3.<cite>148 0.164 0.339</cite>
+
+Examples I. [The second group is LLGG; the asterisk is a footnote.]<cite>148 0.334 0.544</cite>
+
+Examples II. [In (a), Line 1, third group is 4+2, similarly first group of line 3. Typo in second group of line 2: it is LLGLL.]<cite>148 0.538 0.911</cite>
+
+Examples III.<cite>149 0.098 0.414</cite>
+
+Same: This gati comes when 3+3 is prevented, by 3&4 being joined by a G (as in I)...<cite>149 0.411 0.604</cite>
+
+... or with a yati after 2 or 4 (as in II)...<cite>149 0.576 0.818</cite>
+
+... or... in other ways. [This one is subtler and I didn't hear it the first time.]<cite>149 0.789 0.899</cite><cite>150 0.107 0.185</cite><cite>151 0.105 0.242</cite>
+
+[Read these examples carefully and convince yourself... or not.]<cite>151 0.207 0.435</cite>
+
+[Start of Fn 56] One may ask: why is GLLG not 3+3? <cite>150 0.194 0.339</cite>
+
+Answer: Just listen to it. (Also: "...heccukaḍame...")<cite>150 0.316 0.442</cite>
+
+Aside: In mathematics books, sometimes the author writes that something is "obvious" or "trivial", and sometimes readers get upset when it's *not* obvious or trivial to them. I think something similar happens in this book in some places, and sometimes this comes off as a bit frustrating. It is one thing to say "unfortunately, this is hard to explain, and you have to experience it for yourself". It *feels* different, possibly insulting, when stated as "If you have any sense at all, you will know this already". :-) Could this be one of the secondary reasons this great book is not universally adored by everyone who's read it?
+
+The reason for sounding this way: GL↘ and LG↗, etc. <cite>150 0.417 0.614</cite>
+
+★A very subtle and important point [buried within parentheses in a footnote]!<cite>150 0.590 0.713</cite>
+
+Similar with LLLLG<cite>150 0.689 0.899</cite>
+
+Example. [End of Fn 56]<cite>151 0.693 0.896</cite>
+
+Summary / reiteration.<cite>151 0.432 0.696</cite>
+
 
 
 
