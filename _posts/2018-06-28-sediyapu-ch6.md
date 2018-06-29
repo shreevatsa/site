@@ -119,7 +119,7 @@ Fn 53. [To me this seems to be clarifying something that seems obvious, in fact 
 
 Examples of avoiding 4+4 through either G or word-break (yati).<cite>142 0.785 0.911</cite><cite>143 0.139 0.608</cite>
 
-Note: This shows that word breaks matter! A simplistic treatment of prosody says they shouldn't matter, but I've long suspected they do -- pleased to be right! (In fact I suspect they do even in Anuṣṭup, but we'll come to that later.)
+Note: This shows that word breaks matter! A simplistic treatment of prosody says they shouldn't matter, but I've long suspected they do – pleased to be right! (In fact I suspect they do even in Anuṣṭup, but we'll come to that later.)
 
 Sometimes not strictly followed in recent or lesser works. (And vice-versa: 4+4 metres can occasionally have 3+5.) Might be OK though.<cite>143 0.585 0.807</cite>
 
@@ -134,6 +134,26 @@ Some weirdness of "varaṇa" in verses(?) of the "pada" genre. [I'm ignoring for
 Examples (3+5 then 5+3)<cite>145 0.413 0.614</cite>
 
 The distinctive gati comes not from being breakable as 3+5 or 5+3, but from being *not* 4+4, because of syllables 4 and 5 being blended by G (or start of word). So let's call it "sankalita-madhyāvartagati" instead: new name. [End of Fn 54.]<cite>145 0.591 0.909</cite>
+
+We saw why 4+5 is unlikely, and discussed 3+5. The other one, 3+4, is very common.<cite>146 0.100 0.212</cite>
+
+Examples.<cite>146 0.207 0.307</cite><cite>147 0.098 0.257</cite>
+
+Fn 55: Someone says some "akṣara vṛttas" are "mātrāvṛttas"; this is not so. [Needless harsh criticism IMO; just a matter of definitions and someone being sloppy...]<cite>146 0.320 0.906</cite><cite>147 0.652 0.900</cite>
+
+A couple of points of note from the above:
+
+...<cite>146 0.663 0.728</cite>
+
+Most vṛttas are samagati, i.e. layānvita = satāla.<cite>146 0.744 0.812</cite>
+
+This is another observation that becomes obvious in hindsight on examining the data, yet before Sediyapu Krishna Bhat no one seems to have made. Truly a mark of genius (IIRC something Huxley said about Darwin is similar).
+
+Repeating the end of Fn 54: 3+5 = 5+3 chunks are formed by overriding 4+4, with a G after 3, i.e. occupying 4 & 5 — by blending/bridging (saṃdhāna) of the two 4s.<cite>147 0.246 0.637</cite>
+
+(...contd) Even when achieved with yati rather than G, this is what is going on. [An innocuous-looking claim tucked away in brackets, but actually quite subtle and may not be easy to understand how 1+1— i.e. word break starting at 4, becomes saṃdhāna.]<cite>148 0.107 0.191</cite>
+
+Beautiful: just as blended 4+4 is distinctive, so is blended 3+3.<cite>148 0.164 0.339</cite>
 
 
 
