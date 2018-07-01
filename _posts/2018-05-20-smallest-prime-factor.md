@@ -11,7 +11,7 @@ Inspired by / based on: <https://manasataramgini.wordpress.com/2018/05/20/a-note
 
 Consider a number $m$. If we consider the sequence $q_n = 2p_n - 1$ where $p_n$ denotes the $n$th prime number, how frequently is $m$ the smallest factor (other than $1$) of $q_n$?
 
-One thing to note immediately is that the smallest factor of a number ([A020639](http://oeis.org/A020639)) is always a prime number. Further, in our case as $q_n$ is always odd, this least prime factor can't be even. So the answer is $0$ unless $m$ is one of the odd prime numbers ($3, 5, 7, 11, \dots$). (The sequence of values $m$ is [A023585](http://oeis.org/A023585); we want to know the frequency with which the different odd primes occur in the sequence.)
+One thing to note immediately is that the smallest factor of a number ([A020639](http://oeis.org/A020639)) is always a prime number. Further, in our case as $q_n$ is always odd, this least prime factor can't be even. So the answer is $0$ unless $m$ is one of the odd prime numbers ($3, 5, 7, 11, \dots$). (The sequence of values of smallest prime factors of $q_n$ is [A023585](http://oeis.org/A023585); we want to know the frequency with which the different odd primes $m$ occur in the sequence.)
 
 If one wants a more formal statement of the problem: let
 
