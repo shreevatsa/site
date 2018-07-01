@@ -1,18 +1,16 @@
 ---
 layout: post
-title: Rough work
-tags: [draft, maths]
+title: Possible way to approach a conjecture about A114897
+tags: [done, maths]
 excerpt:  Possible way of attacking a conjecture from https://manasataramgini.wordpress.com/2018/04/15
 date: 2018-04-17
 ---
-
-Context: See <https://manasataramgini.wordpress.com/2018/04/15/a-sequence-related-to-prime-counting/> — a very intriguing conjecture!
 
 Let $$\displaystyle T(m) = [m\text{ is prime}] = \begin{cases}1 &\text{if $m$ is prime}\\ 0&\text{otherwise}\end{cases}$$
 
 Then, define $f(1) = 1$ and $\displaystyle f(n) = \sum_{k=1}^{n-1} T(f(k) + n - 1)$.
 
-(Defined in [above post](https://manasataramgini.wordpress.com/2018/04/15/a-sequence-related-to-prime-counting/), also at [OEIS A114897](http://oeis.org/A114897).)
+This comes from <https://manasataramgini.wordpress.com/2018/04/15/a-sequence-related-to-prime-counting/> — which has a very intriguing conjecture: that $f$ grows like $\frac{n}{\log n}$ (more closely than $\pi(n)$ the prime-counting function). Read the post for details! The sequence is also recorded at [OEIS A114897](http://oeis.org/A114897).
 
 The “Cramer heuristic” is roughly that any number $m$ is prime with “probability” $1/{\log m}$. More formally, the Cramér random model (see <https://terrytao.wordpress.com/2015/01/04/254a>) is the following: consider a random set $S$ of integers, such that each number $m > 2$ independently has probability $1/\log m$ of being in $S$. Then the asymptotics of the set of primes $P$ behaves roughly like that of $S$. This heuristic gives correct predictions for many number-theoretic functions.
 
