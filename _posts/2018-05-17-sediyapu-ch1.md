@@ -15,8 +15,8 @@ Index of posts so far:
 * [Chapter 5]({{ site.baseurl }}{% post_url 2018-06-12-sediyapu-ch5 %}) (25 pages)
 * [Chapter 6]({{ site.baseurl }}{% post_url 2018-06-28-sediyapu-ch6 %}) (39 pages)
 * [Chapter 7]({{ site.baseurl }}{% post_url 2018-06-30-sediyapu-ch7 %}) (10 pages)
-* Chapter 8 (46 pages) (still reading)
-* Chapter 9 (58 pages) (I've not read yet)
+* Chapter 8 (46 pages) (not yet written up)
+* Chapter 9 (58 pages) (still reading)
 
 ---
 
