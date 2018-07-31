@@ -4,7 +4,7 @@ layout: default
 
 <div class="home">
 
-  <h1 class="page-heading">{% if layout.showonly %}{% if layout.showonly == "better" %}Selected posts (click <a href={{"/all" | relative_url }}>here</a> for all posts){% else %}Posts tagged {{layout.showonly}}{% endif %}{% else %}All posts (read at your own risk){% endif %}</h1>
+  <h1 class="page-heading">{% if layout.showonly %}Posts tagged {{layout.showonly}}{% else %}All posts (read at your own risk){% endif %}</h1>
 
   {{ content }}
 
@@ -12,14 +12,16 @@ layout: default
     {% if layout.showonly %}
         {% assign postsToShow = site.tags[layout.showonly] %}
     {% else %}
-        {% comment %} For all posts (not specific to a tag), can use "site.posts" {% endcomment %}
-        {% assign postsToShow = site.tags["done"] %}
+        {% comment %} Choice here is between using `site.tags["done"]` and `site.posts` {% endcomment %}
+        {% assign postsToShow = site.posts %}
     {% endif %}
     {% for post in postsToShow %}
       <li>
         {% assign date_format = site.minima.date_format | default: "%b %-d, %Y" %}
-        {% if post.tags contains "continue" and layout.showContinue %}
-           {% assign prefix = "(...) " %}
+        {% if post.tags contains "draft" %}
+           {% assign prefix = "⏳ " %}
+        {% elsif post.tags contains "continue" %}
+           {% assign prefix = "⏸️" %}
         {% else %}
           {% assign prefix = "" %}
         {% endif %}
