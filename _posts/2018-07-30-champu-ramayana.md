@@ -39,7 +39,7 @@ I have read Bhoja's Champu Ramayana only in bits and pieces, and would love to m
 
 ## Translation
 
-* By C. Lakshmi Narasmha Moorty, a [translation of the whole work](http://samkshiptasahityam.blogspot.com/2013/08/bhojarajas-champuramayanam.html) — not very readable by itself, but can be useful if trying to make sense of the text.
+* By C. Lakshmi Narasmha Moorty, a [translation into English of the whole work](http://samkshiptasahityam.blogspot.com/2013/08/bhojarajas-champuramayanam.html) — not very readable by itself, but can be useful if trying to make sense of the text.
 
 ## Video
 
@@ -48,7 +48,6 @@ I have read Bhoja's Champu Ramayana only in bits and pieces, and would love to m
 * [By H. R. Vishvasa of Samskrita Bharati](https://www.youtube.com/playlist?list=PLal1Jj2nA8afaCWbgzfJNNFDtD9_Xp_cP), a little over 8 hours total, from the start of the work to the birth of Rāma and his brothers (just before Viśvāmitra approaches Daśaratha). In very simple Sanskrit. Delivered at Shri Chitrapur Math.
 * [By Sowmya Krishnapur](https://www.youtube.com/playlist?list=PLmozlYyYE-ESXMNWR6R8Vs4w634k-FAac), ongoing. (About 30 hours so far, and in the Bālakāṇda, as Viśvāmitra takes Rāma and Lakṣmaṇa towards Mithilā.) Promises to be great and very detailed, and I imagine lots of interesting information about grammar. :-) 
 * By Swami Tattvavidananda Saraswathi, in Telugu. About 9 hours, though with some audio and ordering issues (not clear where it starts or ends). Only listened to parts of it. Going by the numbering in the video titles: [1](https://www.youtube.com/watch?v=MsgYIMihL9Y), [2](https://www.youtube.com/watch?v=WPEiPtOBfyA), [3](https://www.youtube.com/watch?v=nUk2sZgNn3w), [4](https://www.youtube.com/watch?v=YG4YLvrEcl8), [5](https://www.youtube.com/watch?v=FHw6CVjAF3g), [6](https://www.youtube.com/watch?v=ov1eo9sXOw4).
-
 * [By Vidhya Ramesh, Samskrita Bharati, Chennai](https://www.youtube.com/playlist?list=PLTWf5ZhGT3626J-nV5_kCc1f3i4fOyGkX), Another ongoing series. About 30 hours so far. Just the Sundarakāṇda, and accompanied by detailed notes on [this page](https://nivedita2015.wordpress.com/sanskrit-kavyas/video-bhojas-champuramayanam-sundarakandam-vidhya-ramesh/).
 
 ----
