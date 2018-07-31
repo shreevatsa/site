@@ -3,7 +3,7 @@ layout: post
 title: The Champu Ramayana of Bhoja
 excerpt: Online resources for this lovely work.
 date: 2018-07-30
-tags: [draft]
+tags: [done]
 
 ---
 
