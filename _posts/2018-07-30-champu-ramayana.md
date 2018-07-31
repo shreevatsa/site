@@ -20,15 +20,15 @@ I have read Bhoja's Champu Ramayana only in bits and pieces, and would love to m
 ## Text and commentary (scanned books)
 
 * (Calcutta) Text of the work, edited by Jibananda Vidyasagara, published from Calcutta. The printing quality is not as legible as that of Nirnaya Sagar Press (below), and with *va*-s and *ba*-s tend to be mixed up.
-
   * Without commentary (1878): [here](https://archive.org/details/ChampuRamayanaBhojaJivanandVidyasagar1878), [here](https://archive.org/stream/Complete_Works_of_Jibananda_Vidyasagara/Champu_Ramayana_-_Jibananda_Vidyasagara_1878#page/n0). 
   * With commentary by Jibananda Vidyasagara (1889). [here](https://archive.org/details/ChampuRamayanaBhojaTikaOfJivanandVidyasagar1889), [here](https://archive.org/details/ChampuRamayanaWithCommentaryJibanandaVidyasagara1889_201803), [here](https://archive.org/details/in.ernet.dli.2015.496228), [here](https://archive.org/stream/Complete_Works_of_Jibananda_Vidyasagara/Champu_Ramayana_-_Jibananda_Vidyasagara_1878#page/n0). A terse but useful commentary.
-* (Nirnaya Sagar Press) Text of the work, with the commentary of Ramachandra Budhendra
 
+* (Nirnaya Sagar Press) Text of the work, with the commentary of Ramachandra Budhendra
   * First edition, 1898. [here](https://archive.org/details/ChampuRamayanaOfBhojaWithSktCommentary1898NSP_201802), [here](https://archive.org/details/ChampuRamayanaOfBhojaWithSktCommentary1898NSP), [here](https://archive.org/details/Champu.Ramayana.in.Sanskrit), [here](https://archive.org/details/in.ernet.dli.2015.347687), [here](https://archive.org/details/ChampuRamayanaBhojaAndLakshmanaSuriKasinathPandurangParabNirnayaSagarPress)
   * Fourth edition, 1914. [here](https://archive.org/details/in.ernet.dli.2015.495483) (the scan looks very legible! The famed NSP printing quality)
   * Fifth edition, 1917. [here](https://archive.org/details/ChampuRamayanaOfBhojaWithSktCommentary1917NSP_201802), [here](https://archive.org/details/ChampuRamayanaOfBhojaWithSktCommentary1917NSP), [here (poor scan)](https://archive.org/details/in.ernet.dli.2015.312741), [here (poor scan)](https://archive.org/details/in.ernet.dli.2015.406325) — i've noticed a few typos in this edition
   * Ninth edition, 1939. [here](https://archive.org/details/in.ernet.dli.2015.407662), [here](https://archive.org/details/in.ernet.dli.2015.408168), (I also have a PDF assembled from DLI that seems to be a slightly better scan, but I can't find it on archive.org at the moment.)
+
 * Other (less useful)
   * [Partially digitized text on Wikisource](https://sa.wikisource.org/wiki/%E0%A4%9A%E0%A4%AE%E0%A5%8D%E0%A4%AA%E0%A5%82%E0%A4%B0%E0%A4%BE%E0%A4%AE%E0%A4%BE%E0%A4%AF%E0%A4%A3%E0%A4%AE%E0%A5%8D) — right now part of Bālakāṇda and part of Sundarakāṇda are there
   * Text with vyakhya called Sahityamanjusha, in Telugu script [here](https://archive.org/details/CHAMPURAMAYANAMTELUGU)
@@ -45,9 +45,13 @@ I have read Bhoja's Champu Ramayana only in bits and pieces, and would love to m
 
 * [By Shatavadhani Dr. R. Ganesh, in Kannada](https://www.youtube.com/playlist?list=PLjXeT-FRKPGu1cBSEAW96fhqZsFBFC1qW), about 6 hours total, over good verses and passages from the entire text (after 40 minutes of introduction about Bhoja etc) and explaining them briefly. This is really beautiful and I'm already on my second listening.
   * (For over 2 years now, Dr Ganesh and a few friends have been reading the Champu Ramayana, a little at a time meeting in person every couple of weeks. Unfortunately I have missed all of that, so these videos are a poor substitute.)
+
 * [By H. R. Vishvasa of Samskrita Bharati](https://www.youtube.com/playlist?list=PLal1Jj2nA8afaCWbgzfJNNFDtD9_Xp_cP), a little over 8 hours total, from the start of the work to the birth of Rāma and his brothers (just before Viśvāmitra approaches Daśaratha). In very simple Sanskrit. Delivered at Shri Chitrapur Math. These videos are unlisted; you can find them via [this page](https://www.chitrapurmath.net/site/activities-girvanaprathistha-videos).
+
 * [By Sowmya Krishnapur](https://www.youtube.com/playlist?list=PLmozlYyYE-ESXMNWR6R8Vs4w634k-FAac), ongoing. (About 30 hours so far, and in the Bālakāṇda, as Viśvāmitra takes Rāma and Lakṣmaṇa towards Mithilā.) Promises to be great and very detailed, and I imagine lots of interesting information about grammar. :-) 
+
 * By Swami Tattvavidananda Saraswathi, in Telugu. About 9 hours, though with some audio and ordering issues (not clear where it starts or ends). Only listened to parts of it. Going by the numbering in the video titles: [1](https://www.youtube.com/watch?v=MsgYIMihL9Y), [2](https://www.youtube.com/watch?v=WPEiPtOBfyA), [3](https://www.youtube.com/watch?v=nUk2sZgNn3w), [4](https://www.youtube.com/watch?v=YG4YLvrEcl8), [5](https://www.youtube.com/watch?v=FHw6CVjAF3g), [6](https://www.youtube.com/watch?v=ov1eo9sXOw4).
+
 * [By Vidhya Ramesh, Samskrita Bharati, Chennai](https://www.youtube.com/playlist?list=PLTWf5ZhGT3626J-nV5_kCc1f3i4fOyGkX), Another ongoing series. About 30 hours so far. Just the Sundarakāṇda, and accompanied by detailed notes on [this page](https://nivedita2015.wordpress.com/sanskrit-kavyas/video-bhojas-champuramayanam-sundarakandam-vidhya-ramesh/).
 
 ----
