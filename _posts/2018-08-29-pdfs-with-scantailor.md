@@ -69,6 +69,8 @@ or
 pdfimages -all -f 1 -l 84 myPDFfile.pdf someFooPrefix
 ```
 
+Added later: It appears one can also use `mutool extract`. Will try next time.
+
 ## Using ScanTailor
 
 Once you have the images extracted in whatever way, you can use either the ScanTailor GUI or `scantailor-cli` (I've had better results with the GUI, because there are things you don't realize until you see the output).
