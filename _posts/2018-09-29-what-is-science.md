@@ -7,8 +7,6 @@ tags: [done]
 
 ---
 
-## What is “science”?
-
 It appears that the word “science” is used in a few different meanings:
 
 1. A method for determining what is true: perfoming experiments, keeping an open mind, trying not to fool yourself, etc.
