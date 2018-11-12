@@ -69,4 +69,6 @@ $q = (a + b)$ which is 10000 00000 00000 00369 47545 68805 82265 40980 91798 298
 
 Both of these can be verified to be prime, so this is the complete factorization of $N$.
 
+In fact, whenever the difference $p - q$ between the two factors of a number $N$ is of the order of $\sqrt{p}$ (or equivalently, $N^{1/4}$), this method requires only a single step.
+
 ----
