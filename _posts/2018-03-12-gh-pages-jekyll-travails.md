@@ -195,6 +195,6 @@ Here are a few I made:
 
 ----
 
-Some other blogs I've seen recently, interesting for either their content or look/theme/features, that maybe I can use as examples (not all are hosted on GitHub Pages though): [danluu](http://danluu.com/), [wesleyac](http://blog.wesleyac.com/) ([code](https://github.com/WesleyAC/blog)), [hillelwayne](https://www.hillelwayne.com/), [mzucker](https://mzucker.github.io/) ([code](https://github.com/mzucker/mzucker.github.io)), [haixing-hu](http://haixing-hu.github.io/),
+Some other blogs I've seen recently, interesting for either their content or look/theme/features, that maybe I can use as examples (not all are hosted on GitHub Pages though): [danluu](http://danluu.com/), [wesleyac](http://blog.wesleyac.com/) ([code](https://github.com/WesleyAC/blog)), [hillelwayne](https://www.hillelwayne.com/), [mzucker](https://mzucker.github.io/) ([code](https://github.com/mzucker/mzucker.github.io)), [haixing-hu](http://haixing-hu.github.io/), [leemendelowitz](https://leemendelowitz.github.io/blog/how-does-python-find-packages.html) (Disqus), [DeBroglie](https://boristhebrave.github.io/DeBroglie/) (is this even Jekyll? Probably not), [jakevdp](http://jakevdp.github.io/blog/2018/09/13/waiting-time-paradox/), [Diogocastro](https://diogocastro.com/blog/2018/06/17/typeclasses-in-perspective/) (GitHub for comments! And all 3 posts are great too).
 
 ----
