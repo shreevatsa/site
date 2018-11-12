@@ -184,7 +184,7 @@ with less computation, where:
 * we cast out trailing $0$s (denoted by $\leftrightarrow$) using the fact that $7$ divides $10x$ if and only if $7$ divides $x$ (as $\gcd(10, 7) = 1$), and 
 * only once needed to use Step 2, and even there we noticed that $1264$ was easy to subtract $14$ from, so we chose to use $k=-2$ instead of (the equivalent) $k=5$.
 
-All in all, this gives a highly comfortable (for hand computation) test for divisibility by $7$ (much more than actually simply dividing by $7$), something we were lacking earlier.
+All in all, this gives a highly comfortable (for hand computation) test for divisibility by $7$ (much easier than directly dividing by $7$), something we were lacking earlier.
 
 ## Divisibility by $13$
 
@@ -233,7 +233,7 @@ Also, note that the sum of all numbers in any cycle is (picking $n$ to be any nu
 
 If instead of looking at numbers through this “mod p” lens we care about the actual values obtained on iteration, then the analysis becomes more involved, and there are more details. For example, starting from some number $n$, even though after $r$ steps we will have returned to (something congruent to) $n$, the actual value may be a different number, so we may need more steps before we return to the *actual* value $n$, if at all. (The length of the cycle will always be a multiple of $r$ though, as underneath, modulo $p$ we're still cycling after every $r$ nodes.)
 
-This requires more care, and there are more possibilities, and as we take larger numbers $n$ we get larger graphs. For an exploration of all this, see [the post linked earlier](https://manasataramgini.wordpress.com/2018/11/11/visualizing-the-hindu-divisibility-test/). An illustration of the difference: for $p = 7$, when viewed through a “mod 7” lens, there are only $7$ possible nodes in the graph: the node $0$ by itself, and the other nodes which fall into a directed cycle $1 \rightarrow 5 \rightarrow 4 \rightarrow 6 \rightarrow 2 \rightarrow 3 \circlearrowleft$. But when *not* viewed modulo $p$, then for example $1$ has many representatives ($8$, $15$, $22$, etc), similarly $3$ has many representatives ($10$, $17$, $24$, etc.) and distinguishing them gives a much richer graph: see Figure 5 in [that post. Enjoy!](https://manasataramgini.wordpress.com/2018/11/11/visualizing-the-hindu-divisibility-test/).
+This requires more care, and there are more possibilities, and as we take larger numbers $n$ we get larger graphs. For an exploration of all this, see [the post linked earlier](https://manasataramgini.wordpress.com/2018/11/11/visualizing-the-hindu-divisibility-test/). An illustration of the difference: for $p = 7$, when viewed through a “mod 7” lens, there are only $7$ possible nodes in the graph: the node $0$ by itself, and the other nodes which fall into a directed cycle $1 \rightarrow 5 \rightarrow 4 \rightarrow 6 \rightarrow 2 \rightarrow 3 \circlearrowleft$. But when *not* viewed modulo $p$, then for example $1$ has many representatives ($8$, $15$, $22$, etc), similarly $3$ has many representatives ($10$, $17$, $24$, etc.) and distinguishing them gives a much richer graph: see Figure 5 in [that post. Enjoy!](https://manasataramgini.wordpress.com/2018/11/11/visualizing-the-hindu-divisibility-test/)
 
 
 ----
