@@ -25,7 +25,7 @@ Consider a nonzero integer $p$. We'll say that two integers $x$ and $y$ are **co
 
 Let's denote this by $x \equiv_p y$. That is, $x$ may not be **equal** to $y$, but when viewed through a “mod p” lens (thus the $p$ subscript on the $\equiv$), they are **equivalent**.[^fnmodnotation] Each integer is equivalent to infinitely many others, e.g. modulo $7$, we have $10 \equiv_7 3 \equiv_7 17 \equiv_7 -4 \equiv_7 -11 \equiv_7 80 \equiv_7 101 \equiv_7 \dots$ — the difference between any two of those numbers ($10$, $3$, $-11$, etc) is divisible by $7$.
 
-[^fnmodnotation]: In number theory this is usually written as $x \equiv y \pmod p$, or even (when “$\bmod p​$” is implicit from context) simply $x \equiv y​$, but I've found that this notation confuses people unfamiliar with number theory, so trying this new notation… not sure if it will be better or worse.
+[^fnmodnotation]: In number theory this is usually written as $x \equiv y \pmod p$, or even (when “$\bmod p$” is implicit from context) simply $x \equiv y$, but I've found that this notation confuses people unfamiliar with number theory, so trying this new notation… not sure if it will be better or worse.
 
 Looking at numbers in this way (through this “mod p lens”) is called *modular arithmetic*, and many properties of usual arithmetic hold; for example the results when we add or multiply equivalent numbers are equivalent:
 
@@ -235,5 +235,7 @@ If instead of looking at numbers through this “mod p” lens we care about the
 
 This requires more care, and there are more possibilities, and as we take larger numbers $n$ we get larger graphs. For an exploration of all this, see [the post linked earlier](https://manasataramgini.wordpress.com/2018/11/11/visualizing-the-hindu-divisibility-test/). An illustration of the difference: for $p = 7$, when viewed through a “mod 7” lens, there are only $7$ possible nodes in the graph: the node $0$ by itself, and the other nodes which fall into a directed cycle $1 \rightarrow 5 \rightarrow 4 \rightarrow 6 \rightarrow 2 \rightarrow 3 \circlearrowleft$. But when *not* viewed modulo $p$, then for example $1$ has many representatives ($8$, $15$, $22$, etc), similarly $3$ has many representatives ($10$, $17$, $24$, etc.) and distinguishing them gives a much richer graph: see Figure 5 in [that post. Enjoy!](https://manasataramgini.wordpress.com/2018/11/11/visualizing-the-hindu-divisibility-test/)
 
+[**Edit**: Actually, it was pointed oiut to me that we can do a fair bit of analysis here too! See [follow-up post](div-test-iteration.html).]
 
 ----
+
