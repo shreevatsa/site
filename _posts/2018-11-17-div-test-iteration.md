@@ -16,12 +16,12 @@ tags: [done]
 
 In the [previous post](divisibility-tests) (inspired by [this post on the mAnasa-taraMgiNI blog](https://manasataramgini.wordpress.com/2018/11/11/visualizing-the-hindu-divisibility-test/)), we considered the following procedure, which is said to be “a folk Hindu method that was known in South India”, and is also found in the “*Vedic Mathematics*” book:
 
-Given a number $p > 1$ not divisible by $2$ or $5$, let $k$ be the smallest number such that $ 10k - 1$ is divisble by $p$. Then, given any number $n$, repeatedly apply the following step:
+Given a number $p > 1$ not divisible by $2$ or $5$, let $k$ be the smallest number such that $ 10k - 1$ is divisble by $p$. Then, given any positive integer $n$, repeatedly apply the following step:
 
 * Write $n$ as $n = 10b + a$ (i.e. let $a$ be the last digit of $n$ and $b$ everything but the last digit),
 * Replace $n$ with $n' = b + ka$.
 
-This procedure constitutes a divisibility test for $p$, but our interest this time is the procedure itself. We can form a directed graph with edges from $n$ to $n'$ for every $n$, and ask about this graph. That is, we can ask what happens to a number $n$ as we repeatedly apply this step?
+This procedure constitutes a divisibility test for $p$, but our interest this time is the procedure itself. We can form a directed graph with edges from $n$ to $n'$ for every $n$, and ask about this graph. That is, we can ask: what happens to a number $n$ as we repeatedly apply this step?
 
 At [the end of the previous post](divisibility-tests.html#analysis-of-iteration-modulo-p), I mentioned that:
 
@@ -32,36 +32,24 @@ Soon after I posted it, Twitter user [`@raktagulikaa` pointed out](https://twitt
 
 ## Theorem
 
-Let $d = mp$ be be $9p$, $3p$, $7p$ or $p$ respectively, depending on whether $p$ ends with $1$, $3$, $7$ or $9$. Let $n \equiv_{d} r$ where $1 \le r \le d$, i.e. let $r$ be the remainder when $n$ is divided by $d$ (except that we replace $0$ with $d$). Then, the eventual behaviour (cycle) of $n$ is the same as that of $r$.
+Let $d = mp$ be be $9p$, $3p$, $7p$ or $p$ respectively, depending on whether $p$ ends with $1$, $3$, $7$ or $9$. Let $n \equiv_{d} r$ where $1 \le r \le d$, i.e. let $r$ be the remainder when $n$ is divided by $d$ (except that we replace $0$ with $d$). Then, the eventual behaviour (cycle) of $n$, under the procedure described above, is the same as that of $r$.
 
 ## Idea
 
 The **first** insight is that $k$, which we said is the smallest number such that $10k \equiv_p 1$, can actually be determined directly from the value of $ p$ modulo $10$, and does not require “searching” to find. In detail: Write $p$ as $10q + r$, where $r$ is the remainder when $p$ is divided by $10$ (in other words, $r$ is the “last digit” of $p$ in decimal notation). As we said that $p$ is not divisible by $2$ or $5$, $r$ must be one of $1$, $3$, $7$, $9$. Now, what we want is to find $k$ such that $10k - 1$ is a multiple of $p$, say $mp$. Well, $mp = m(10q + r)$, so what we have is $10k - 1 = m(10q + r)$. If we look at this modulo $10$ (not modulo $p$!), we see that $-1 \equiv_{10} mr$ (or in simpler words: $mr$ must have last digit $9$), which means that if $r = 1, 3, 7, 9$ then $m \equiv_{10} 9, 3, 7, 1$ respectively. Conversely, if we pick $m$ this way and consider $k = (mp + 1)/10$, then clearly $10k - 1 = mp$ and our property is satisfied. To conclude:
 
-* If $p$ ends in $1$, then take $k = (9p + 1)/10$
-* If $p$ ends in $3$, then take $k = (3p + 1)/10$
-* If $p$ ends in $7$, then take $k = (7p + 1)/10$
-* If $p$ ends in $9$, then take $k = (p + 1)/10$
+* If $p$ ends in $1$, then $m = 9$ and take $k = (9p + 1)/10$
+* If $p$ ends in $3$, then $m = 3$ and take $k = (3p + 1)/10$
+* If $p$ ends in $7$, then $m = 7$ and take $k = (7p + 1)/10$
+* If $p$ ends in $9$, then $m = 1$ and take $k = (p + 1)/10$
 
 In all cases, note that $k \le p$ as expected.
 
-The **second** insight is about the size of the numbers for which we see the “eventual” behaviour. Note that when $n$ is large (e.g. when it has many more digits than $k$), if we go from $n = 10b + a$ to $n' = b + ka$, then we're removing the rightmost digit from $n$ and adding $k$ times a single-digit number, so the resulting number $n'$ is smaller. When does this happen, i.e. when is $b + ka \lt 10b + a$? This is equivalent to $(k-1)a \lt 9b$, or $(10k - 10)a \lt 90b$, which is the same as (as we know the value of $k$):
+The **second** insight is about the size of the numbers for which we see the “eventual” behaviour. Note that when $n$ is large (e.g. when it has many more digits than $k$), if we go from $n = 10b + a$ to $n' = b + ka$, then we're removing the rightmost digit from $n$ and adding $k$ times a single-digit number, so the resulting number $n'$ is smaller. When does this happen, i.e. when is $b + ka \lt 10b + a$? This is equivalent to $10b + 10ka < 100b + 10a$ or $10ka < 90b + 10a$ which is the same as $(mp+1)a < 90b + 10a$ which is the same as $mpa < 9(10b + a)$ or $n > mpa/9$. 
 
-* if $p$ ends in $1$, then $(9p - 9)a \lt 90b$ or $(p - 1)a \lt 10b$ which is the same as $n \gt pa$
-* if $p$ ends in $3$, then $(3p - 9)a \lt 90b$ or $(p - 3)a \lt 30b$ which is the same as $n \gt pa/3$
-* if $p$ ends in $7$, then $(7p-9)a \lt 90b$ which is the same as $n \gt 7pa/9$
-* if $p$ ends in $9$, then $(p - 9)a \lt 90b$ which is the same as $n \gt pa/9$
+As the largest possible value of $a$ is $9$, this means that when $n$ is larger than $mp$, then $n$ necessarily gets smaller. Therefore, starting at any number $n$, we will eventually hit a number that is at most $mp$. (Then it could become larger again, but not more than the $mp$ limit: if $10b + a \le mp$, then $10b + 10ka = 10b + (mp + 1)a = (10b + a) + mpa \le mp(a + 1) \le 10mp$, so $b + ka \le mp$.)
 
-As the largest possible value of $a$ is $9$, this means that when $n$ is larger than $9p$, $3p$, $7p$, $p$ (respectively, in the above four cases), then $n$ necessarily gets smaller. Therefore, starting at any number $n$, we will eventually hit a number that is at most $9p$, $3p$, $7p$, or $p$ respectively. (Though in theory it could become larger again.)
-
-The **third** insight is that we can “lift” the multiplication by $k$ modulo $p$ to a multiplication modulo a higher multiple of $p$. Specifically, let's say that going from $n = 10b + a$ to $n' = b + ka$ is a multiplication by $k$ not only modulo $p$ but also modulo some number $d$, i.e. $n' \equiv_d kn$. This means that $d$ divides $kn - n' = k(10b + a) - (b + ka) = (10k-1)b$, whatever the value of $b$, so it must divide $(10k-1)$. Depending on the last digit of $p$, this is saying:
-
-* if $p$ ends in $1$, that $d$ divides $9p$
-* if $p$ ends in $3$, that $d$ divides $3p$
-* if $p$ ends in $7$, that $d$ divides $7p$
-* if $p$ ends in $9$, that $d$ divides $p$
-
-Conveniently (coincidence?), these are also the limits we found beyond which the number is guaranteed to get smaller.
+The **third** insight is that we can “lift” the multiplication by $k$ modulo $p$ to a multiplication modulo a higher multiple of $p$. Specifically, let's say that going from $n = 10b + a$ to $n' = b + ka$ is a multiplication by $k$ not only modulo $p$ but also modulo some number $d$, i.e. $n' \equiv_d kn$. This means that $d$ divides $kn - n' = k(10b + a) - (b + ka) = (10k-1)b$, whatever the value of $b$, so it must divide $(10k-1) = mp$.  We could take $d = mp$ itself.
 
 Putting all this together, we can conclude the following:
 
@@ -175,7 +163,7 @@ For p=7 (k=5), evolution of 119: 		119 56 [35, 28, 42, 14, 21, 7]
 For p=7 (k=5), evolution of 196: 		196 [49]
 ```
 
-(Note there is a minor difference relative to the post, in what we do with $p=7$ after reaching $7$: applying the rule again, with $k=5$, gives $35$ which eventually cycles back to $7$; while in the original post one stays at $7$ after reaching $7$. The latter makes sense as a divisibilty rule; the former makes sense as the mechanical application of the procedure.)
+(Note there is a minor difference relative to the original post, in what we do with after reaching $p$: applying the rule again, with $k=5$, gives $35$ which eventually cycles back to $7$; while in the original post one stays at $7$ after reaching $7$. The latter makes sense as a divisibilty rule; the former makes sense as the mechanical application of the procedure.)
 
 To avoid confusion caused by printing the same cycle in different ways (consider, for $p=13$, the cases of $n = 167$ and $n = 158$ above, where we printed the same cycle once as `[20, 2, 8, 32, 11, 5]` and once as `[32, 11, 5, 20, 2, 8]`), we'd like to print the cycle in a canonical form (considering cyclic shifts), say ending with the least element:
 
