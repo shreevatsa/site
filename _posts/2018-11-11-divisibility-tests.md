@@ -55,7 +55,7 @@ Specifically, this gives us some simple divisibility tests (easy ways to check b
 
 ## Divisibility by $2$ or $5$ (or $10$)
 
-Whether $p=2$ or $ p=5$ (or $p = 10$), we have $10 \equiv_p 0$, and the same is true for higher powers of $10.$ In other words, the powers of $10$, namely $1, 10, 10^2, 10^3, 10^4, \dots$ are respectively equivalent to $1, 0, 0, 0, 0, \dots$, so we can replace a number $\mathrm{[fedcba]}$ with
+When $p=2$ or $ p=5$ (or $p = 10$), we have $10 \equiv_p 0$, and the same is true for higher powers of $10.$ In other words, the powers of $10$, namely $1, 10, 10^2, 10^3, 10^4, \dots$ are respectively equivalent to $1, 0, 0, 0, 0, \dots$, so we can replace a number $\mathrm{[fedcba]}$ with
 
 $$\begin{align}\mathrm{[fedcba]} &= 10^5f + 10^4e + 10^3d + 10^2c + 10b + a \\ &\equiv_p 0f + 0e + 0d + 0c + 0b + a \\ &= a\end{align}$$
 
@@ -67,7 +67,7 @@ That is, modulo $2$ or $5$ (or $10$), a number is equivalent to its last digit. 
 
 ## Divisibility by $4$ or $25$ (or $100$)
 
-When $p = 4$ or $p = 25$ (or $p = 100$), the powers of $10$, namely $1, 10, 10^2, 10^3, 10^4, \dots$ are respectively equivalent to $1, 10, 0, 0, 0, \dots$ and so we can replace a number $\mathrm{[fedcba]}$ with
+When $p = 4$ or $p = 25$ (or $p = 100$), we have $10^2 \equiv_p 0$, so the powers of $10$, namely $1, 10, 10^2, 10^3, 10^4, \dots$ are respectively equivalent to $1, 10, 0, 0, 0, \dots$ and so we can replace a number $\mathrm{[fedcba]}$ with
 
 $$\begin{align}\mathrm{[fedcba]} &= 10^5f + 10^4e + 10^3d + 10^2c + 10b + a \\ &\equiv_p 0f + 0e + 0d + 0c + 10b + a = 10b + a \\&= \mathrm{[ba]}\end{align}$$
 
@@ -75,11 +75,15 @@ That is, modulo $4$ or $25$ (or $100$), a number is equivalent to the number for
 
 ## Divisibility by $8$ or $125$ (or $1000$)
 
-When $p =8$ or $p = 125$ (or $p = 1000$), the powers of $10$, namely $1, 10, 10^2, 10^3, 10^4, \dots$ are respectively equivalent to $1, 10, 100, 0, 0, \dots$ and so we can replace a number $\mathrm{[fedcba]}$ with
+When $p =8$ or $p = 125$ (or $p = 1000$), we have $10^3 \equiv_p 0$, so the powers of $10$, namely $1, 10, 10^2, 10^3, 10^4, \dots$ are respectively equivalent to $1, 10, 100, 0, 0, \dots$ and so we can replace a number $\mathrm{[fedcba]}$ with
 
-$$\begin{align}\mathrm{[fedcba]} &= 10^5f + 10^4e + 10^3d + 10^2c + 10b + a \\ &\equiv_p 0f + 0e + 0d + 100c + 10b + a \\ &= 10b + a \\ &= \mathrm{[ba]} \end{align}$$
+$$\begin{align}\mathrm{[fedcba]} &= 10^5f + 10^4e + 10^3d + 10^2c + 10b + a \\ &\equiv_p 0f + 0e + 0d + 100c + 10b + a \\ &= 100c + 10b + a \\ &= \mathrm{[cba]} \end{align}$$
 
 That is, modulo $8$ or $125$ (or $1000$), a number is equivalent to the number formed by its last three digits.
+
+Equivalently:
+
+$$\begin{align}\mathrm{[fedcba]} &= 10^3\mathrm{[fed]} + \mathrm{[cba]} \\ &\equiv_p 0\mathrm{[fed]}+ \mathrm{[cba]} \\ &=  \mathrm{[cba]} \end{align}$$
 
 ## Divisibility by powers of $2$ or $5$ (or $10$)
 
