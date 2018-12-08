@@ -186,56 +186,6 @@ Aha, here we begin!
 
 -- I think these show that the fonts were more interesting.
 
-## Unexpected application of Lagrange's theorem
-
-```
-Oct  2: Warning: Due to a known bug, the default Linux document viewer
-        evince prints N*N copies of a PDF file when N copies requested.
-        As a workaround, use Adobe Reader acroread for printing multiple
-        copies of PDF documents, or use the fact that every natural number
-        is a sum of at most four squares.
-```
-
-Possibly from October 2009.
-
-See https://mathoverflow.net/questions/3596/is-there-a-simple-way-to-compute-the-number-of-ways-to-write-a-positive-integer and https://math.berkeley.edu/computing/wiki/index.php?title=Support:Old_News&oldid=3483 for confirmation.
-
-For another story about mathematics and software bugs, see [here](https://mathoverflow.net/a/11607):
-
-> I don't know any interesting bugs in symbolic algebra packages but I know a true, enlightening and entertaining story about something that looked like a bug but wasn't.$\def\sinc{\operatorname{sinc}}$
->
-> Define $\sinc x = (\sin x)/x$.
->
-> Someone found the following result in an algebra package:
-> $\int_0^\infty dx \sinc x = \pi/2$
->
-> They then found the following results:
->
-> $\int_0^\infty dx \sinc x \; \sinc (x/3)= \pi/2$
->
-> $\int_0^\infty dx \sinc x \; \sinc (x/3) \; \sinc (x/5)= \pi/2$
->
-> and so on up to
->
-> $\int_0^\infty dx \sinc x \; \sinc (x/3) \; \sinc (x/5) \; \cdots \; \sinc (x/13)= \pi/2$
->
-> So of course when they got:
->
->
-> $\int_0^\infty dx \sinc x \; \sinc (x/3) \sinc (x/5) \; \cdots \; \sinc (x/15)$$=
-> \frac{467807924713440738696537864469}{935615849440640907310521750000}\pi$
->
-> they knew they had to report the bug. The poor vendor struggled for a long time trying to fix it but eventually came to the stunning realisation that this result is correct.
->
-> These are now known as [Borwein Integrals](http://mathworld.wolfram.com/BorweinIntegrals.html).
-
-by Dan Piponi answered Jan 13 '10 at 2:14 and comments:
-
-> - The actual person at that "poor vendor" was me. I must have spent 3 days on this problem before I figured out that Jon had tricked me. And, indeed, I am an expert in computer algebra, but do not know much Fourier analysis. But Jon's proof for why this is 'correct' is quite geometrical. – Jacques Carette Feb 17 '10 at 4:03
-> - @Voyska No, it was not reported as a bug, just as an 'oddity' (or something like that). Jon was not mean, but playful in a devious way. He will be missed. – Jacques Carette Aug 18 '16 at 18:18
-
-See also https://twitter.com/johncarlosbaez/status/1043161440545267713 → https://johncarlosbaez.wordpress.com/2018/09/20/patterns-that-eventually-fail/ for more.
-
 ## Exercises in programming style
 
 Started reading this book today. What an excellent idea! I encountered this book through a review. (I think [this one](https://henrikwarne.com/2018/03/13/exercises-in-programming-style/), via [this typically pointless discussion](https://news.ycombinator.com/item?id=16617039). There seems to be a [video](https://www.youtube.com/watch?v=Gw4WJJoDl3U) but I haven't watched it.)
@@ -325,44 +275,6 @@ There are many decisions that need to be made if one actually starts writing a p
   * When should we ignore them: when reading the file (as early as possible) or perhaps not even in the final output (as late as possible), leaving it to the user to decide which ones are interesting or not?
   * The 
 
-----
-
-## Earliest DMV appointments 
-
-right now (September 30th) (would like one before Thursday, December 13, 2018):
-
-* Daly City: Thursday, December 27, 2018 at 11:00 AM
-* Hayward: Monday, December 17, 2018 at 2:40 PM
-* San Mateo: No appt
-* Fremont: Thursday, December 27, 2018 at 2:40 PM
-* REDWOOD CITY: No appt
-* Santa Clara: Thursday, December 27, 2018 at 10:20 AM
-* San Jose: Tuesday, December 18, 2018 at 11:40 AM
-* San Jose DLPC: Monday, December 3, 2018 at 12:40 PM
-* Santa Teresa: Tuesday, December 18, 2018 at 2:40 PM
-* Los Gatos: Thursday, December 27, 2018 at 10:05 AM
-* Capitola: Wednesday, December 12, 2018 at 11:20 AM
-* Gilroy: Monday, December 10, 2018 at 2:50 PM
-* Watsonville: Wednesday, November 28, 2018 at 11:20 AM
-* Hollister: Tuesday, December 4, 2018 at 10:00 AM
-* Los Banos: Wednesday, November 28, 2018 at 10:00 AM
-* **Salinas: Thursday, November 8, 2018 at 12:20 PM**
-* Seaside: Tuesday, November 20, 2018 at 9:00 AM
-* San Francisco: Thursday, December 27, 2018 at 2:20 PM
-* Pittsburgh: Wednesday, December 12, 2018 at 9:20 AM
-* Concord: No appt
-* El Cerrito: Wednesday, December 12, 2018 at 2:00 PM
-* Walnut Creek: No appt
-* OAKLAND CLAREMONT : Wednesday, December 19, 2018 at 1:40 PM
-* Oakland Coliseum: Tuesday, November 13, 2018 at 2:20 PM
-* PLEASANTON: No appt
-* Fremont: Wednesday, December 5, 2018 at 9:20 AM
-* Napa: Tuesday, December 11, 2018 at 1:50 PM
-* Vallejo: Tuesday, December 4, 2018 at 11:00 AM
-* Santa Rosa: Thursday, December 6, 2018 at 8:20 AM
-* **KING CITY : Wednesday, October 31, 2018 at 10:40 AM**
-* Paso Robles: Thursday, November 8, 2018 at 8:00 AM
-
 ---
 
 ## Arxiv.org bulk API
@@ -375,7 +287,7 @@ Bulk data S3: <https://arxiv.org/help/bulk_data_s3>
 
 ## Proving that a number is prime
 
-Imagine I am trying to convince you that a particular (large) number is **composite** (i.e. not a prime number) — that you are the “customer” and I am trying to “sell” you a composite number.[^fncustomer]
+Imagine I am trying to convince you that a particular (large) number is **composite** (i.e. not a prime number). To make this more vivid, imagine that you are the “customer” and I am trying to “sell” you a composite number.[^fncustomer]
 
 [^fncustomer]: This useful image of a “customer” and a “seller” comes from Pratt's paper, mentioned later.
 
@@ -1092,6 +1004,192 @@ These could also be done in a spreadsheet. That will be the next step.
 
 ----
 
+## Art and “kitsch”
+
+There's a series of three articles (podcasts?) by (Sir) Roger Scruton, here on the BBC:
+
+1. (2014-12-05) https://www.bbc.co.uk/programmes/b04sy4tv under title “Faking it”
+   https://www.bbc.com/news/magazine-30343083 under title “How modern art became trapped by its urge to shock”
+2. (2014-12-12) https://www.bbc.co.uk/programmes/b04tlr0g under title “Kitsch”
+   https://www.bbc.com/news/magazine-30439633 under title “A Point of View: The strangely enduring power of kitsch”
+3. (2014-12-19) https://www.bbc.co.uk/programmes/b04v66nl under title “Art: The Real Thing”
+   https://www.bbc.com/news/magazine-30495258 under title “A Point of View: How do we know real art when we see it?”
+
+It's interesting that someone can see the truth partially, and still get so much wrong. Will reread and write more here...
+
+-----
+
+## More TeX links
+
+(Didn't I have a section with that name just above?)
+
+SAILDART
+
+file:///usr/local/texlive/2017/texmf-dist/doc/generic/knuth/web/webman.pdf
+
+http://blog.brew.com.hk/working-with-files-in-javascript/
+
+https://developer.mozilla.org/en-US/docs/Web/API/File/Using_files_from_web_applications
+
+https://www.preining.info/blog/2015/04/tex-live-the-new-multi-fmtutil/
+
+https://www.preining.info/blog/2013/07/internals-of-tex-live-1/
+
+https://www.overleaf.com/learn/latex/Articles/
+
+https://github.com/shreevatsa/pages/tree/0f9c146a770bbd4fe3c7f7174bb576e568dbaa5f/docs/dvi
+
+(web2w) https://www.tug.org/TUGboat/tb38-3/tb120ruckert.pdf
+
+http://ctan.math.washington.edu/tex-archive/web/web2w/web2w.pdf
+
+----
+
+## CS and interviews
+
+Interesting thread on Hacker News: https://news.ycombinator.com/item?id=18445609
+
+Someone says they're a programmer but can't solve homework problems in CS.
+
+*Most* of the comments (especially the highly voted ones) are about job interviews, which is not at all relevant to the question at hand. See this again and again: bring up any mention of algorithms, competitive programming etc, and suddenly everyone wants to gripe about interviews.
+
+See e.g. https://news.ycombinator.com/item?id=16952222 where the top comment starts with “The most irritating thing with these...” (and author makes clear they mean interviews), even though the book is written for people who enjoy it.
+
+I get it, job interviews are stressful and bad etc. I've experienced my share of it, and the only real advice I have from my experience is that to do well in interviews, it helps if you absolutely don't want the job — but I know that's nearly useless advice.
+
+----
+
+## Devamārga
+
+Should write this up. 
+
+See https://books.google.com/books?id=S4p6DQAAQBAJ&pg=PA531&lpg=PA531 (PUP Sundarakāṇda) which compares commentators (expand those abbreviations when quoting for post).
+
+See https://books.google.com/books?id=pPVJCgAAQBAJ&pg=PA453&lpg=PA453 (van Buitenen MBh)
+
+See http://kjc-sv013.kjc.uni-heidelberg.de/dcs/index.php?contents=fundstellen&IDWord=86817 (DCS search)
+
+Of course quote Ryder Pañcatantra.
+
+See Apte and MW.
+
+-----
+
+## CTAN mirror stuff
+
+See https://ctan.org/mirrors/register/
+
+The current solution being used by PG is to daily `rsync`, then `git commit`. This has resulted in a git repository of size approaching 1 TB.
+
+If I were to keep this design, then either:
+
+* I have to figure out whether it's ok (and inexpensive, e.g. ideally not nonstandard as that has other issues too) to keep such a large directory on any of the cloud providers,
+
+  OR
+
+* come up with a solution that shunts away all the actual git objects (ancient blobs) to somewhere remote, sharded on multiple disks etc.
+
+Alternatively, I ignore all this, and come up with a different version control system. E.g. the SVN / CVS / RCS model might be enough: everything is monotonic (timestamps), i.e. the graph is linear and we don't have to support merge, etc. The state as of a certain date doesn't need to be encoded (blobs → tree → commit etc), but can just be computed as the state of each individual file as of that date. (Right? Some complication involving deleted paths but that's probably ok too -- latest version will just be “deleted”, the way it shows up in CS: https://cs.chromium.org)
+
+Possible design:
+
+For each path that is a filename, store metadata:
+
+* Chronological list of (timestamp, sha1) (including a special sha1 for “deleted”)
+
+For each path that is a directory, store metadata:
+
+* Flat (i.e. no-history) list of every subdir / file that has ever been a child of it.
+
+For each sha1, store the data (blob).
+
+(Potential problem: )
+
+What about compression? This will probably compress MUCH worse than git (with its delta encoding etc). But, it shards much more easily.
+
+Is this good enough?
+
+I'd have to try it and see :-(
+
+Also have to implement the “find the diff and decide which files need to be updated” thing. But maybe “for every file in the directory tree, find its sha1” will automatically handle that, by going over the entire repo every day.
+
+See https://www.tarsnap.com/index.html for some interesting ideas. (It uses S3, but not Glacier.)
+
+See pricing comparison at the bottom of this page: https://cloud.google.com/storage/pricing-summary/ (looks like except for Glacier, GCP is generally cheaper)
+
+## Angles are easier to approximate from above
+
+A surprising and counterintuitive fact that becomes obvious in hindsight, like so many things in mathematics. Suppose we want to pick three points on a square lattice:
+
+[figure]
+
+such that the angle made by them is as close as possible to a certain angle (say 60°). (This problem comes from [this post by MJD](https://blog.plover.com/math/60-degree-angles.html), motivated by the problem of drawing a good approximation to such an angle on a piece of graph paper.) 
+
+Then, the surprising fact is that we'll get better approximations that are just over 60° than those that are just below 60° (and the same is true for any acute angle, while the opposite is true for <...> angles).
+
+Let's see what this means, and why this is true.
+
+### Formulating the problem
+
+The square lattice can be considered as the set of all points in the plane with integer coordinates, i.e. all points $(x, y)$ where $x$ and $y$ are both integers. Without loss of generality, we can consider the point where the angle is made as $(0, 0)$, and call the other two points $(a, b)$ and $(c, d)$. That is, we want the angle formed by the three points $(c, d)$, $(0, 0)$ and $(a, b)$ to be as close to $\theta$ (say $60°$ aka $\pi/3$) as possible. To quote from [the original post](https://blog.plover.com/math/60-degree-angles.html):
+
+> we want to find $P=⟨a,b⟩$ and $Q=⟨c,d⟩$ so that the angle $α$ between the rays $\overrightarrow{OP}$ and $\overrightarrow{OQ}$ is as close as possible to $\pi/3$.
+
+What is the angle formed by these three points? It is easiest to use complex numbers (and they help fornulate the problem in another way, as we'll see later). Each point $(x, y)$ in the plane can be considered as the point $x + iy$ in the [complex plane](). Then, the angle *and* scaling by which the vector $\overrightarrow{OP}$ needs to turn to reach $\overrightarrow{OQ}$ is given by their division:
+
+$$\dfrac{c + id}{a + ib} = \dfrac{(c+id)(a-ib)}{(a+ib)(a-ib)} = \dfrac{(ac+bd) + i(ad-bc)}{a^2+b^2}$$
+
+If we want just the angle, it is the [argument](https://en.wikipedia.org/w/index.php?title=Complex_number&oldid=871208466#Absolute_value_and_argument) of this complex number, namely an angle $\alpha$ such that $\tan(\alpha) = \dfrac{ad-bc}{ac+bd}$. And if we want $\alpha$ to be close to $\pi/3$, that means we want $\tan \alpha$ to be close to $\tan (\pi/3) = \sqrt{3}$.
+
+So in short: we want to find four integers $(a, b, c, d)$ such that $\dfrac{ad-bc}{ac+bd}$ is close to $\sqrt{3}$ (or in general, $\tan \theta$).
+
+### The observation
+
+Suppose we try *all* possible $4$-tuples of integers $(a, b, c, d)$, in which all four coordinates are no larger in magnitude than a certain $M$, and look at how close the angle gets to $60°$. We can tabulate the “record-setting” approximations, i.e. those that beat anything “smaller”, and also the closest ones at the end.
+
+With $M = 50$, this is what we see:
+
+```
+
+```
+
+Note that the “record” approximations are all (after the first two) greater than $60°$, and that among the “closest” approximations, there are many more that are over $60°$ than are under.
+
+Why is this?
+
+### Reformulating the problem
+
+The “usual” problem, where we want $p/q$ to be close to a real number $α$, can be thought of as finding Gaussian integers $(q + ip)$ that lie close to the line $y=αx$ in the complex plane, i.e. points $z$ on the lattice such that $\mathrm{Im}(z)/\mathrm{Re}(z) ≈ α$.
+
+Here, with $α=√3$, we want to solve the same problem, i.e. find rational numbers $p/q$ close to $α$, except that $p/q$ must further be of the form $(ad-bc)/(ac+bd)$ for some $(a, b, c, d)$. 
+
+Here's the thing: this is precisely the same as saying that $(q + ip)$ is not a Gaussian prime! This is because $(a-ib)(c+id) = (ac+bd) + i(ad-bc)$, by the [Diophantus–Brahmagupta–Fibonacci identity](https://en.wikipedia.org/w/index.php?title=Brahmagupta%E2%80%93Fibonacci_identity&oldid=863796842). So any $(q + ip)$ of the form $(ac+bd) + i(ad-bc)$ can be written as the product of two Gaussian integers, and vice-versa.
+
+So the relation between the Diophantine approximation problem and this one is that while there we want to find Gaussian integers close to the line $\mathrm{Im}(z)=α\mathrm{Re}(z)$, here we want to find *composite* Gaussian integers close to the line $\mathrm{Im}(z)=α\mathrm{Re}(z)$.
+
+### Explanation
+
+Note that we're trying to approximate $√3$ by a fraction of the form $(ad-bc)/(ac+bd)$. The closest *fractions* we get (among $a, b, c, d$ below a given magnitude) could be either below or above $\sqrt3$.
+
+Consider an angle of $(π/3+ε)$. If you look at $\tan(π/3+ε)-\tan(π/3)$, it works out to be $(\tan(ε) + 3ε) / (1 - \sqrt3\tan ε)$. When $ε$ is replaced by $-ε$, if you look at $\tan(π/3)-\tan(π/3-ε)$, it works out to be $(\tan(ε) + 3ε) / (1 + \sqrt3\tanε)$.
+
+For small ε, the former, namely $(\tan(ε) + 3ε) / (1 - \sqrt3\tan ε)$, is larger than the latter, namely $(\tan(ε) + 3ε) / (1 + \sqrt3\tanε)$. And by a factor of $(1 + \sqrt3\tanε)/(1 - \sqrt3\tanε) \approx 1 + 2\sqrt{3}ε$.
+
+(More generally, this boils down to the fact that the second derivative of $\tan(x)$ is positive.)
+
+$\tan(x+y) - \tan(x) = (\tan x + \tan y - \tan x + \tan x \tan x \tan y)/(1 - \tan x \tan y) = (\tan y)(1 + \tan^2 x)/(1 - \tan x \tan y)$
+
+$\tan(x) - \tan(x-y) = (\tan x + \tan x \tan x \tan y - \tan x + \tan y)/(1 + \tan x \tan y) = (\tan y)(\tan^2 x + 1)/(1 + \tan x \tan y)$
+
+When $\tan y$ is positive, the former is greater by a factor of $\frac{1 + \tan x \tan y}{1 - \tan x \tan y}$
+
+This means that it's easier (you're allowed a larger difference in the angle) to achieve a given closeness of the fraction $(ad-bc)/(ac+bd)$ to $\sqrt3$ by picking the angle to be greater than $π/3$ ($=60°$) than if the angle is less than $π/3$.
+
+As denominators get larger, the primes get sparser, so this becomes closer to the usual problem: $\sqrt3$ becomes about as easy to approximate to a given closeness from below as from above (by fractions of the form $(ad-bc)/(ac+bd)$), but among roughly equally distant approximations, the ones from above are closer *in angle* than the ones from below.
+
+### Acknowledgements
+
+[This post by MJD](https://blog.plover.com/math/60-degree-angles.html) and [ensuing discussion on Hacker News](https://news.ycombinator.com/item?id=18536484).
 
 
 
