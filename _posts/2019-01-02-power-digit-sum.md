@@ -124,13 +124,13 @@ Some pictures may help. Below are [plotted]({{ "/assets/powers/powers.py" | abso
 
 [![powers-1952]({{ "/assets/powers/powers-1952.png" | absolute_url }})]({{ "/assets/powers/powers-1952.png" | absolute_url }})
 
-(Above we estimated the “probability that a number $N$ is good”, i.e. has such a power $N^k$, as $1/(4.5 \log N)$, but for some numbers $N$ the “probability” is actually higher: when $N$ is a multiple of $3$ (like $1647$ and $1656$ in the output above), then so is $S(N^k)$, so in the neighborhood only multiples of $3$—including $N$—are going to be hit. Similarly for multiples of $9$. Conversely when $N$ is not a multiple of $3$, we know that $S(N^k)$ will *not* hit multiples of $3$ in the neighbourhood, i.e. it has only $2/3$rds as many choices. So maybe we should revise our probability $p = 1/(4.5\log N)$ to $\frac19(9p) + \frac29(3p) + \frac69(\frac32p) = \frac83p$. Also, when $N$ is a multiple of $10$, say $N = 10m$, to have $10m = N = S(N^k) = S(10^k m^k) = S(m^k)$ is more likely, as $S(m^k)$ only grows by about $4.5\log m$ at a time instead of $4.5 \log N$ at a time, which is one less.)
+(Above we estimated the “probability that a number $N$ is good”, i.e. has such a power $N^k$, as $1/(4.5 \log N)$, but for some numbers $N$ the “probability” is actually higher: when $N$ is a multiple of $3$ (like $1647$ and $1656$ in the output above), then so is $S(N^k)$, so in the neighborhood only multiples of $3$—including $N$—are going to be hit. Similarly for multiples of $9$. Conversely when $N$ is not a multiple of $3$, we know that $S(N^k)$ will *not* hit multiples of $3$ in the neighbourhood, i.e. it has only $2/3$rds as many choices. So maybe we should revise our probability $p = 1/(4.5\log N)$ to $\frac19(9p) + \frac29(3p) + \frac69(\frac32p) = \frac83p$. Also, when $N$ is a multiple of $10$, say $N = 10m$, to have $10m = N = S(N^k) = S(10^k m^k) = S(m^k)$ is more likely, as $S(m^k)$ only grows by about $4.5\log m$ at a time instead of $4.5 \log N$ at a time.)
 
 In particular, we expect infinitely many numbers $N$ for which some power $N^k$ satisfies $S(N^k) = N$ (as the sum of the reciprocals of the logarithms diverges), and in fact, I think we can expect the *number* of such $N$ below a certain threshold $M$ (now I'm wishing I'd used lowercase $N$ so far…) to be of the order of (a bit more than)
 
-$$\sum_{N=2}^{M} \frac{8}{3}\frac{1}{4.5 \log N} \approx \frac{16}{27} \int_{2}^{M} \frac{1}{\log N} = \frac{16}{27} \operatorname{Li}(N)$$
+$$\sum_{N=2}^{M} \frac{8}{3}\frac{1}{4.5 \log N} \approx \frac{16}{27} \int_{2}^{M} \frac{1}{\log N} = \frac{16}{27} \operatorname{Li}(M)$$
 
-where $\operatorname{Li}(N)$ is the logarithmic integral, and this grows like $O(N/\log N)$ -- and [in fact]([i.e.](https://en.wikipedia.org/w/index.php?title=Logarithmic_integral_function&oldid=874186529#Number_theoretic_significance)) by a deep theorem (the prime number theorem), this is about the same as the number of prime numbers below $M$, as
+where $\operatorname{Li}(M)$ is the logarithmic integral, and this grows like $O(M/\log M)$ -- and [in fact](https://en.wikipedia.org/w/index.php?title=Logarithmic_integral_function&oldid=874186529#Number_theoretic_significance) by a deep theorem (the prime number theorem), this is about the same as the number of prime numbers below $M$, as
 
 $$\pi(x) \sim \operatorname{Li}(x)$$
 
