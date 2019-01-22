@@ -291,9 +291,9 @@ Imagine I am trying to convince you that a particular (large) number is **compos
 
 [^fncustomer]: This useful image of a “customer” and a “seller” comes from Pratt's paper, mentioned later.
 
-If I just give you the number and say “believe me, this is composite; check for yourself”, that might require an unfeasible amount of work on your part (so you may not be too happy about buying this number from me). For example, is the number 
+If I just give you the number and say “believe me, this is composite; check for yourself”, that might require an unfeasible amount of work on your part (so you may not be too happy about buying this number from me). For example, is the number $224919749317807621056963908336317800061643423036754378897719$ composite?
 
-Instead (if I know everything about the number), I could give you an easy way to verify that the number is composite: to prove that a number $N$ is composite, I just have to give you a number $d$, such that $1 < d < N$ and $d$ divides $N$.
+Instead (if I knew everything about the number), when giving you the number, I could also give you an easy way to verify that the number is composite: to prove that a number $N$ is composite, I just have to give you a number $d$, such that $1 < d < N$ and $d$ divides $N$.
 
 If the number $N$ is $L$ digits long, then I can give you such a $d$ having at most $\lceil L/2 \rceil$ digits, and you have to perform only a small computation: dividing an $L$ digit number by an $\lceil L/2 \rceil$-digit (or smaller) number. This requires not much computation from you, nor much mathematical knowledge beyond the definition of a composite number, and how to do division. The “certificate” is short as well.[^compnp]
 
@@ -314,22 +314,44 @@ Before discussing them in detail, I should mention two later developments have s
 * A later development is “elliptic curve primality proving”: [Wikipedia 1](https://en.wikipedia.org/w/index.php?title=Primality_certificate&oldid=842984422#Atkin%E2%80%93Goldwasser%E2%80%93Kilian%E2%80%93Morain_certificates), [Wikipedia 2](https://en.wikipedia.org/w/index.php?title=Elliptic_curve_primality&oldid=847730025), [paper 1](http://www.mat.uniroma2.it/~geo2/goldwasserkilian.pdf). This is almost universally what is used today, such as by the program [Primo](http://www.ellipsa.eu/public/primo/primo.html) by Marcel Martin, considered the gold-standard of primality-proving programs. For more on the theory and practice of verifying Primo certificates, see [here](https://math.stackexchange.com/a/1686428), [here](https://math.stackexchange.com/a/2303048), [here](https://www.mersenneforum.org/showthread.php?t=14086), [here](https://github.com/tomato42/ecpp-verifier), [here](https://www.quora.com/What-is-the-fastest-deterministic-primality-test/answer/Dana-Jacobsen).
 * Now we know, thanks to the celebrated work of [Manindra Agrawal](https://en.wikipedia.org/wiki/Manindra_Agrawal), [Neeraj Kayal](https://en.wikipedia.org/wiki/Neeraj_Kayal), and [Nitin Saxena](https://en.wikipedia.org/wiki/Nitin_Saxena), that “$\mathrm{PRIMES}$ is in $\mathsf{P}$” (see [1](http://annals.math.princeton.edu/2004/160-2/p12), [2](https://en.wikipedia.org/wiki/AKS_primality_test), [3](http://www.ams.org/notices/200305/fea-bornemann.pdf), etc.) — i.e. that if I simply give you the prime number and no proof, you can (in principle) verify yourself that it is prime, with a polynomial-time computation. So (at least if you don't care about anything beyond “polynomial-time or not”), the entire question of certificates is moot. But  this AKS algorithm is not used in practice (ECPP is still used), and in any case not trivial, so beyond the scope of our discussion. (While I was writing this post, [this](https://blog.computationalcomplexity.org/2018/10/good-results-made-meaningless.html) was posted.)
 
-Pratt certificates are not practical for very large primes (over 100 digits say), because in order for me to *find* them, I would have to factor some large numbers. (In that sense, they are even more impractical than AKS.) So why discuss them at all? The great thing about Pratt certificates IMO is that, for *you*, as the customer, they are easy to understand: the mathematics required can be explained to a high-school student with no number-theory background, from first principles.
+Pratt certificates are not practical for very large primes (over 100 digits say), because in order for me to *find* the certificates, I would have to factor some large numbers. (In that sense, they are even more impractical than AKS — in fact we don't even know how to find them in polynomial time.) So why discuss them at all? Apart from the historical interest, the great thing about Pratt certificates IMO is that, for *you*, as the customer, they are easy to understand: the mathematics required can be explained to a high-school student with no number-theory background, from first principles.
 
-(If you already know enough number theory, e.g. what “primitive root modulo N” means, you can skip straight to [Wikipedia](https://en.wikipedia.org/w/index.php?title=Primality_certificate&oldid=842984422#Pratt_certificates) and [Pratt's short paper](http://boole.stanford.edu/pub/SucCert.pdf#page=3). Else, read a short sketch below of just the relevant parts... might turn it into clearer proofs later.)
+It rests on the following:
 
-Suppose you are given a number $N$ (any positive integer, prime or composite), and a number $a$, and a number $m$ such that $a^m$ has remainder $1$ when divided by $N$. Let $c$ be the *smallest* positive number for which $a^r$ has remainder $1$ when divided by $N$ (such a number necessarily exists: it's either the $m$ you were given, or something smaller). Then,
+**Theorem**: Given two numbers $p$ and $a$, suppose that $p$ divides $a^{p-1} - 1$, and for every prime number $q$ that divides $p-1$, it so happens that $p$ does not divide $a^{(p-1)/q} - 1$. Then $p$ is prime.
 
-1. If $c = N - 1$, then $N$ is prime (**Proof sketch**: show that $a^0$, $a^1$, $\dots$, $a^{c-1}$ all have distinct remainders, so if $c = N - 1$ we've covered all the integers $1$ to $N-1$. But if $N$ had a factor $d$, then this wouldn't be possible.)
-2. For any integer $b$ (including $m$) , $a^b$ has remainder $1$ when divided by $N$, if and only if $b$ is a multiple of $c$. (**Proof sketch**: if $b = qc + r$ then use the fact that $a^b = (a^c)^q (a^r)$ to show that $a^b$ when divided by $N$ leaves the same remainder as $a^r$ does.)
-3. So if $a^{N-1}$ has remainder $1$ when divided by $N$, then the only way that $c$ could be other than $N-1$ would be if $N - 1 = kc$ for some integer $k > 1$. Well in that case, peeling off some prime factor $p$ of $k$ (possibly $k$ itself, if $k$ is prime), we would have $(N-1)/p$ also a multiple of $c$, and therefore $a^{(N-1)/p}$ would also have remainder $1$ when divided by $N$.
+To prove this theorem, first we will need a very tiny part of modular arithmetic.
 
-These are the ideas that go into a Pratt certificate. With a Pratt certificate, I give you the following:
+**Lemma 1** Given a number $p$, let's call any number $n$ a “unit mod $p$” (or simply a “unit”) if $p$ divides $n - 1$. Suppose $x$ is a unit. Then $xy$ is a unit if and only if $y$ is a unit.
+
+**Proof of Lemma 1:** Note that $xy - 1 = (x-1)y + (y-1)$. As $p$ divides $x-1$, it divides the first term on the right-hand side namely $(x-1)y$, so it divdes the left-hand side if and only if it divides the other term $(y-1)$. This proves Lemma 1.  $\Box$
+
+**Lemma 2**: Let $r$ be the smallest positive number $x$ such that $p$ divides $a^x - 1$. Then $p$ divides $a^n - 1$ if and only if $n$ is a multiple of $r$.
+
+**Proof of Lemma 2:** Suppose $n = br + c$, where the remainder $c$ satisfies $0 \le c < r$. Then note that, as by assumption $a^r$ is a “unit”, so is $(a^r)^b$ (by repeated application of Lemma 1), and therefore (by Lemma 1 again) we see that $a^n = (a^r)^b a^c$ is a unit if and only if $a^c$ is a unit. For this to happen, as $r$ was defined as the *smallest* *positive* number $x$ for which $a^x$ is a unit, $c$ cannot be a positive number, i.e. $c$ has to be $0$ — or in other words $n$ has to be a multiple of $r$.  $\Box$
+
+With these two proved, we can now give a proof of the theorem.
+
+**Proof of Theorem**: 
+
+1. Let $r$ be the smallest positive number $x$ such that $p$ divides $a^x - 1$. (As we are given that $p-1$ is such a number $x$, we know that $r$ is at most $p-1$. In fact, we will show that $r$ is exactly $p-1$.) As $p$ divides $a^{p-1}-1$, this means (by Lemma 2) that $(p-1)$ must be a multiple of $r$, say $p - 1 = kr$. Now,
+   * **if** $k > 1$, then by picking $q$ to be any prime factor of $k$ (possibly $k$ itself, if $k$ is prime), we see that $(p-1)/q$ is also a multiple of $r$, and therefore (by Lemma 2 again) $a^{(p-1)/q}$ must also be a unit. But we're told that this is not the case.
+   * Therefore $k$ must be $1$, i.e. $p - 1$ must be the smallest positive number $x$ such that $p$ divides $a^x - 1$.
+2. Now, consider the numbers $1, a, a^2, a^3, \dots, a^{p-2}$. There are $p-1$ of them. Consider the difference between any two of them, say $a^n-a^m$ where $n > m$. This is $a^{m}(a^{n-m} - 1)$, and here $p$ cannot divide the first factor (as $a$ is relatively prime to $p$) nor the second (as $a^{n-m}$ is not a unit, by what we just proved: note that $0 < n - m < p - 1$). This means that $p$ does not divide $a^m - a^n$, i.e. the two numbers $a^m$ and $a^n$ leave different remainders when divided by $p$. As this is true for any pair of numbers $m$ and $n$, this means that all of the $p - 1$ numbers we considered must leave distinct remainders when divided by $p$, and therefore these remainders must be $1, 2, 3, 4, \dots, p-1$ in some order.
+3. If $p$ were not prime, i.e. if it had a factor $d$, then it would never be possible to have a number $a^n$ leave a remainder of $d$ when divided by $p$ — that would mean that $d$ divides $a^n$ so it would also divide $a^{p-1}$ so it (and therefore $p$) could not divide $a^{p-1} - 1$. So $p$ must be prime. $\Box$.
+
+These then are the ideas that go into a Pratt certificate. With a Pratt certificate, I give you the following:
 
 * I give you the number $N$, which I'm claiming to be prime.
-* I give you a number $a$, such that you can check that $a^{N-1}$ has remainder $1$ when divided by $N$,
-* I give you the complete prime factorization of $N - 1$, such that you can check that for any prime $p$ dividing $N-1$, if you look at $a^{(N-1)/p}$, then it does *not* have remainder $1$ when divided by $N$.
-* I give you proofs (using Pratt certificates, recursively!) that each of the prime numbers I gave in the prime factorization of $N-1$ is indeed prime.
+* I give you a number $a$, such that you can check that $N$ divides $a^{N-1} - 1$,
+* I give you the complete prime factorization of $N - 1$, such that you can check that for any prime $q$ that divides $N-1$, if you look at $a^{(N-1)/q} - 1$, then it is *not* divisible by $N$.
+* I give you proofs that each of the prime numbers I gave in the prime factorization of $N-1$ is indeed prime — and these proofs I give using smaller Pratt certificates themselves!
+
+You can read more in [Wikipedia](https://en.wikipedia.org/w/index.php?title=Primality_certificate&oldid=842984422#Pratt_certificates) and [Pratt's short paper](http://boole.stanford.edu/pub/SucCert.pdf#page=3). 
+
+### Examples
+
+
 
 ### Software
 
@@ -402,7 +424,7 @@ I'm not sure how to read this, but here are the facts:
 
 
 
-## Literature and ”feelings”
+## Literature and “feelings”
 
 In an article on Nautil.us titled [“Why Doesn’t Ancient Fiction Talk About Feelings?”: Literature’s evolution has reflected and spurred the growing complexity of society](http://nautil.us/issue/65/in-plain-sight/why-doesnt-ancient-fiction-talk-about-feelings-rp), the author (Julie Sedivy) makes the following points.
 
@@ -1119,6 +1141,8 @@ See pricing comparison at the bottom of this page: https://cloud.google.com/stor
 
 ## Angles are easier to approximate from above
 
+[Update: This is not actually correct. Ignore everything.]
+
 A surprising and counterintuitive fact that becomes obvious in hindsight, like so many things in mathematics. Suppose we want to pick three points on a square lattice:
 
 [figure]
@@ -1191,7 +1215,156 @@ As denominators get larger, the primes get sparser, so this becomes closer to th
 
 [This post by MJD](https://blog.plover.com/math/60-degree-angles.html) and [ensuing discussion on Hacker News](https://news.ycombinator.com/item?id=18536484).
 
+----
 
+## TikZ notes
+
+### Why these
+
+(My standard “howto” versus “from the bottom up” rant: magic incantations, you forget, you're not aware of what's possible and what's not, you build up a mental model that does not match reality — conversely if you understand a few things, then you can ignore the rest as “shortcuts”. You may not do things in the most elegant way, but you'll be able to get things done.)
+
+### Should I use Ti*k*Z?
+
+Use it if you need to create a picture, and you prefer to *specify* it rather than draw it: with TikZ, instead of drawing a picture with a mouse or pencil, you write down specifications for what the picture should look like.[^fnwhentikz] 
+
+Alternatives:
+
+* use another “specification” method (like `pstricks`, `xypic`, `metapost`), or
+* just draw the picture in some visual program (some like `xfig` can even convert to Ti*k*Z).
+
+(Aside: Bundled with TikZ or PGF are also a bunch of general TeX macro libraries like `pgfkeys` or `pgffor`, and the interesting-looking `pgfpages`, but those are probably not why you're reading this right now.)
+
+### [Technical] How is TikZ implemented?
+
+Ti*k*Z is built on top of:
+
+* a PGF “system” layer that is a compatibility layer between the different formats of DVIPS specials, DVIPDFMX specials, PDF instructions, etc., and 
+
+* a “basic” layer (library of commonly used functions, on top of the “system” layer) that is made up of the “core” and “modules”.
+
+Its syntax is a mixture of METAFONT + PSTRICKS + other stuff.
+
+### [Concepts] What is a picture made of?
+
+(Check this) In Ti*k*Z, a picture is made of **paths**. Paths can be drawn, filled, etc.
+
+> A path is a series of straight lines and curves that are connected [...]. You start a path by specifying the coordinates of the start position as a point in round brackets, as in (0,0). This is followed by a series of “path extension operations.”
+
+### Can I see some examples?
+
+```tex
+\input tikz
+
+\tikz \draw[thick,rounded corners=8pt]
+(0,0) -- (0,2) -- (1,3.25) -- (2,2) -- (2,0) -- (0,2) -- (2,2) -- (0,0) -- (2,0);
+
+\bye
+```
+
+Syntax [Note to self: ideally only one of this will be shown to the reader...]:
+
+Common form:
+
+* plain TeX: `\tikzpicture ... \endtikzpicture`
+* LaTeX: `\begin{tikzpicture} ... \end{tikzpicture}`
+
+Shortcut for above:
+
+* `\tikz {<path commands>}`
+
+### How can I draw a line?
+
+Use `\draw` and give the path, ending with a semicolon, e.g. `\draw (-1.5,0) -- (1.5,0);` 
+
+This is a shortcut for `\path[draw] (-1.5,0) -- (1.5,0);`.
+
+
+
+
+
+[^fnwhentikz]: (This gives some idea of when not to use TikZ: sometimes it may be easier to just draw the picture directly, especially if you are a visual person who's good at drawing. Conversely, TikZ does not completely absolve you of visual thinking; you still have to know (mostly) what picture you want, in order to specify it.)
 
 ----
+
+## Simple time logger
+
+While reading _How to Live on 24 Hours a Day_, I thought I'd like to try logging my time. Tried Toggl for a couple of days (from reviews it seemed one of the better pieces of software) and gave up. Its default mode is that you start a timer when you start working on something, and stop it when done, which doesn't work for me sadly — e.g. when I get distracted and do something else entirely. It's also all too easy to just not log time (fail to start a timer) for hours on end. (Of course nothing can really solve that problem, but read on…)
+
+I also remembered later that I had earlier tried gtimelog (and its Mac clone, Mactimelog), and had reasonable success for at least a little while. See also mention in [this thread](https://news.ycombinator.com/item?id=7409926).
+
+So, outlining some desirable features of a personal time tracker for distraction-prone me:
+
+* Time tracking must be done after-the-fact, i.e. you should enter what you actually did in some time interval, not what you think you're going to do. (This idea comes from gtimelog.)
+  * This also solves the problem of starting a timer for something and getting distracted or pulled into something else: the only other way to solve that would be to require confirming that you're still doing the same thing every minute or 5 minutes or whatever.
+* Should be easy to say that in an interval you did the same as in the previous one, thereby “extending” it.
+  * That way, if you worked on something for an hour, you could just tap the same button every few minutes.
+* Every minute of every day should be covered. (Showing as “untracked time” is ok.)
+* Focus on capturing stuff. I definitely don't need things like projects or billing/invoicing or whatnot!
+* Export to a simple text file. No fancy databases or proprietary backends or whatever.
+  * Although: some sort of reviewing later would be nice, but that can even be a separate application.
+* No binary classification into “work” and “non-work”, or “good” and “bad”. 
+  * This is probably what ultimately made me stop logging in gtimelog, and from emails I exchanged with the developer of gtimelog at one point, what probably made him give up (at the time as well) as well: depending on your relationship with yourself, it can be depressing to know much time you're procrastinating. But there's no “good” and “bad”, it's always some aspect of your self that is being gratified; so value it, and perhaps at most use the data to start an internal conversation about shifting the balance (if necessary).
+* A timer for the current interval would be nice. (Idea from Toggl)
+* Should work from a mobile device. A mobile-friendly web UI is probably enough.
+
+With all that in mind, we can come up with the following 
+
+### Design
+
+#### Data model
+
+Keep it as simple as possible: lines of text, of the format `<timestamp> <message>`. The lazy programmer in me is tempted to have “seconds since epoch in UTC” but probably more convenient to have an actual human-readable timestamp in local timezone. Also, for convenience, probably can also include the end time and elapsed duration, with the understanding that they are to be ignored when processing the file.
+
+So lines like:
+
+```
+%Y-%m-%d %H:%M:%S %z (%d min from %H:%M) This is what I did
+```
+
+Note that this “more convenient” data model requires 
+
+#### Persistence
+
+For now, nothing. Maybe you can “download” the timestamp file or see it in the browser console, or inject it via the console. Later, we could persist somewhere, maybe Firebase or whatever. Needs auth and all that.
+
+#### UI
+
+This is the main thing. At any given time, the UI shows:
+
+````
+(big) <timer, in minutes:seconds>
+(small) What did you do?
+(medium) <same as previous> <untracked time> <something else: type>
+````
+
+If you tap the “same as previous” button, it extends the previous one. (Overwrites the timestamp.)
+
+Let's go into more detail -- for this UI to work, we need the following:
+
+- The timer needs a start time, and access to the current time
+- Need the data file (at least the last line) to write to, and read from
+
+## More
+
+Hmm...
+
+* If $n \equiv 0 \pmod 9$, then $S(n^k) \equiv n^k \equiv 0 \pmod 9$, so $9p$
+* If $n \equiv 1 \pmod 9$, then $S(n^k) \equiv n^k \equiv 1^k \equiv 1 \pmod 9$, so $9p$
+* If $n \equiv 2 \pmod 9$, then $S(n^k) \equiv 2^k \equiv 2, 4, 8, 7, 5, 1 \pmod 9$, so $\frac{9}{6} p = \frac32p$
+* If $n \equiv 3 \pmod 9$, then $S(n^k) \equiv 3^k \equiv 3, 0 \pmod 9$, so $0$
+* If $n \equiv 4 \pmod 9$, then $S(n^k) \equiv 4^k \equiv 4, 7, 1 \pmod 9$, so $\frac93 p = 3p$
+* If $n \equiv 5 \pmod 9$, then $S(n^k) \equiv 5^k \equiv 5, 7, 8, 4, 2, 1 \pmod 9$, so $\frac96p = \frac32p$
+* If $n \equiv 6 \pmod 9$, then $S(n^k) \equiv 6^k \equiv 6, 0 \pmod 9$, so $0$
+* If $n \equiv 7 \pmod 9$, then $S(n^k) \equiv 7^k \equiv 7, 4, 1 \pmod 9$, so $\frac93p = 3p$
+* If $n \equiv 8 \pmod 9$, then $S(n^k) \equiv 8^k \equiv 8, 1 \pmod 9$, so $\frac{9}{2}p$
+
+Total: $9p + 9p + 3p + 3p + 3p + \frac92p = (27 + \frac92) p$. 
+
+Average: $(3 + \frac12)p$.
+
+And $p$ itself is $\frac29 \frac{1}{\log N}$, so this total probability is $(3 + \frac12)(\frac29)\frac{1}{\log N}$ which is $\frac79\frac{1}{\log N}$. Still about a factor of $2$ less than the numbers we see...
+
+$$\mathtt{xord[c]} = \begin{cases} i, & \text{most preferred $i$ such that }\mathtt{xchr[i] = c}\text{, if any}, \\[2ex] \mathtt{127}, & \text{otherwise}\end{cases}$$
+
+
 
