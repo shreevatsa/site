@@ -1307,7 +1307,7 @@ So, outlining some desirable features of a personal time tracker for distraction
 * A timer for the current interval would be nice. (Idea from Toggl)
 * Should work from a mobile device. A mobile-friendly web UI is probably enough.
 
-With all that in mind, we can come up with the following 
+With all that in mind, we can come up with the following design.
 
 ### Design
 
@@ -1364,7 +1364,111 @@ Average: $(3 + \frac12)p$.
 
 And $p$ itself is $\frac29 \frac{1}{\log N}$, so this total probability is $(3 + \frac12)(\frac29)\frac{1}{\log N}$ which is $\frac79\frac{1}{\log N}$. Still about a factor of $2$ less than the numbers we see...
 
-$$\mathtt{xord[c]} = \begin{cases} i, & \text{most preferred $i$ such that }\mathtt{xchr[i] = c}\text{, if any}, \\[2ex] \mathtt{127}, & \text{otherwise}\end{cases}$$
+## CSS Notes, round 2
 
+This time I'm going to try writing a "CSS layout for TeX users", aka "CSS layout from the outside in" or "Layout with CSS: A procedural approach".
+
+The idea is to describe a minimal subset of CSS layout properties with which it's possible to get stuff done, while staying compatible with the inclusion of these "restricted language" blocks of elements into others that may be using different CSS.
+
+Note 1: This is intended for "casual" CSS users, i.e. those who'll occasionally create their personal web page or a page for some particular project, and then are likely to forget everything they learned about CSS until they need it again many months later. In particular it does not address things like large teams of people working on a common style file, or a requirement to make something look exactly according to some spec (well of course we'd like to be able to achieve whatever we want, but if you're the solo person on the project sometimes you can afford to pick a different design that you know how to implement), etc.
+
+Note 2: You may want to just use some framework like "Bootstrap" or "Foundation", instead of trying to code CSS yourself. But if for some reason that's not your preference, then read on.
+
+Before that, notes from reading Rachel Andrew's _The New CSS Layout_
+
+- [**Formatting context**](https://drafts.csswg.org/css-display-3/#formatting-context):
+
+  > A formatting context is the environment into which a set of related boxes are laid out. Different formatting contexts lay out their boxes according to different rules. For example, a flex formatting context lays out boxes according to the flex layout rules [CSS3-FLEXBOX], whereas a block formatting context lays out boxes according to the block-and-inline layout rules [CSS2].
+
+Basically: the layout procedure/algorithm that is used.
+
+There are many ways in which an element can create a new formatting context; the one (new addition) recommended explicitly for that purpose is "display: flow-root;" -- which says that the *inner* display property is that of a new flow root.
+
+In this default(?) formatting model:
+
+ - Block-level elements "use up" the full width of the container (of the formatting context) even if their specified width is smaller, i.e. each one appears on a new line. Like hboxes inside a vbox.
+
+ - Inline elements appear next to each other if there's room for them, else on a new line, like words in a paragraph.
+
+Aside 1: Floats. Elements that are floating don't count in this. We can still use floats for "cutouts" / parshape, using "shape-outside".
+
+Aside 2: On position:
+
+ - position:static is the default
+
+ - position:relative does nothing by default, but is useful to set on a container so that its children can be relative to it instead of relative to some other ancestor. (So why not set it always?)
+
+ - position:absolute, position:fixed -- relative to some ancestor and relative to offset, respectively. Both break out of flow, and we need a plan for how to prevent something from overlapping (going under them). If using fixed, then position:sticky is slightly better/cooler alternative.
+
+Aside 3: Multiple-column layout (like LaTeX's multicol): on a container, set
+
+ - `column-width` to specify the ideal width (hsize) of each column,
+
+ - `column-count` to specify the ideal (or max, if `column-width` is specified) number of columns.
+
+(Example usage: specify a sufficient `column-width` to contain the entries (e.g. a list of checkboxes or whatever), and then if there's more width on the screen, we'll automatically get more columns. One tragedy is that if we *do* have something wider than that width (e.g. a long paragraph!) then it will be restricted to the specified column-width which may be say 51% of the available width. So while we'd ideally like "pick the number of columns based on the available width, then lay out such that those many columns fill the available width", this doesn't do the second part of that.)
+
+Anyway, back to the formatting models/contexts.
+
+The one of interest now is the flex formatting context. Set it with `display: flex`. It can either behave like a `hbox` (no wrap, elements shrink up to their *common* min-content-size e.g. longest word in a paragraph), or (what I'm calling) a `hlist` (use `flex-wrap: wrap`).
+
+Unfortunately, this also requires the children to do something (have a "flex" property, wtf sigh). But maybe that's an acceptable price to pay, if it has no other undesirable side effects?
+
+If so, it seems like the flex formatting context is a strict generalization of at least the behaviour of inline elements in the default context. (Can we also achieve the equivalent of block elements?)
+
+Grid:
+
+ - gap between items with `gap` (or `row-gap` and `column-gap`)
+
+ - specify which columns a particular item spans, with `grid-row` and `grid-column`: this can either be a single number like `3` (equivalent to `3 / 4`) or two numbers like `3 / 4` meaning the area between 3.0 to 4.0 (starting at 1.0 (WTF again)).
+
+ - more visual / general: give names to the areas, like
+
+        “grid-template-areas:
+            "a a b"
+            ". d d"
+            "c e e";
+        
+   but each has to be rectangular :-)
+
+----
+
+See https://developer.mozilla.org/en-US/docs/Web/CSS/display
+
+ - obviously, for an element's "outer display type", we want "inline", not "block": imagine laying out the children of an element one by one, and suddenly one of them decides it wants to occupy a full row!
+   A possible exception is things we're intentionally inserting as hboxes inside a vlist.
+
+ - For an element's "inner display type", it seems that "flow-root" would make the most sense, but unfortunately it's not well-supported yet (https://caniuse.com/#search=flow-root) so we're left with "inline-flex" as probably the best option?
+
+Ah: According to the compatibility tables at https://developer.mozilla.org/en-US/docs/Web/CSS/display-inside there is ZERO support for multiple keyword values... so, so much for that.
+
+See https://developer.mozilla.org/en-US/docs/Web/CSS/Layout_mode for a list of layout modes.
+
+----
+
+Ultimately we'll try to achieve three kinds of divs, and that will take us quite far:
+
+1. `hbox` -- lay out the children strictly left to right
+
+2. `vbox` -- lay out the children strictly top to bottom
+
+3. `hlist` -- lay out the children left to right, wrap at width.
+
+More general would be to allow stretchable glue, but let's stick with this for now.
+
+This worked, for an overflowing row:
+
+    .hbox {
+        overflow-x: scroll;
+        white-space: nowrap;
+        display: flow-root;
+    }
+
+	.cell {
+        display: inline-block;
+        white-space: pre-wrap;
+    }
+
+-- things that didn't work were `display: inline-block` and `display: inline-flex` (both just overflowed instead of scrolling).
 
 

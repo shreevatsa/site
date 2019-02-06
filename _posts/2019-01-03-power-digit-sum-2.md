@@ -7,6 +7,8 @@ tags: [done]
 
 ---
 
+(Status: Draft / abandoned. Sorry.)
+
 In [the previous post](power-digit-sum) we tried to find how frequently a number $n$ (switching notation to lowercase now) has some power $k$ such that the sum of digits of $n^k$, which we denoted $S(n^k)$, is exactly $n$. We had a heuristic argument for why the number of such $n$ below a certain limit $x$ should be on the order of $x/\log x$, or in fancier terms, $\def\Li{\operatorname{Li}}$ $\Li(x)$.
 
 Let's explore further. 
@@ -102,6 +104,9 @@ As before, let $S(m)$ denote the sum of the digits of a number $m$. As $10 \equi
 ### Peeling off powers of $10$
 
 If $n = 10^c m$ for some $c$, then as $n^k = 10^{ck} m^k$, the digits of $n^k$ are the digits of $m^k$ followed by $ck$ zeroes. From now on, let's talk primarily of the digits in $m^k$, where $m$ is $n$ with all powers of $10$ removed. This does not affect anything from the previous section, as $n \equiv m \pmod 9$ and $n^k \equiv m^k \pmod 9$.
+
+(**Edit**: I wrote this at the time, but it turns out to be easier to just work with $n$ instead of $m$, and swallow the loss in correctness. So in what follows, read $m$ as $n$ -- for example, you could assume $n$ is not divisible by $10$, or at least not by a big enough power of $10$ that the difference matters.)
+
 
 ### The number of digits in $m^k$
 
@@ -199,7 +204,7 @@ $$\mathbb{P}(X_n = m) \sim \frac{1}{n} \cdot \frac{(\log_{10} n)^m}{m!}$$
 
 https://arxiv.org/pdf/1212.6697.pdf#page=8 and this is exactly what we care about. (Cites [this paper](http://en.cnki.com.cn/Article_en/CJFDTotal-SXXB195504001.htm).)
 
-
+See also: [this question](https://math.stackexchange.com/questions/3063646/what-is-the-probability-that-the-sum-of-digits-of-a-random-k-digit-number-is) where I learned a lot.
 
 
 
