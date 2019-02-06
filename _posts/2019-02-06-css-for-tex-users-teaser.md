@@ -7,7 +7,7 @@ tags: [done]
 
 ---
 
-After years of struggling with CSS -- by which I mean, about once a year wanting to lay out something, trying to learn CSS layout, and achieving some partial success in the layout I wanted, after hours of frustration -- I think I've finally figured out a trick that will reduce the time to minutes.
+After years of struggling with CSS --- by which I mean, about once a year wanting to lay out something, trying to learn CSS layout, and achieving some partial success in the layout I wanted, after hours of frustration --- I think I've finally figured out a trick that will reduce the time to minutes.
 
 Later I'll write a proper tutorial with context and everything, but for now here's a teaser. In short the idea is to
 
