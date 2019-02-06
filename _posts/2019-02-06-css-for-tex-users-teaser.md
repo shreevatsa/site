@@ -3,7 +3,7 @@ layout: post
 title: CSS For TeX users -- a teaser
 excerpt: A universal trick for layout with CSS 
 date: 2019-02-06
-tags: [draft]
+tags: [done]
 
 ---
 
