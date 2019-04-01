@@ -1428,7 +1428,7 @@ Grid:
             "a a b"
             ". d d"
             "c e e";
-        
+     
    but each has to be rectangular :-)
 
 ----
@@ -1463,12 +1463,20 @@ This worked, for an overflowing row:
         white-space: nowrap;
         display: flow-root;
     }
-
-	.cell {
+    
+    .cell {
         display: inline-block;
         white-space: pre-wrap;
     }
 
 -- things that didn't work were `display: inline-block` and `display: inline-flex` (both just overflowed instead of scrolling).
 
+(Edited later: Turns out it's better to use flex, with `display: inline-flex` for everything. Then `.hbox` is simply the default, and `.vbox` is simply `flex-direction: column`. More later.)
+
+Also see: 
+
+* https://css-tricks.com/snippets/css/a-guide-to-flexbox/
+* https://css-tricks.com/fixing-tables-long-strings/
+
+-----
 
