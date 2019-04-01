@@ -13,14 +13,14 @@ In the previous post, we looked at a simple PDF file, generated with modern meth
 
 Now let's switch gears and look at a very atypical (these days) PDF file, and a large one at that, namely this file: <http://www.vldb.org/conf/1999/P29.pdf>. With `mutool clean -d P29.pdf P29-mutool.pdf` (not bothering with `qpdf --qdf --object-streams=disable P29.pdf P29-qpdf.pdf` right now) one can see that, for example, the second page[^secondpage] refers to two fonts:
 
-[^secondpage]: Why the second page? I wanted to look at the second page rather than the first page because it has a layout more typical of the rest of the pages, but coincidentally it's also the case that the first object in this PDF file happens to be for the second page.
-
     /Font <<
       /B 173 0 R
       /A 166 0 R
     >>
+    
+[^secondpage]: Why the second page? I wanted to look at the second page rather than the first page because it has a layout more typical of the rest of the pages, but coincidentally it's also the case that the first object in this PDF file happens to be for the second page.
 
-Pursuing Object 173, one sees that the font `/B` does not quite look like the examples we saw in the last post. This PDF file is clearly using some other sort of font technology. For one thing, the object has a bunch of `/CharProcs`, like:
+Examining Object 173, we see that the font `/B` does not quite look like the examples we saw in the last post. This PDF file is clearly using some other sort of font technology. For one thing, the object has a bunch of `/CharProcs`, like:
 
       /CharProcs <<
         /a0 271 0 R
@@ -52,7 +52,7 @@ So let's go deeper and look at object 271, which was associated with character n
     endstream
     endobj
 
-This is supposed to be the "content stream that constructs and paints the glyphs for that character". It may be helpful to actually look at this iamge data visually, so let's pursue this further.
+This is supposed to be the "content stream that constructs and paints the glyphs for that character". It may be helpful to actually look at this image data visually, so let's pursue this further.
 
 Here, `BI`, `EI`, `ID` are PDF operators for the begin/end of image data, and the actual image data, for inline images (see section 4.8.6 Inline Images in the PDF reference). The keys above stand for: ImageMask, Width, Height, BitsPerComponent, Filter (CCITTFaxDecode), and DecodeParms [sic]. The value for `/DP` is itself a dictionary, the parameters to the CCITTFaxDecode filter being used here, whose keys represent (see Table 3.9):
 
