@@ -100,7 +100,7 @@ Anyway, this has been a long digression inspired by looking at just one part of 
 
 (Before that I should probably compile the actual data into a table first...)
 
-
+([Link to the source code in Sourcegraph.](https://sourcegraph.com/github.com/sanskrit-coders/indic_transliteration@b86f7f1598bbff3c34ae7cecf342de403bf4d4e2/-/blob/indic_transliteration/sanscript.py))
 
 
 ----
