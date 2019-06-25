@@ -20,7 +20,7 @@ Page number:
 
 <style>
 .everything-wrapper {
-	display: flex;
+    display: flex;
 }
 .slider-wrapper {
   flex-grow: 0;
@@ -60,48 +60,59 @@ Page number:
 <textarea id="scratchspace" rows="3" style="width:100%"></textarea>
 
 <script>
+function realPageNumber() {
+    return Number(document.getElementById('pageNumber').value) + Number(document.getElementById('pageNumberOffset').value);
+    console.log("real page number: ", realPageNumber);
+}
+function bookId() {
+    return document.getElementById('bookUrl').value.replace('https://archive.org/details/', '');
+}
 function updateInput() {
-	let realPageNumber = Number(document.getElementById('pageNumber').value) + Number(document.getElementById('pageNumberOffset').value);
-	console.log("real page number: ", realPageNumber);
-	let pageUrl = document.getElementById('bookUrl').value.replace('/details/', '/download/') + '/page/n' + realPageNumber + '_s2.jpg';
-	console.log("pageUrl: ", pageUrl);
-	document.getElementById('pageImage').src = pageUrl;
-	document.getElementById('slider-left').value = 100;
-	document.getElementById('slider-right').value = 0;
-	document.getElementById('left-value').textContent = 0.0;
-	document.getElementById('right-value').textContent = 100.0;
-	updateResult();
+    let pageUrl = `https://archive.org/download/${bookId()}/page/n${realPageNumber()}_s2.jpg`;
+    document.getElementById('pageImage').src = pageUrl;
+    document.getElementById('slider-left').value = 100;
+    document.getElementById('slider-right').value = 0;
+    document.getElementById('left-value').textContent = 0.0;
+    document.getElementById('right-value').textContent = 100.0;
+    updateResult();
 }
 document.getElementById('pageNumber').addEventListener('input', updateInput);
 
 function updateResult() {
-	let top = document.getElementById('left-value').textContent;
-	let bottom = document.getElementById('right-value').textContent;
-	if (Number(top) > Number(bottom)) {
-	    [top, bottom] = [bottom, top];
+    let top = document.getElementById('left-value').textContent;
+    let bottom = document.getElementById('right-value').textContent;
+    if (Number(top) > Number(bottom)) {
+        [top, bottom] = [bottom, top];
     }
-	// console.assert(top <= bottom);
-	let ret = `inset(${top}% 0% ${(100.0 - bottom).toFixed(2)}% 0%)`;
-	// console.log('Top and bottom are ' + top + ' and ' + bottom + ' so setting clipPath to ' + ret);
-	document.getElementById('pageImage').style.clipPath = ret;
-	document.getElementById('pageNum').textContent = document.getElementById('pageNumber').value;
-	document.getElementById('topFraction').textContent = (top / 100.0).toFixed(3);
-	document.getElementById('botFraction').textContent = (bottom / 100.0).toFixed(3);
+    const topFraction = (top / 100.0).toFixed(3);
+    const botFraction = (bottom / 100.0).toFixed(3);
+    const heightFraction = ((bottom - top)/100.0).toFixed(3);
+    // console.assert(top <= bottom);
+    let ret = `inset(${top}% 0% ${(100.0 - bottom).toFixed(2)}% 0%)`;
+    // console.log('Top and bottom are ' + top + ' and ' + bottom + ' so setting clipPath to ' + ret);
+    document.getElementById('pageImage').style.clipPath = ret;
+    document.getElementById('pageNum').textContent = document.getElementById('pageNumber').value;
+    document.getElementById('topFraction').textContent = topFraction;
+    document.getElementById('botFraction').textContent = botFraction;
+
+    document.getElementById('markdownequivalent').innerHTML = `
+    [![p ${document.getElementById('pageNumber').value}](https://archive.org/download/${bookId()}/page/n${realPageNumber()}_y${topFraction}_h${heightFraction}_s2.jpg)](https://archive.org/stream/${bookId()}#page/n${realPageNumber()}/mode/1up)
+    `.trim();
 }
 document.getElementById('slider-left').addEventListener('input', (e) => {
-	document.getElementById('left-value').textContent = (100.0 - e.target.value).toFixed(2);
-	updateResult();
+    document.getElementById('left-value').textContent = (100.0 - e.target.value).toFixed(2);
+    updateResult();
 });
 document.getElementById('slider-right').addEventListener('input', (e) => {
-	document.getElementById('right-value').textContent = (100.0 - e.target.value).toFixed(2);
-	updateResult();
+    document.getElementById('right-value').textContent = (100.0 - e.target.value).toFixed(2);
+    updateResult();
 });
 
 function stripTrailingBlankLines() {
   let s = document.getElementById('scratchspace').value;
   let last = s.length - 1;
   while (last >= 0 && s[last] == '\n') {
-	--last;
+    --last;
   }
   s = s.substr(0, last + 1);
   document.getElementById('scratchspace').value = s;
@@ -111,10 +122,8 @@ document.getElementById('scratchspace').addEventListener('keyup', stripTrailingB
 document.getElementById('scratchspace').addEventListener('change', stripTrailingBlankLines);
 </script>
 
-
-
-
-
+Possible markdown:
+<pre id="markdownequivalent"></pre>
 
 Aside: On the "technology" used in this page—I'm basically new to CSS etc.—see <https://jsfiddle.net/12zhpedw/> and the following about archive.org:
 
