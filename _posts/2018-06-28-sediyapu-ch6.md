@@ -282,7 +282,7 @@ Many variations manifest.<cite>165 0.303 0.399</cite>
 
 Apparent even in the five examples just given.<cite>165 0.373 0.445</cite>
 
-Example of (c). The āvartagati recedes to background. (b) seems to be of āvarta 6. In (c), the 4-gati remains strong [?] In (a) and (c), the akṣaragati are more prominent.<cite>165 0.416 0.907</cite><cite>166 0.099 0.313</cite>
+Example of (a): The āvartagati recedes to background. (b) seems to be of āvarta 6. In (c), the 4-gati remains strong [?] In (a) and (c), the akṣaragati are more prominent.<cite>165 0.416 0.907</cite><cite>166 0.099 0.313</cite>
 
 Fn 63: If you ignore the meaning & yati, and read by gaṇas, then the simple 4-gati stands out.<cite>166 0.361 0.652</cite>
 
