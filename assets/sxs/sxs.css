@@ -17,8 +17,9 @@
 }
 .inner-image {
   display: block;
-  border: 1px solid grey; */
+  border: 1px solid grey;
 }
+*/
 
 /* Two columns: images, and notes (text). */
 .outer-image-and-notes-container {
