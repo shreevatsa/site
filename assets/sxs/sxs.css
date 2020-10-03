@@ -23,7 +23,7 @@
 /* Two columns: images, and notes (text). */
 .outer-image-and-notes-container {
   display: flex;
-  /* outline: 2px solid red;  */
+  border: 2px solid black;
   margin-top: 2em;
   margin-bottom: 2em;
   flex-wrap: wrap;
@@ -46,7 +46,7 @@
 }
 .inner-image {
   display: block;
-  /* outline: 1px solid grey; */
+  border: 1px solid grey;
   margin-top: 2px;
   margin-bottom: 2px;
   max-width: 100%;
