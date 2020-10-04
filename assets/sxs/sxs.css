@@ -35,10 +35,16 @@
   /* flex-shrink: 1; */
   flex-grow: 1;
   max-width: 100%;
+  /* max-width: 100%; */
   /* max-width: 20em; */
   /* outline: 1px solid blue; */
   margin-top: 10px;
   margin-bottom: 10px;
+}
+@media (min-width: 800px) {
+  .inner-notes {
+    max-width: 18%;
+  }
 }
 .inner-images {
   max-width: 100%;

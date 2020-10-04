@@ -43,6 +43,7 @@ function makeImagePlaceholder(pageNum, startHeightFraction, stopHeightFraction) 
     clickHereDiv.style.top = '50%';
     clickHereDiv.style.left = '50%';
     clickHereDiv.style.transform = 'translate(-50%, -50%)';
+    clickHereDiv.style.width = '100%';
     clickHereDiv.textContent = ('Click to load image (page ' + pageNum +
         ' from ' + strFrac(startHeightFraction) +
         ' to ' + strFrac(stopHeightFraction) + ')');
