@@ -2,13 +2,12 @@
 function pageURL(pageNum, startHeightFraction, stopHeightFraction) {
     startHeightFraction = startHeightFraction || 0.0;
     stopHeightFraction = stopHeightFraction || 1.0;
-    return ('https://archive.org/download/ChandassamputaSediyapu/page/n' + (Number(pageNum) + 9)
-        + '_y' + startHeightFraction + '_h' + (stopHeightFraction - startHeightFraction) + '_s2.jpg');
+    return `https://archive.org/download/ChandassamputaSediyapu/page/n${Number(pageNum) + 9}_y${startHeightFraction}_h${stopHeightFraction - startHeightFraction}_s2.jpg`;
 }
 
 // Returns a URL for viewing page `pageNum` in the archive.org stream viewer
 function streamURL(pageNum) {
-    return 'https://archive.org/stream/ChandassamputaSediyapu#page/n' + (Number(pageNum) + 9) + '/mode/1up';
+    return `https://archive.org/stream/ChandassamputaSediyapu#page/n${Number(pageNum) + 9}/mode/1up`;
 }
 
 function strFrac(num) {
@@ -19,24 +18,35 @@ function strFrac(num) {
 function makeImagePlaceholder(pageNum, startHeightFraction, stopHeightFraction) {
     // Don't remember where these magic numbers came from. Will have to rethink.
     const ht = (stopHeightFraction - startHeightFraction) * (499 / 352) * 600;
-    let imgPlaceholder = document.createElement('div');
+    const imgPlaceholder = document.createElement('div');
     imgPlaceholder.classList.add('inner-image');
-    imgPlaceholder.textContent = ('Click to load image (page ' + pageNum +
-                  ' from ' + strFrac(startHeightFraction) +
-                  ' to ' + strFrac(stopHeightFraction) + ')');
-    imgPlaceholder.style.height = ht + 'px';
-    imgPlaceholder.addEventListener('click', () => {
-        let imgDiv = imgPlaceholder.parentNode;
-        imgDiv.style.height = window.getComputedStyle(imgDiv).getPropertyValue('height');
-        let aNode = document.createElement('a');
-        aNode.href = streamURL(pageNum);
-        let img = document.createElement('img');
-        img.classList.add('inner-image');
-        img.src = pageURL(pageNum, startHeightFraction, stopHeightFraction);
-        img.style.height = ht + 'px'; // This is needed for preventing jitter, but leads to distortion?
-        aNode.appendChild(img);
-        imgPlaceholder.parentNode.replaceChild(aNode, imgPlaceholder);
-    });
+
+    const a = document.createElement('a');
+    const img = document.createElement('img');
+    img.dataset.src = pageURL(pageNum, startHeightFraction, stopHeightFraction);
+    img.style.height = ht + 'px';
+    img.style.width = '600px';
+    a.appendChild(img);
+    imgPlaceholder.appendChild(a);
+    const onclick = () => {
+        img.src = img.dataset.src;
+        clickHereDiv.style.visibility = 'hidden';
+        img.addEventListener('load', () => {
+            // img.style.height = 'auto';
+            a.href = streamURL(pageNum);
+            imgPlaceholder.removeEventListener('click', onclick);
+        });
+    };
+    imgPlaceholder.addEventListener('click', onclick);
+    const clickHereDiv = document.createElement('div');
+    clickHereDiv.style.position = 'absolute';
+    clickHereDiv.style.top = '50%';
+    clickHereDiv.style.left = '50%';
+    clickHereDiv.style.transform = 'translate(-50%, -50%)';
+    clickHereDiv.textContent = ('Click to load image (page ' + pageNum +
+        ' from ' + strFrac(startHeightFraction) +
+        ' to ' + strFrac(stopHeightFraction) + ')');
+    imgPlaceholder.appendChild(clickHereDiv);
     return imgPlaceholder;
 }
 

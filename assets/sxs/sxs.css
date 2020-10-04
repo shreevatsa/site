@@ -28,12 +28,14 @@
   margin-top: 2em;
   margin-bottom: 2em;
   flex-wrap: wrap;
-  margin-top: 40px;
-  margin-bottom: 40px;
+  margin-top: 70px;
+  margin-bottom: 70px;
 }
 .inner-notes {
-  flex-shrink: 0;
+  /* flex-shrink: 1; */
+  flex-grow: 1;
   max-width: 100%;
+  /* max-width: 20em; */
   /* outline: 1px solid blue; */
   margin-top: 10px;
   margin-bottom: 10px;
@@ -46,6 +48,7 @@
   margin-bottom: 10px;
 }
 .inner-image {
+  position: relative;
   display: block;
   border: 1px solid grey;
   margin-top: 2px;
